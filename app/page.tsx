@@ -1,6 +1,15 @@
 "use client";
 
-import { Maximize2, Minimize2, Plus, RefreshCw, Star } from "lucide-react";
+import {
+  BookOpen,
+  Maximize2,
+  Minimize2,
+  Plus,
+  RefreshCw,
+  Star,
+} from "lucide-react";
+import Link from "next/link";
+import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import { AddExamDialog } from "@/components/add-exam-dialog";
 import { Button } from "@/components/ui/button";
@@ -38,7 +47,7 @@ export default function TimeKeeperPage() {
   });
   const [showFavorites, setShowFavorites] = useState(false);
   const [showCustom, setShowCustom] = useState(false);
-  const [themeMode, setThemeMode] = useState<"dark" | "light">("dark");
+  const { theme, setTheme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<string>("");
   const [isClockOnly, setIsClockOnly] = useState(false);
@@ -164,31 +173,35 @@ export default function TimeKeeperPage() {
     : exams;
 
   return (
-    <div
-      className={`min-h-screen ${themeMode === "dark" ? "bg-[#0a0a0a] text-white" : "bg-zinc-800 text-zinc-100"}`}
-    >
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       {!isClockOnly && (
-        <header
-          className={`border-b ${themeMode === "dark" ? "border-zinc-800" : "border-zinc-700"} px-4 md:px-6 py-4`}
-        >
+        <header className="border-b border-border px-4 md:px-6 py-4">
           <div className="mx-auto max-w-7xl flex items-center justify-between">
             <div>
               <h1 className="text-xl md:text-2xl font-bold">TimeKeeper</h1>
               {lastUpdated && (
-                <p
-                  className={`text-xs mt-1 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                >
+                <p className="text-xs mt-1 text-muted-foreground">
                   Last updated: {lastUpdated}
                 </p>
               )}
             </div>
             <div className="flex items-center gap-3 md:gap-6">
+              <Link href="/posts" scroll={false}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-xs md:text-sm transition-colors flex items-center gap-1 md:gap-2 text-muted-foreground hover:text-foreground hover:bg-accent px-2 md:px-3 h-8 md:h-9"
+                >
+                  <BookOpen className="w-3 h-3 md:w-4 md:h-4" />
+                  <span className="hidden sm:inline">Blog</span>
+                </Button>
+              </Link>
               <button
                 onClick={fetchLiveExams}
                 type="button"
                 disabled={isLoading}
-                className={`text-xs md:text-sm transition-colors flex items-center gap-1 md:gap-2 ${themeMode === "dark" ? "text-muted-foreground hover:text-white" : "text-zinc-400 hover:text-zinc-100"} ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`text-xs md:text-sm transition-colors flex items-center gap-1 md:gap-2 text-muted-foreground hover:text-foreground ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
               >
                 <RefreshCw
                   className={`w-3 h-3 md:w-4 md:h-4 ${isLoading ? "animate-spin" : ""}`}
@@ -197,43 +210,25 @@ export default function TimeKeeperPage() {
               </button>
               <button
                 type="button"
-                onClick={() =>
-                  setThemeMode(themeMode === "dark" ? "light" : "dark")
-                }
-                className={`text-xs md:text-sm transition-colors ${themeMode === "dark" ? "text-muted-foreground hover:text-white" : "text-zinc-400 hover:text-zinc-100"}`}
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="text-xs md:text-sm transition-colors text-muted-foreground hover:text-foreground"
               >
                 THEME
               </button>
               <button
                 type="button"
                 onClick={() => setShowFavorites(!showFavorites)}
-                className={`text-xs md:text-sm transition-colors flex items-center gap-1 ${
-                  showFavorites
-                    ? themeMode === "dark"
-                      ? "text-yellow-400"
-                      : "text-yellow-300"
-                    : themeMode === "dark"
-                      ? "text-muted-foreground hover:text-white"
-                      : "text-zinc-400 hover:text-zinc-100"
-                }`}
+                className={`text-xs md:text-sm transition-colors flex items-center gap-1 ${showFavorites ? "text-yellow-400" : "text-muted-foreground hover:text-foreground"}`}
               >
                 <Star
-                  className={`w-3 h-3 md:w-4 md:h-4 ${showFavorites ? "fill-current" : ""}`}
+                  className={`w-5 h-5 md:w-4 md:h-4 ${showFavorites ? "fill-current" : ""}`}
                 />
                 <span className="hidden sm:inline">Favorites</span>
               </button>
               <button
                 type="button"
                 onClick={() => setShowCustom(!showCustom)}
-                className={`text-xs md:text-sm transition-colors hidden sm:block ${
-                  showCustom
-                    ? themeMode === "dark"
-                      ? "text-white"
-                      : "text-zinc-100"
-                    : themeMode === "dark"
-                      ? "text-muted-foreground hover:text-white"
-                      : "text-zinc-400 hover:text-zinc-100"
-                }`}
+                className={`text-xs md:text-sm transition-colors hidden sm:block ${showCustom ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
               >
                 Custom
               </button>
@@ -246,12 +241,8 @@ export default function TimeKeeperPage() {
         {/* Main Countdown */}
         {isLoading ? (
           <div className="text-center mb-12 md:mb-16">
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-8 md:p-12 backdrop-blur`}
-            >
-              <p
-                className={`text-lg md:text-2xl ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-              >
+            <Card className="bg-card border-border p-8 md:p-12 backdrop-blur">
+              <p className="text-lg md:text-2xl text-muted-foreground">
                 Loading latest exam data...
               </p>
             </Card>
@@ -266,7 +257,7 @@ export default function TimeKeeperPage() {
                 onClick={() => setIsClockOnly(false)}
                 size="lg"
                 variant="outline"
-                className={`absolute top-4 left-4 md:top-8 md:left-8 ${themeMode === "dark" ? "bg-zinc-900 border-zinc-700 hover:bg-zinc-800" : "bg-zinc-700 border-zinc-600 hover:bg-zinc-600"} gap-2 text-sm md:text-base px-4 md:px-8 h-10 md:h-12 font-medium`}
+                className="absolute top-4 left-4 md:top-8 md:left-8 gap-2 text-sm md:text-base px-4 md:px-8 h-10 md:h-12 font-medium"
               >
                 <Minimize2 className="w-4 h-4 md:w-5 md:h-5" />
                 <span className="hidden sm:inline">Show All</span>
@@ -277,7 +268,7 @@ export default function TimeKeeperPage() {
                   onClick={() => setIsClockOnly(true)}
                   size="lg"
                   variant="outline"
-                  className={`${themeMode === "dark" ? "bg-zinc-900 border-zinc-700 hover:bg-zinc-800" : "bg-zinc-700 border-zinc-600 hover:bg-zinc-600"} gap-2 text-sm md:text-base px-4 md:px-8 h-10 md:h-12 font-medium`}
+                  className="gap-2 text-sm md:text-base px-4 md:px-8 h-10 md:h-12 font-medium"
                 >
                   <Maximize2 className="w-4 h-4 md:w-5 md:h-5" />
                   <span className="hidden sm:inline">Clock Only View</span>
@@ -291,14 +282,12 @@ export default function TimeKeeperPage() {
               {selectedExam.name}
             </h2>
             {selectedExam.source && (
-              <p
-                className={`text-xs md:text-sm mb-4 md:mb-6 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-              >
+              <p className="text-xs md:text-sm mb-4 md:mb-6 text-muted-foreground">
                 Source: {selectedExam.source}
               </p>
             )}
             <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} ${isClockOnly ? "p-8 md:p-20" : "p-6 md:p-12"} backdrop-blur`}
+              className={`bg-card border-border ${isClockOnly ? "p-8 md:p-20" : "p-6 md:p-12"} backdrop-blur`}
             >
               <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
                 <div className="text-center">
@@ -307,9 +296,7 @@ export default function TimeKeeperPage() {
                   >
                     {countdown.days}
                   </div>
-                  <div
-                    className={`text-xs md:text-sm mt-1 md:mt-2 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                  >
+                  <div className="text-xs md:text-sm mt-1 md:mt-2 text-muted-foreground">
                     days
                   </div>
                 </div>
@@ -319,9 +306,7 @@ export default function TimeKeeperPage() {
                   >
                     {countdown.hours}
                   </div>
-                  <div
-                    className={`text-xs md:text-sm mt-1 md:mt-2 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                  >
+                  <div className="text-xs md:text-sm mt-1 md:mt-2 text-muted-foreground">
                     hours
                   </div>
                 </div>
@@ -331,9 +316,7 @@ export default function TimeKeeperPage() {
                   >
                     {countdown.minutes}
                   </div>
-                  <div
-                    className={`text-xs md:text-sm mt-1 md:mt-2 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                  >
+                  <div className="text-xs md:text-sm mt-1 md:mt-2 text-muted-foreground">
                     min
                   </div>
                 </div>
@@ -343,9 +326,7 @@ export default function TimeKeeperPage() {
                   >
                     {countdown.seconds}
                   </div>
-                  <div
-                    className={`text-xs md:text-sm mt-1 md:mt-2 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                  >
+                  <div className="text-xs md:text-sm mt-1 md:mt-2 text-muted-foreground">
                     sec
                   </div>
                 </div>
@@ -354,12 +335,8 @@ export default function TimeKeeperPage() {
           </div>
         ) : (
           <div className="text-center mb-12 md:mb-16">
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-8 md:p-12 backdrop-blur`}
-            >
-              <p
-                className={`text-lg md:text-2xl ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-              >
+            <Card className="bg-card border-border p-8 md:p-12 backdrop-blur">
+              <p className="text-lg md:text-2xl text-muted-foreground">
                 No exam data available. Click "Refresh" to get latest exam
                 information.
               </p>
@@ -375,7 +352,7 @@ export default function TimeKeeperPage() {
               return (
                 <Card
                   key={exam.id}
-                  className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800 hover:bg-zinc-900/70" : "bg-zinc-700/50 border-zinc-600 hover:bg-zinc-700/70"} p-4 md:p-6 cursor-pointer transition-colors`}
+                  className="bg-card border-border hover:bg-accent p-4 md:p-6 cursor-pointer transition-colors"
                   onClick={() => setSelectedExam(exam)}
                 >
                   <div className="flex items-start justify-between mb-4 md:mb-6">
@@ -384,9 +361,7 @@ export default function TimeKeeperPage() {
                         {exam.name}
                       </h3>
                       {exam.source && (
-                        <p
-                          className={`text-xs mt-1 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"} truncate`}
-                        >
+                        <p className="text-xs mt-1 text-muted-foreground truncate">
                           {exam.source}
                         </p>
                       )}
@@ -400,40 +375,32 @@ export default function TimeKeeperPage() {
                       className="hover:scale-110 transition-transform ml-2 flex-shrink-0"
                     >
                       <Star
-                        className={`w-5 h-5 ${exam.favorite ? `fill-current ${getColorClass(exam.color)}` : themeMode === "dark" ? "text-zinc-600" : "text-zinc-500"} ${getColorClass(exam.color)}`}
+                        className={`w-5 h-5 ${exam.favorite ? `fill-current ${getColorClass(exam.color)}` : "text-muted"} ${getColorClass(exam.color)}`}
                       />
                     </button>
                   </div>
                   <div className="flex items-center justify-between text-2xl md:text-3xl font-bold tabular-nums">
                     <div className="text-center">
                       <div>{examCountdown.days}</div>
-                      <div
-                        className={`text-xs font-normal mt-1 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                      >
+                      <div className="text-xs font-normal mt-1 text-muted-foreground">
                         days
                       </div>
                     </div>
                     <div className="text-center">
                       <div>{examCountdown.hours}</div>
-                      <div
-                        className={`text-xs font-normal mt-1 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                      >
+                      <div className="text-xs font-normal mt-1 text-muted-foreground">
                         hrs
                       </div>
                     </div>
                     <div className="text-center">
                       <div>{examCountdown.minutes}</div>
-                      <div
-                        className={`text-xs font-normal mt-1 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                      >
+                      <div className="text-xs font-normal mt-1 text-muted-foreground">
                         min
                       </div>
                     </div>
                     <div className="text-center">
                       <div>{examCountdown.seconds}</div>
-                      <div
-                        className={`text-xs font-normal mt-1 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-                      >
+                      <div className="text-xs font-normal mt-1 text-muted-foreground">
                         sec
                       </div>
                     </div>
@@ -445,9 +412,7 @@ export default function TimeKeeperPage() {
         )}
 
         {!isClockOnly && showFavorites && filteredExams.length === 0 && (
-          <div
-            className={`text-center mb-6 md:mb-8 ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-          >
+          <div className="text-center mb-6 md:mb-8 text-muted-foreground">
             No favorite exams. Click the star icon to favorite exams.
           </div>
         )}
@@ -458,7 +423,7 @@ export default function TimeKeeperPage() {
             <Button
               variant="outline"
               size="lg"
-              className={`w-full md:w-auto md:max-w-md ${themeMode === "dark" ? "bg-zinc-900 border-zinc-800 hover:bg-zinc-800" : "bg-zinc-700 border-zinc-600 hover:bg-zinc-600"} h-14 md:h-16 text-base`}
+              className="w-full md:w-auto md:max-w-md h-14 md:h-16 text-base"
               onClick={() => setIsDialogOpen(true)}
             >
               <Plus className="w-5 h-5 mr-2" />
@@ -470,22 +435,16 @@ export default function TimeKeeperPage() {
 
       {/* FAQ Section */}
       {!isClockOnly && (
-        <section
-          className={`mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 border-t ${themeMode === "dark" ? "border-zinc-800" : "border-zinc-700"}`}
-        >
+        <section className="mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 border-t border-border">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
             Frequently Asked Questions
           </h2>
           <div className="grid gap-4 md:gap-6 max-w-3xl mx-auto">
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-4 md:p-6`}
-            >
+            <Card className="bg-card border-border p-4 md:p-6">
               <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
                 Where does the exam data come from?
               </h3>
-              <p
-                className={`text-sm md:text-base leading-relaxed ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-300"}`}
-              >
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                 All exam data is automatically fetched from official sources
                 including College Board (satsuite.collegeboard.org) for SAT,
                 ACT.org for ACT, ETS.org for GRE and TOEFL, and mba.com for
@@ -495,15 +454,11 @@ export default function TimeKeeperPage() {
               </p>
             </Card>
 
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-4 md:p-6`}
-            >
+            <Card className="bg-card border-border p-4 md:p-6">
               <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
                 Can I add my own custom exams?
               </h3>
-              <p
-                className={`text-sm md:text-base leading-relaxed ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-300"}`}
-              >
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                 Yes! Click the "ADD EXAM" button to add personal exams or
                 important dates. Enter a custom name, select any future date
                 using the calendar picker, choose a color theme, and your exam
@@ -512,15 +467,11 @@ export default function TimeKeeperPage() {
               </p>
             </Card>
 
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-4 md:p-6`}
-            >
+            <Card className="bg-card border-border p-4 md:p-6">
               <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
                 How do I change the main countdown display?
               </h3>
-              <p
-                className={`text-sm md:text-base leading-relaxed ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-300"}`}
-              >
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                 Simply click on any exam card in the grid to set it as the main
                 countdown display. The selected exam will appear in large format
                 at the top with real-time countdown. You can switch between
@@ -528,15 +479,11 @@ export default function TimeKeeperPage() {
               </p>
             </Card>
 
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-4 md:p-6`}
-            >
+            <Card className="bg-card border-border p-4 md:p-6">
               <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
                 How do favorites work?
               </h3>
-              <p
-                className={`text-sm md:text-base leading-relaxed ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-300"}`}
-              >
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                 Click the star icon on any exam card to mark it as a favorite.
                 Favorited exams display a filled, colored star. Use the
                 "Favorites" button in the header to filter and view only your
@@ -545,15 +492,11 @@ export default function TimeKeeperPage() {
               </p>
             </Card>
 
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-4 md:p-6`}
-            >
+            <Card className="bg-card border-border p-4 md:p-6">
               <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
                 What is Clock Only View?
               </h3>
-              <p
-                className={`text-sm md:text-base leading-relaxed ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-300"}`}
-              >
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                 Click the "Clock Only View" button to hide all distractions and
                 display only the countdown timer in an enlarged, focused format.
                 Perfect for distraction-free studying or displaying on a second
@@ -562,15 +505,11 @@ export default function TimeKeeperPage() {
               </p>
             </Card>
 
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-4 md:p-6`}
-            >
+            <Card className="bg-card border-border p-4 md:p-6">
               <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
                 How accurate is the data?
               </h3>
-              <p
-                className={`text-sm md:text-base leading-relaxed ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-300"}`}
-              >
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                 While we fetch data directly from official exam websites, exam
                 dates and registration deadlines can change.{" "}
                 <strong>
@@ -583,15 +522,11 @@ export default function TimeKeeperPage() {
               </p>
             </Card>
 
-            <Card
-              className={`${themeMode === "dark" ? "bg-zinc-900/50 border-zinc-800" : "bg-zinc-700/50 border-zinc-600"} p-4 md:p-6`}
-            >
+            <Card className="bg-card border-border p-4 md:p-6">
               <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
                 How often does the data update?
               </h3>
-              <p
-                className={`text-sm md:text-base leading-relaxed ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-300"}`}
-              >
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                 Exam data automatically refreshes every 30 minutes and when you
                 first load the page. You can manually trigger an update anytime
                 by clicking the "Refresh" button in the header. The system also
@@ -605,12 +540,8 @@ export default function TimeKeeperPage() {
 
       {/* Footer */}
       {!isClockOnly && (
-        <footer
-          className={`border-t ${themeMode === "dark" ? "border-zinc-800" : "border-zinc-700"} mt-12 md:mt-20 py-6 md:py-8 px-4 md:px-6`}
-        >
-          <div
-            className={`mx-auto max-w-7xl text-xs md:text-sm text-center ${themeMode === "dark" ? "text-muted-foreground" : "text-zinc-400"}`}
-          >
+        <footer className="border-t border-border mt-12 md:mt-20 py-6 md:py-8 px-4 md:px-6">
+          <div className="mx-auto max-w-7xl text-xs md:text-sm text-center text-muted-foreground">
             <p>© 2025 TimeKeeper | Built by v0</p>
             <p className="mt-2">
               It is strongly recommended to double-check the information

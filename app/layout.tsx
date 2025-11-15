@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import type React from "react";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://exam-timekeeper.top"),
   title: "Exam TimeKeeper - US Exam Countdown Calendar",
   description:
     "Track important US exam dates with live countdown timers for SAT, ACT, GRE, TOEFL, GMAT and more. Real-time data from official sources.",
+  metadataBase: new URL("https://exam-timekeeper.top"),
   keywords: [
     "exam countdown",
     "SAT dates",
@@ -68,8 +69,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-US" className="dark">
-      <body className={`font-sans antialiased`}>{children}</body>
+    <html lang="en-US" suppressHydrationWarning>
+      <body className={`font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
