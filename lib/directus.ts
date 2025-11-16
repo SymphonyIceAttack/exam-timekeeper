@@ -32,9 +32,8 @@ type Schema = {
   posts: Post[];
 };
 
-const directusUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL;
-const accessToken = process.env.DIRECTUS_ACCESS_TOKEN;
-
+const directusUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL || "";
+const accessToken = process.env.DIRECTUS_ACCESS_TOKEN || "";
 const directus = createDirectus<Schema>(directusUrl || "http://localhost:8055")
   .with(rest())
   .with(staticToken(accessToken || ""));
