@@ -12,7 +12,7 @@ importers:
         specifier: ^20.1.1
         version: 20.1.1
       '@opennextjs/cloudflare':
-        specifier: ^1.12.0
+        specifier: ^1.11.0
         version: 1.12.0(wrangler@4.46.0)
       '@radix-ui/react-dialog':
         specifier: ^1.1.15
