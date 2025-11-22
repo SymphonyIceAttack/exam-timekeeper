@@ -2,12 +2,13 @@ import { readItems } from "@directus/sdk";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MarkdownWithIds } from "@/components/blog/markdown-with-ids";
 import { PostCTA } from "@/components/blog/post-cta";
 import { RecentPosts } from "@/components/blog/recent-posts";
-import { SiteNav } from "@/components/blog/site-nav";
 import { TableOfContents } from "@/components/blog/table-of-contents";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import directus from "@/lib/directus";
 
@@ -62,67 +63,146 @@ export default async function PostPage({
     );
 
     return (
-      <>
-        <SiteNav />
-        <main className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-950 dark:to-slate-900 py-12 px-4">
-          <div className="max-w-7xl mx-auto">
-            {isEnabled && (
-              <Card className="mb-6 border-purple-500 dark:border-purple-600 bg-purple-50 dark:bg-purple-950/30">
-                <CardContent className="py-3">
-                  <p className="text-sm font-medium text-purple-900 dark:text-purple-200">
-                    Draft mode enabled - You are previewing unpublished content
+      <div className="min-h-screen bg-background text-foreground">
+        <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
+          <Breadcrumb
+            items={[{ label: "Blog", href: "/posts" }, { label: title }]}
+            className="mb-6"
+          />
+
+          {isEnabled && (
+            <Card className="mb-6 border-destructive/50 bg-destructive/5">
+              <CardContent className="py-3">
+                <p className="text-sm font-medium text-destructive">
+                  Draft mode enabled - You are previewing unpublished content
+                </p>
+              </CardContent>
+            </Card>
+          )}
+
+          <div className="flex flex-col md:flex-row gap-6">
+            <article className="flex-1 min-w-0">
+              <Card className="bg-card border-border">
+                <CardHeader>
+                  <CardTitle className="text-3xl md:text-4xl font-bold mb-2 text-balance">
+                    {title}
+                  </CardTitle>
+                  <p className="text-sm text-muted-foreground">
+                    {new Date(published_at).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
                   </p>
+                  {description && (
+                    <p className="text-lg text-muted-foreground mt-4 text-pretty">
+                      {description}
+                    </p>
+                  )}
+                </CardHeader>
+                <CardContent className="prose prose-invert max-w-none">
+                  {imageurl && (
+                    <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
+                      <Image
+                        fill={true}
+                        src={`https://symcloud.top/${imageurl}`}
+                        alt={title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <MarkdownWithIds content={content} />
                 </CardContent>
               </Card>
-            )}
 
-            <div className="flex gap-8">
-              <article className="flex-1 min-w-0">
-                <Card className="border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950">
-                  <CardHeader>
-                    <CardTitle className="text-4xl font-bold mb-2 text-balance text-gray-900 dark:text-white">
-                      {title}
-                    </CardTitle>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">
-                      {new Date(published_at).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
-                    {description && (
-                      <p className="text-lg text-gray-600 dark:text-gray-400 mt-4 text-pretty">
-                        {description}
-                      </p>
-                    )}
-                  </CardHeader>
-                  <CardContent className="prose prose-lg dark:prose-invert max-w-none">
-                    {imageurl && (
-                      <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
-                        <Image
-                          fill={true}
-                          src={`https://symcloud.top/${imageurl}`}
-                          alt={title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
-                    <MarkdownWithIds content={content} />
-                  </CardContent>
-                </Card>
-
+              <div className="mt-8">
                 <PostCTA />
+              </div>
 
+              <div className="mt-8">
                 <RecentPosts posts={recentPosts} />
-              </article>
+              </div>
+            </article>
 
-              <aside className="w-64 shrink-0 hidden md:block">
-                <TableOfContents content={content} />
-              </aside>
-            </div>
+            <aside className="w-full md:w-64 shrink-0">
+              <TableOfContents content={content} />
+            </aside>
           </div>
-        </main>
-      </>
+
+          <footer className="border-t border-border mt-12 md:mt-20 py-6 md:py-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div>
+                <h4 className="font-semibold mb-2">Company</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>
+                    <Link
+                      href="/about"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Resources</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>
+                    <Link
+                      href="/help"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Help & FAQ
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Legal</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>
+                    <Link
+                      href="/privacy"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/terms"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/cookies"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Cookie Policy
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="border-t border-border pt-6 text-center">
+              <p className="text-xs md:text-sm text-muted-foreground mb-2">
+                © 2025 TimeKeeper | Built by v0
+              </p>
+            </div>
+          </footer>
+        </div>
+      </div>
     );
   } catch (error) {
     console.error("[v0] Error fetching post:", error);

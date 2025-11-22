@@ -4,6 +4,12 @@ import type React from "react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
+export const JsonLd = ({ children }: { children: React.ReactNode }) => (
+  <script type="application/ld+json" suppressHydrationWarning>
+    {JSON.stringify(children)}
+  </script>
+);
+
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
@@ -63,6 +69,40 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Exam TimeKeeper",
+  description:
+    "Track important US exam dates with live countdown timers for SAT, ACT, GRE, TOEFL, GMAT and more. Real-time data from official sources.",
+  url: "https://exam-timekeeper.top",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://exam-timekeeper.top/search?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Exam TimeKeeper",
+    url: "https://exam-timekeeper.top",
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Exam TimeKeeper",
+  url: "https://exam-timekeeper.top",
+  description:
+    "Educational platform providing countdown timers and date tracking for US standardized exams.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    email: "contact@exam-timekeeper.top",
+    availableLanguage: "English",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,6 +112,8 @@ export default function RootLayout({
     <html lang="en-US" suppressHydrationWarning>
       <body className={`font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <JsonLd>{websiteSchema}</JsonLd>
+          <JsonLd>{organizationSchema}</JsonLd>
           {children}
         </ThemeProvider>
       </body>

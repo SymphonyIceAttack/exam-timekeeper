@@ -57,9 +57,9 @@ export function TableOfContents({ content }: { content: string }) {
   if (headings.length === 0) return null;
 
   return (
-    <Card className="sticky top-6 border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950 hidden lg:block">
+    <Card className="sticky top-6 bg-card border-border hidden md:block">
       <CardHeader>
-        <CardTitle className="text-lg text-gray-900 dark:text-white">
+        <CardTitle className="text-lg">
           Table of Contents
         </CardTitle>
       </CardHeader>
@@ -68,10 +68,10 @@ export function TableOfContents({ content }: { content: string }) {
           <a
             key={heading.id}
             href={`#${heading.id}`}
-            className={`block py-1 text-sm transition-colors hover:text-purple-600 dark:hover:text-purple-400 ${
+            className={`block py-1 text-sm transition-colors hover:text-foreground ${
               activeId === heading.id
-                ? "text-purple-600 dark:text-purple-400 font-medium"
-                : "text-gray-600 dark:text-gray-400"
+                ? "text-foreground font-medium"
+                : "text-muted-foreground"
             }`}
             style={{ paddingLeft: `${(heading.level - 1) * 12}px` }}
             onClick={(e) => {

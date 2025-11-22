@@ -4,7 +4,16 @@ import directus from "@/lib/directus";
 
 export const revalidate = 86400; // 24 hours in seconds
 
-const staticRoutes = ["/", "/posts"];
+const staticRoutes = [
+  "/",
+  "/posts",
+  "/about",
+  "/contact",
+  "/privacy",
+  "/terms",
+  "/cookies",
+  "/help",
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://yourdomain.com";

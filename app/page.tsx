@@ -541,13 +541,90 @@ export default function TimeKeeperPage() {
       {/* Footer */}
       {!isClockOnly && (
         <footer className="border-t border-border mt-12 md:mt-20 py-6 md:py-8 px-4 md:px-6">
-          <div className="mx-auto max-w-7xl text-xs md:text-sm text-center text-muted-foreground">
-            <p>© 2025 TimeKeeper | Built by v0</p>
-            <p className="mt-2">
-              It is strongly recommended to double-check the information
-              provided on this website with official sources to ensure its
-              accuracy.
-            </p>
+          <div className="mx-auto max-w-7xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div>
+                <h4 className="font-semibold mb-2">Company</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>
+                    <Link
+                      href="/about"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Resources</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>
+                    <Link
+                      href="/posts"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/help"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Help & FAQ
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Legal</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>
+                    <Link
+                      href="/privacy"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/terms"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/cookies"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Cookie Policy
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="border-t border-border pt-6 text-center">
+              <p className="text-xs md:text-sm text-muted-foreground mb-2">
+                © 2025 TimeKeeper | Built by v0
+              </p>
+              <p className="text-xs text-muted-foreground">
+                It is strongly recommended to double-check the information
+                provided on this website with official sources to ensure its
+                accuracy.
+              </p>
+            </div>
           </div>
         </footer>
       )}
