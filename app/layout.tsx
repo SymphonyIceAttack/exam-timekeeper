@@ -4,7 +4,7 @@ import type React from "react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-export const JsonLd = ({ children }: { children: React.ReactNode }) => (
+const JsonLd = ({ children }: { children: Record<string, unknown> }) => (
   <script type="application/ld+json" suppressHydrationWarning>
     {JSON.stringify(children)}
   </script>
