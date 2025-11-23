@@ -18,5 +18,13 @@ export function MarkdownWithIds({ content }: { content: string }) {
     });
   }, [content]);
 
+  if (!content) {
+    return (
+      <div className="text-center py-12 text-muted-foreground">
+        <p>No content available for this post.</p>
+      </div>
+    );
+  }
+
   return <Streamdown>{content}</Streamdown>;
 }

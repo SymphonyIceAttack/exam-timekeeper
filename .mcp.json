@@ -12,11 +12,21 @@
         "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
       }
     },
-    "MiniMax": {
+    "MiniMax-Mcp": {
       "command": "uvx",
       "args": ["minimax-mcp", "-y"],
       "env": {
         "MINIMAX_API_KEY": "${MINIMAX_API_KEY}",
+        "MINIMAX_MCP_BASE_PATH": "/run/current-system/sw/bin/uvx",
+        "MINIMAX_API_HOST": "https://api.minimaxi.com",
+        "MINIMAX_API_RESOURCE_MODE": "url"
+      }
+    },
+    "MiniMax-Code": {
+      "command": "uvx",
+      "args": ["minimax-coding-plan-mcp"],
+      "env": {
+        "MINIMAX_API_KEY": "${MINIMAX_API_KEY_CODE}",
         "MINIMAX_MCP_BASE_PATH": "/run/current-system/sw/bin/uvx",
         "MINIMAX_API_HOST": "https://api.minimaxi.com",
         "MINIMAX_API_RESOURCE_MODE": "url"

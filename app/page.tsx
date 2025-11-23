@@ -9,6 +9,7 @@ import {
   RefreshCw,
   Star,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
@@ -241,6 +242,29 @@ export default function TimeKeeperPage() {
       )}
 
       <main className="mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-12">
+        {!isClockOnly && !isFocusMode && selectedExam && (
+          <div className="relative mb-8 md:mb-12 rounded-lg overflow-hidden">
+            <Image
+              src="/images/illustrations/hero-banner.jpeg"
+              alt="Exam Preparation"
+              width={1200}
+              height={400}
+              className="w-full h-[200px] md:h-[300px] object-cover opacity-80"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/40 flex items-center justify-center">
+              <div className="text-center">
+                <h2 className="text-2xl md:text-4xl font-bold mb-2 px-4">
+                  Track Your Exam Countdown
+                </h2>
+                <p className="text-sm md:text-base text-muted-foreground px-4">
+                  Stay organized and never miss an important test date
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Main Countdown */}
         {isLoading ? (
           <div className="text-center mb-12 md:mb-16">
@@ -368,7 +392,69 @@ export default function TimeKeeperPage() {
                   className="bg-card border-border hover:bg-accent p-4 md:p-6 cursor-pointer transition-colors"
                   onClick={() => setSelectedExam(exam)}
                 >
-                  <div className="flex items-start justify-between mb-4 md:mb-6">
+                  <div className="flex items-start gap-3 mb-4 md:mb-6">
+                    {exam.name.toLowerCase().includes("sat") && (
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-blue-200 dark:border-blue-800">
+                        <Image
+                          src="/images/illustrations/students-studying.jpeg"
+                          alt="SAT"
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    {exam.name.toLowerCase().includes("act") && (
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-red-200 dark:border-red-800">
+                        <Image
+                          src="/images/exams/act-logo.jpeg"
+                          alt="ACT"
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    {exam.name.toLowerCase().includes("gre") && (
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-purple-200 dark:border-purple-800">
+                        <Image
+                          src="/images/exams/gre-logo.jpeg"
+                          alt="GRE"
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    {exam.name.toLowerCase().includes("toefl") && (
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-green-200 dark:border-green-800">
+                        <Image
+                          src="/images/exams/toefl-logo.jpeg"
+                          alt="TOEFL"
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    {exam.name.toLowerCase().includes("gmat") && (
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-purple-200 dark:border-purple-800">
+                        <Image
+                          src="/images/exams/gmat-logo.jpeg"
+                          alt="GMAT"
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    {!["sat", "act", "gre", "toefl", "gmat"].some((keyword) =>
+                      exam.name.toLowerCase().includes(keyword),
+                    ) && (
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center bg-accent">
+                        <BookOpen className="w-5 h-5 text-muted-foreground" />
+                      </div>
+                    )}
                     <div className="flex-1 min-w-0">
                       <h3 className="text-base md:text-lg font-medium truncate">
                         {exam.name}
@@ -449,103 +535,170 @@ export default function TimeKeeperPage() {
       {/* FAQ Section */}
       {!isClockOnly && (
         <section className="mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 border-t border-border">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
-            Frequently Asked Questions
-          </h2>
+          <div className="flex flex-col md:flex-row items-center gap-8 mb-8 md:mb-12">
+            <div className="flex-1">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-muted-foreground">
+                Everything you need to know about exam preparation and time
+                tracking
+              </p>
+            </div>
+            <div className="w-full md:w-80 h-48 md:h-56 rounded-lg overflow-hidden">
+              <Image
+                src="/images/illustrations/faq-support.jpeg"
+                alt="FAQ and Support"
+                width={320}
+                height={224}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
           <div className="grid gap-4 md:gap-6 max-w-3xl mx-auto">
             <Card className="bg-card border-border p-4 md:p-6">
-              <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                Where does the exam data come from?
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                All exam data is automatically fetched from official sources
-                including College Board (satsuite.collegeboard.org) for SAT,
-                ACT.org for ACT, ETS.org for GRE and TOEFL, and mba.com for
-                GMAT. The system retrieves the most up-to-date exam schedules
-                directly from these trusted sources and filters out expired
-                dates to show only upcoming exams.
-              </p>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+                    Where does the exam data come from?
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    All exam data is automatically fetched from official sources
+                    including College Board (satsuite.collegeboard.org) for SAT,
+                    ACT.org for ACT, ETS.org for GRE and TOEFL, and mba.com for
+                    GMAT. The system retrieves the most up-to-date exam
+                    schedules directly from these trusted sources and filters
+                    out expired dates to show only upcoming exams.
+                  </p>
+                </div>
+              </div>
             </Card>
 
             <Card className="bg-card border-border p-4 md:p-6">
-              <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                Can I add my own custom exams?
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                Yes! Click the "ADD EXAM" button to add personal exams or
-                important dates. Enter a custom name, select any future date
-                using the calendar picker, choose a color theme, and your exam
-                will appear alongside the official exam data. Custom exams will
-                persist until you refresh the data.
-              </p>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center flex-shrink-0">
+                  <Plus className="w-5 h-5 text-green-600 dark:text-green-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+                    Can I add my own custom exams?
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Yes! Click the "ADD EXAM" button to add personal exams or
+                    important dates. Enter a custom name, select any future date
+                    using the calendar picker, choose a color theme, and your
+                    exam will appear alongside the official exam data. Custom
+                    exams will persist until you refresh the data.
+                  </p>
+                </div>
+              </div>
             </Card>
 
             <Card className="bg-card border-border p-4 md:p-6">
-              <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                How do I change the main countdown display?
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                Simply click on any exam card in the grid to set it as the main
-                countdown display. The selected exam will appear in large format
-                at the top with real-time countdown. You can switch between
-                exams at any time to track multiple important dates.
-              </p>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/20 flex items-center justify-center flex-shrink-0">
+                  <Maximize2 className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+                    How do I change the main countdown display?
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Simply click on any exam card in the grid to set it as the
+                    main countdown display. The selected exam will appear in
+                    large format at the top with real-time countdown. You can
+                    switch between exams at any time to track multiple important
+                    dates.
+                  </p>
+                </div>
+              </div>
             </Card>
 
             <Card className="bg-card border-border p-4 md:p-6">
-              <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                How do favorites work?
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                Click the star icon on any exam card to mark it as a favorite.
-                Favorited exams display a filled, colored star. Use the
-                "Favorites" button in the header to filter and view only your
-                favorited exams, making it easy to focus on your most important
-                upcoming tests.
-              </p>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/20 flex items-center justify-center flex-shrink-0">
+                  <Star className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+                    How do favorites work?
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Click the star icon on any exam card to mark it as a
+                    favorite. Favorited exams display a filled, colored star.
+                    Use the "Favorites" button in the header to filter and view
+                    only your favorited exams, making it easy to focus on your
+                    most important upcoming tests.
+                  </p>
+                </div>
+              </div>
             </Card>
 
             <Card className="bg-card border-border p-4 md:p-6">
-              <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                What is Clock Only View?
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                Click the "Clock Only View" button to hide all distractions and
-                display only the countdown timer in an enlarged, focused format.
-                Perfect for distraction-free studying or displaying on a second
-                monitor. Click "Show All" to return to the full interface with
-                all exam cards and features.
-              </p>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-900/20 flex items-center justify-center flex-shrink-0">
+                  <Minimize2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+                    What is Clock Only View?
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Click the "Clock Only View" button to hide all distractions
+                    and display only the countdown timer in an enlarged, focused
+                    format. Perfect for distraction-free studying or displaying
+                    on a second monitor. Click "Show All" to return to the full
+                    interface with all exam cards and features.
+                  </p>
+                </div>
+              </div>
             </Card>
 
             <Card className="bg-card border-border p-4 md:p-6">
-              <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                How accurate is the data?
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                While we fetch data directly from official exam websites, exam
-                dates and registration deadlines can change.{" "}
-                <strong>
-                  Always verify exam information on the official testing
-                  organization's website
-                </strong>{" "}
-                before registering or making travel plans. This tool is designed
-                as a convenient reference, not a substitute for official
-                sources.
-              </p>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/20 flex items-center justify-center flex-shrink-0">
+                  <RefreshCw className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+                    How accurate is the data?
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    While we fetch data directly from official exam websites,
+                    exam dates and registration deadlines can change.{" "}
+                    <strong>
+                      Always verify exam information on the official testing
+                      organization's website
+                    </strong>{" "}
+                    before registering or making travel plans. This tool is
+                    designed as a convenient reference, not a substitute for
+                    official sources.
+                  </p>
+                </div>
+              </div>
             </Card>
 
             <Card className="bg-card border-border p-4 md:p-6">
-              <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                How often does the data update?
-              </h3>
-              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                Exam data automatically refreshes every 30 minutes and when you
-                first load the page. You can manually trigger an update anytime
-                by clicking the "Refresh" button in the header. The system also
-                automatically removes exams that have already started to keep
-                your countdown list current.
-              </p>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/20 flex items-center justify-center flex-shrink-0">
+                  <Brain className="w-5 h-5 text-rose-600 dark:text-rose-400" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
+                    How often does the data update?
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                    Exam data automatically refreshes every 30 minutes and when
+                    you first load the page. You can manually trigger an update
+                    anytime by clicking the "Refresh" button in the header. The
+                    system also automatically removes exams that have already
+                    started to keep your countdown list current.
+                  </p>
+                </div>
+              </div>
             </Card>
           </div>
         </section>
