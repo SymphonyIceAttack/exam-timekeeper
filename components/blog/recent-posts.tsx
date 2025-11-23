@@ -38,7 +38,7 @@ export async function getRecentPosts(currentSlug: string) {
 
     return posts;
   } catch (error) {
-    console.error("[v0] Error fetching recent posts:", error);
+    console.error("[symphoneiceattack] Error fetching recent posts:", error);
     return [];
   }
 }

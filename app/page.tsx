@@ -84,7 +84,7 @@ export default function TimeKeeperPage() {
         }
       }
     } catch (error) {
-      console.error("[v0] Failed to fetch live exams:", error);
+      console.error("[symphoneiceattack] Failed to fetch live exams:", error);
     } finally {
       setIsLoading(false);
     }
@@ -630,7 +630,7 @@ export default function TimeKeeperPage() {
             </div>
             <div className="border-t border-border pt-6 text-center">
               <p className="text-xs md:text-sm text-muted-foreground mb-2">
-                © 2025 TimeKeeper | Built by v0
+                © 2025 TimeKeeper | Built by symphoneiceattack
               </p>
               <p className="text-xs text-muted-foreground">
                 It is strongly recommended to double-check the information

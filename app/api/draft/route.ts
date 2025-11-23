@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
 
     return Response.redirect(new URL(`/posts/${post.slug}`, request.url));
   } catch (error) {
-    console.error("[v0] Draft mode error:", error);
+    console.error("[symphoneiceattack] Draft mode error:", error);
     return new Response("Error enabling draft mode", { status: 500 });
   }
 }

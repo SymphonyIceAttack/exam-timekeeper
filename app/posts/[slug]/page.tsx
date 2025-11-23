@@ -197,7 +197,7 @@ export default async function PostPage({
             </div>
             <div className="border-t border-border pt-6 text-center">
               <p className="text-xs md:text-sm text-muted-foreground mb-2">
-                © 2025 TimeKeeper | Built by v0
+                © 2025 TimeKeeper | Built by symphoneiceattack
               </p>
             </div>
           </footer>
@@ -205,7 +205,7 @@ export default async function PostPage({
       </div>
     );
   } catch (error) {
-    console.error("[v0] Error fetching post:", error);
+    console.error("[symphoneiceattack] Error fetching post:", error);
     notFound();
   }
 }
@@ -227,7 +227,7 @@ export async function generateStaticParams() {
       slug: post.slug,
     }));
   } catch (error) {
-    console.error("[v0] Error generating static params:", error);
+    console.error("[symphoneiceattack] Error generating static params:", error);
     return [];
   }
 }

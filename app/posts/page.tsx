@@ -163,7 +163,7 @@ export default async function BlogPage() {
             </div>
             <div className="border-t border-border pt-6 text-center">
               <p className="text-xs md:text-sm text-muted-foreground mb-2">
-                © 2025 TimeKeeper | Built by v0
+                © 2025 TimeKeeper | Built by symphoneiceattack
               </p>
             </div>
           </footer>
@@ -171,7 +171,7 @@ export default async function BlogPage() {
       </div>
     );
   } catch (error) {
-    console.error("[v0] Error fetching posts:", error);
+    console.error("[symphoneiceattack] Error fetching posts:", error);
 
     return (
       <div className="min-h-screen bg-background text-foreground">
