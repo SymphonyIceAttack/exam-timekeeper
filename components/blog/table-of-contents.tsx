@@ -59,9 +59,7 @@ export function TableOfContents({ content }: { content: string }) {
   return (
     <Card className="sticky top-6 bg-card border-border hidden md:block">
       <CardHeader>
-        <CardTitle className="text-lg">
-          Table of Contents
-        </CardTitle>
+        <CardTitle className="text-lg">Table of Contents</CardTitle>
       </CardHeader>
       <CardContent className="space-y-1">
         {headings.map((heading) => (

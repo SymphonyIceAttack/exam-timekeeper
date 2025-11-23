@@ -13,7 +13,8 @@ import directus from "@/lib/directus";
 
 export const metadata: Metadata = {
   title: "Blog | Exam TimeKeeper",
-  description: "Explore the latest articles and updates about exam preparation, time management, and test-taking strategies.",
+  description:
+    "Explore the latest articles and updates about exam preparation, time management, and test-taking strategies.",
 };
 
 export const revalidate = 86400;
@@ -41,27 +42,21 @@ export default async function BlogPage() {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
-          <Breadcrumb
-            items={[
-              { label: "Blog" },
-            ]}
-            className="mb-6"
-          />
+          <Breadcrumb items={[{ label: "Blog" }]} className="mb-6" />
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
               Blog Posts
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Explore our latest articles and updates about exam preparation, time management, and test-taking strategies
+              Explore our latest articles and updates about exam preparation,
+              time management, and test-taking strategies
             </p>
           </div>
 
           {posts.length === 0 ? (
             <Card className="bg-card border-border">
               <CardContent className="py-12 text-center">
-                <p className="text-muted-foreground">
-                  No posts published yet
-                </p>
+                <p className="text-muted-foreground">No posts published yet</p>
               </CardContent>
             </Card>
           ) : (
@@ -105,27 +100,71 @@ export default async function BlogPage() {
               <div>
                 <h4 className="font-semibold mb-2">Company</h4>
                 <ul className="space-y-1 text-sm">
-                  <li><Link href="/about" className="text-muted-foreground hover:text-foreground">About Us</Link></li>
-                  <li><Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact</Link></li>
+                  <li>
+                    <Link
+                      href="/about"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Contact
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Resources</h4>
                 <ul className="space-y-1 text-sm">
-                  <li><Link href="/help" className="text-muted-foreground hover:text-foreground">Help & FAQ</Link></li>
+                  <li>
+                    <Link
+                      href="/help"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Help & FAQ
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Legal</h4>
                 <ul className="space-y-1 text-sm">
-                  <li><Link href="/privacy" className="text-muted-foreground hover:text-foreground">Privacy Policy</Link></li>
-                  <li><Link href="/terms" className="text-muted-foreground hover:text-foreground">Terms of Service</Link></li>
-                  <li><Link href="/cookies" className="text-muted-foreground hover:text-foreground">Cookie Policy</Link></li>
+                  <li>
+                    <Link
+                      href="/privacy"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/terms"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/cookies"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Cookie Policy
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
             <div className="border-t border-border pt-6 text-center">
-              <p className="text-xs md:text-sm text-muted-foreground mb-2">© 2025 TimeKeeper | Built by v0</p>
+              <p className="text-xs md:text-sm text-muted-foreground mb-2">
+                © 2025 TimeKeeper | Built by v0
+              </p>
             </div>
           </footer>
         </div>
@@ -137,12 +176,7 @@ export default async function BlogPage() {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
-          <Breadcrumb
-            items={[
-              { label: "Blog" },
-            ]}
-            className="mb-6"
-          />
+          <Breadcrumb items={[{ label: "Blog" }]} className="mb-6" />
           <Card className="bg-card border-border border-destructive/50">
             <CardContent className="py-12 text-center space-y-4">
               <p className="text-destructive font-semibold">
@@ -153,8 +187,8 @@ export default async function BlogPage() {
               </p>
               {!process.env.NEXT_PUBLIC_DIRECTUS_URL && (
                 <p className="text-sm text-muted-foreground">
-                  Please check if NEXT_PUBLIC_DIRECTUS_URL environment
-                  variable is set
+                  Please check if NEXT_PUBLIC_DIRECTUS_URL environment variable
+                  is set
                 </p>
               )}
             </CardContent>

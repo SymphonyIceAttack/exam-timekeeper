@@ -66,9 +66,7 @@ export function RecentPosts({ posts }: RecentPostsProps) {
           <CardTitle className="text-2xl md:text-3xl font-bold">
             Recent Posts
           </CardTitle>
-          <CardDescription>
-            Check out our latest articles
-          </CardDescription>
+          <CardDescription>Check out our latest articles</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

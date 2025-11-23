@@ -2,6 +2,7 @@
 
 import {
   BookOpen,
+  Brain,
   Maximize2,
   Minimize2,
   Plus,
@@ -12,6 +13,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import { AddExamDialog } from "@/components/add-exam-dialog";
+import { FocusMode } from "@/components/focus-mode";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -51,6 +53,7 @@ export default function TimeKeeperPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<string>("");
   const [isClockOnly, setIsClockOnly] = useState(false);
+  const [isFocusMode, setIsFocusMode] = useState(false);
   const clockRef = useRef<HTMLDivElement>(null);
 
   const fetchLiveExams = async () => {
@@ -263,7 +266,7 @@ export default function TimeKeeperPage() {
                 <span className="hidden sm:inline">Show All</span>
               </Button>
             ) : (
-              <div className="flex justify-center mb-4 md:mb-6">
+              <div className="flex justify-center gap-4 mb-4 md:mb-6">
                 <Button
                   onClick={() => setIsClockOnly(true)}
                   size="lg"
@@ -273,6 +276,16 @@ export default function TimeKeeperPage() {
                   <Maximize2 className="w-4 h-4 md:w-5 md:h-5" />
                   <span className="hidden sm:inline">Clock Only View</span>
                   <span className="sm:hidden">Clock View</span>
+                </Button>
+                <Button
+                  onClick={() => setIsFocusMode(true)}
+                  size="lg"
+                  variant="outline"
+                  className="gap-2 text-sm md:text-base px-4 md:px-8 h-10 md:h-12 font-medium"
+                >
+                  <Brain className="w-4 h-4 md:w-5 md:h-5" />
+                  <span className="hidden sm:inline">Focus Mode</span>
+                  <span className="sm:hidden">Focus</span>
                 </Button>
               </div>
             )}
@@ -634,6 +647,13 @@ export default function TimeKeeperPage() {
         onOpenChangeAction={setIsDialogOpen}
         onAddExamAction={addExam}
       />
+
+      {isFocusMode && selectedExam && (
+        <FocusMode
+          examName={selectedExam.name}
+          onClose={() => setIsFocusMode(false)}
+        />
+      )}
     </div>
   );
 }

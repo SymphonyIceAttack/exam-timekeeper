@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function PostCTA() {
   return (
@@ -14,9 +14,7 @@ export function PostCTA() {
           GRE, TOEFL, GMAT and more. Real-time data from official sources.
         </p>
         <Button asChild size="lg" className="text-base">
-          <Link href="/">
-            View Exam Calendar Now →
-          </Link>
+          <Link href="/">View Exam Calendar Now →</Link>
         </Button>
       </CardContent>
     </Card>
