@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Exam TimeKeeper" }],
   creator: "Exam TimeKeeper",
   publisher: "Exam TimeKeeper",
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "en_US",
