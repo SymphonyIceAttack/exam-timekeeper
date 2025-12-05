@@ -57,13 +57,20 @@ export function Breadcrumb({
     return `/${newLang}${pathWithoutLang || ""}`;
   };
 
+  const getHomePath = () => {
+    if (currentLang === "en") {
+      return "/";
+    }
+    return `/${currentLang}`;
+  };
+
   return (
     <nav
       aria-label="Breadcrumb"
       className={`flex items-center space-x-1 text-sm text-muted-foreground ${className}`}
     >
       <Link
-        href="/"
+        href={getHomePath()}
         className="flex items-center hover:text-foreground transition-colors"
       >
         <Home className="w-4 h-4" />

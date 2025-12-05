@@ -21,7 +21,13 @@ export const metadata: Metadata = {
     "Get in touch with the Exam TimeKeeper team. We're here to help with your questions and feedback.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const getPath = (path: string) => (lang === "en" ? path : `/${lang}${path}`);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
@@ -93,7 +99,7 @@ export default function ContactPage() {
               </p>
             </div>
             <div className="space-y-3">
-              <Link href="/#faq">
+              <Link href={getPath("/#faq")}>
                 <Button variant="outline" className="w-full justify-start">
                   View FAQ on Homepage
                 </Button>
@@ -138,7 +144,7 @@ export default function ContactPage() {
                 Follow our blog for study tips, exam strategies, and the latest
                 updates:
               </p>
-              <Link href="/posts">
+              <Link href={getPath("/posts")}>
                 <Button variant="outline" className="w-full justify-start">
                   Visit Our Blog
                 </Button>

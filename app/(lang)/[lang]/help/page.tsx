@@ -4,7 +4,17 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import type { LanguageType } from "@/lib/translation";
 import { HelpClient } from "./help-client";
+
+const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
+
+// Generate static params for all non-default languages
+export async function generateStaticParams() {
+  return supportedLocales.map((lang) => ({
+    lang,
+  }));
+}
 
 export const metadata: Metadata = {
   title: "Help & FAQ | Exam TimeKeeper",
@@ -156,6 +166,7 @@ export default async function HelpPage({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
+  const getPath = (path: string) => (lang === "en" ? path : `/${lang}${path}`);
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
@@ -179,7 +190,7 @@ export default async function HelpPage({
             Can't find the answer you're looking for? We're here to help!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
+            <Link href={getPath("/contact")}>
               <Button size="lg" className="gap-2">
                 <HelpCircle className="w-5 h-5" />
                 Contact Us
@@ -196,22 +207,22 @@ export default async function HelpPage({
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-bold mb-4">Quick Links</h2>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/about">
+            <Link href={getPath("/about")}>
               <Button variant="ghost">About Us</Button>
             </Link>
-            <Link href={lang === "en" ? "/posts" : `/${lang}/posts`}>
+            <Link href={getPath("/posts")}>
               <Button variant="ghost">Blog</Button>
             </Link>
-            <Link href="/privacy">
+            <Link href={getPath("/privacy")}>
               <Button variant="ghost">Privacy Policy</Button>
             </Link>
-            <Link href="/terms">
+            <Link href={getPath("/terms")}>
               <Button variant="ghost">Terms of Service</Button>
             </Link>
-            <Link href="/cookies">
+            <Link href={getPath("/cookies")}>
               <Button variant="ghost">Cookie Policy</Button>
             </Link>
-            <Link href="/contact">
+            <Link href={getPath("/contact")}>
               <Button variant="ghost">Contact</Button>
             </Link>
           </div>

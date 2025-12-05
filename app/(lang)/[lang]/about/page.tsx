@@ -1,5 +1,4 @@
 import { BookOpen, Clock, Target, Users } from "lucide-react";
-import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Card } from "@/components/ui/card";
 import type { LanguageType } from "@/lib/translation";
