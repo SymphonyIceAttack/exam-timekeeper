@@ -780,6 +780,31 @@ export default function TimeKeeperPage() {
                   </li>
                 </ul>
               </div>
+              <div>
+                <h4 className="font-semibold mb-2">Developer</h4>
+                <ul className="space-y-1 text-sm">
+                  <li>
+                    <a
+                      href="https://github.com/SymphonyIceAttack/exam-timekeeper"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Source Code
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/SymphonyIceAttack"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      GitHub Profile
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div className="border-t border-border pt-6 text-center">
               <p className="text-xs md:text-sm text-muted-foreground mb-2">
