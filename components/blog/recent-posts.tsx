@@ -20,6 +20,8 @@ interface RecentPostsProps {
     description?: string;
     published_at: string;
   }>;
+  lang?: string;
+  useLanguagePrefix?: boolean;
 }
 
 export async function getRecentPosts(currentSlug: string) {
@@ -43,7 +45,11 @@ export async function getRecentPosts(currentSlug: string) {
   }
 }
 
-export function RecentPosts({ posts }: RecentPostsProps) {
+export function RecentPosts({
+  posts,
+  lang = "en",
+  useLanguagePrefix = true,
+}: RecentPostsProps) {
   const router = useRouter();
 
   const handlePostClick = (
@@ -51,7 +57,10 @@ export function RecentPosts({ posts }: RecentPostsProps) {
     slug: string,
   ) => {
     e.preventDefault();
-    router.push(`/posts/${slug}`);
+    const path = useLanguagePrefix
+      ? `/${lang}/posts/${slug}`
+      : `/posts/${slug}`;
+    router.push(path);
     setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
   };
 
@@ -73,7 +82,11 @@ export function RecentPosts({ posts }: RecentPostsProps) {
             {posts.map((post) => (
               <Link
                 key={post.id}
-                href={`/posts/${post.slug}`}
+                href={
+                  useLanguagePrefix
+                    ? `/${lang}/posts/${post.slug}`
+                    : `/posts/${post.slug}`
+                }
                 onClick={(e) => handlePostClick(e, post.slug)}
                 className="group"
               >

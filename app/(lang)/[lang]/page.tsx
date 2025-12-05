@@ -6,17 +6,20 @@ import {
   Maximize2,
   Minimize2,
   Plus,
-  RefreshCw,
   Star,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "next-themes";
+import { useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AddExamDialog } from "@/components/add-exam-dialog";
 import { FocusMode } from "@/components/focus-mode";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import type { LanguageType } from "@/lib/translation";
+import { t } from "@/lib/translation";
 
 interface Exam {
   id: string;
@@ -39,6 +42,8 @@ interface ExamApiResponse {
 }
 
 export default function TimeKeeperPage() {
+  const params = useParams();
+  const lang = params.lang as LanguageType;
   const [exams, setExams] = useState<Exam[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedExam, setSelectedExam] = useState<Exam | null>(null);
@@ -50,7 +55,6 @@ export default function TimeKeeperPage() {
   });
   const [showFavorites, setShowFavorites] = useState(false);
   const [showCustom, setShowCustom] = useState(false);
-  const { theme, setTheme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<string>("");
   const [isClockOnly, setIsClockOnly] = useState(false);
@@ -183,42 +187,31 @@ export default function TimeKeeperPage() {
         <header className="border-b border-border px-4 md:px-6 py-4">
           <div className="mx-auto max-w-7xl flex items-center justify-between">
             <div>
-              <h1 className="text-xl md:text-2xl font-bold">TimeKeeper</h1>
+              <h1 className="text-xl md:text-2xl font-bold">
+                {t("app.title", lang)}
+              </h1>
               {lastUpdated && (
                 <p className="text-xs mt-1 text-muted-foreground">
-                  Last updated: {lastUpdated}
+                  {t("common.lastUpdated", lang)} {lastUpdated}
                 </p>
               )}
             </div>
             <div className="flex items-center gap-3 md:gap-6">
-              <Link href="/posts" scroll={false}>
+              <Link
+                href={lang === "en" ? "/posts" : `/${lang}/posts`}
+                scroll={false}
+              >
                 <Button
                   variant="ghost"
                   size="sm"
                   className="text-xs md:text-sm transition-colors flex items-center gap-1 md:gap-2 text-muted-foreground hover:text-foreground hover:bg-accent px-2 md:px-3 h-8 md:h-9"
                 >
                   <BookOpen className="w-3 h-3 md:w-4 md:h-4" />
-                  <span className="hidden sm:inline">Blog</span>
+                  <span className="hidden sm:inline">
+                    {t("nav.posts", lang)}
+                  </span>
                 </Button>
               </Link>
-              <button
-                onClick={fetchLiveExams}
-                type="button"
-                disabled={isLoading}
-                className={`text-xs md:text-sm transition-colors flex items-center gap-1 md:gap-2 text-muted-foreground hover:text-foreground ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
-              >
-                <RefreshCw
-                  className={`w-3 h-3 md:w-4 md:h-4 ${isLoading ? "animate-spin" : ""}`}
-                />
-                <span className="hidden sm:inline">Refresh</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="text-xs md:text-sm transition-colors text-muted-foreground hover:text-foreground"
-              >
-                THEME
-              </button>
               <button
                 type="button"
                 onClick={() => setShowFavorites(!showFavorites)}
@@ -227,15 +220,20 @@ export default function TimeKeeperPage() {
                 <Star
                   className={`w-5 h-5 md:w-4 md:h-4 ${showFavorites ? "fill-current" : ""}`}
                 />
-                <span className="hidden sm:inline">Favorites</span>
+                <span className="hidden sm:inline">
+                  {t("button.favorites", lang)}
+                </span>
               </button>
               <button
                 type="button"
                 onClick={() => setShowCustom(!showCustom)}
                 className={`text-xs md:text-sm transition-colors hidden sm:block ${showCustom ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
               >
-                Custom
+                {t("button.custom", lang)}
               </button>
+              <div className="hidden sm:block w-px h-6 bg-border" />
+              <LanguageSwitcher />
+              <ThemeToggle />
             </div>
           </div>
         </header>
@@ -246,7 +244,7 @@ export default function TimeKeeperPage() {
           <div className="relative mb-8 md:mb-12 rounded-lg overflow-hidden">
             <Image
               src="/images/illustrations/hero-banner.jpeg"
-              alt="Exam Preparation"
+              alt={t("app.hero.title", lang)}
               width={1200}
               height={400}
               className="w-full h-[200px] md:h-[300px] object-cover opacity-80"
@@ -255,10 +253,10 @@ export default function TimeKeeperPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/40 flex items-center justify-center">
               <div className="text-center">
                 <h2 className="text-2xl md:text-4xl font-bold mb-2 px-4">
-                  Track Your Exam Countdown
+                  {t("app.hero.title", lang)}
                 </h2>
                 <p className="text-sm md:text-base text-muted-foreground px-4">
-                  Stay organized and never miss an important test date
+                  {t("app.hero.subtitle", lang)}
                 </p>
               </div>
             </div>
@@ -270,7 +268,7 @@ export default function TimeKeeperPage() {
           <div className="text-center mb-12 md:mb-16">
             <Card className="bg-card border-border p-8 md:p-12 backdrop-blur">
               <p className="text-lg md:text-2xl text-muted-foreground">
-                Loading latest exam data...
+                {t("app.loading.exams", lang)}
               </p>
             </Card>
           </div>
@@ -287,7 +285,9 @@ export default function TimeKeeperPage() {
                 className="absolute top-4 left-4 md:top-8 md:left-8 gap-2 text-sm md:text-base px-4 md:px-8 h-10 md:h-12 font-medium"
               >
                 <Minimize2 className="w-4 h-4 md:w-5 md:h-5" />
-                <span className="hidden sm:inline">Show All</span>
+                <span className="hidden sm:inline">
+                  {t("button.showAll", lang)}
+                </span>
               </Button>
             ) : (
               <div className="flex justify-center gap-4 mb-4 md:mb-6">
@@ -298,8 +298,12 @@ export default function TimeKeeperPage() {
                   className="gap-2 text-sm md:text-base px-4 md:px-8 h-10 md:h-12 font-medium"
                 >
                   <Maximize2 className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline">Clock Only View</span>
-                  <span className="sm:hidden">Clock View</span>
+                  <span className="hidden sm:inline">
+                    {t("button.clockOnlyView", lang)}
+                  </span>
+                  <span className="sm:hidden">
+                    {t("button.clockView", lang)}
+                  </span>
                 </Button>
                 <Button
                   onClick={() => setIsFocusMode(true)}
@@ -308,8 +312,10 @@ export default function TimeKeeperPage() {
                   className="gap-2 text-sm md:text-base px-4 md:px-8 h-10 md:h-12 font-medium"
                 >
                   <Brain className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="hidden sm:inline">Focus Mode</span>
-                  <span className="sm:hidden">Focus</span>
+                  <span className="hidden sm:inline">
+                    {t("button.focusMode", lang)}
+                  </span>
+                  <span className="sm:hidden">{t("button.focus", lang)}</span>
                 </Button>
               </div>
             )}
@@ -320,7 +326,7 @@ export default function TimeKeeperPage() {
             </h2>
             {selectedExam.source && (
               <p className="text-xs md:text-sm mb-4 md:mb-6 text-muted-foreground">
-                Source: {selectedExam.source}
+                {t("common.source", lang)} {selectedExam.source}
               </p>
             )}
             <Card
@@ -334,7 +340,7 @@ export default function TimeKeeperPage() {
                     {countdown.days}
                   </div>
                   <div className="text-xs md:text-sm mt-1 md:mt-2 text-muted-foreground">
-                    days
+                    {t("countdown.days", lang)}
                   </div>
                 </div>
                 <div className="text-center">
@@ -344,7 +350,7 @@ export default function TimeKeeperPage() {
                     {countdown.hours}
                   </div>
                   <div className="text-xs md:text-sm mt-1 md:mt-2 text-muted-foreground">
-                    hours
+                    {t("countdown.hours", lang)}
                   </div>
                 </div>
                 <div className="text-center">
@@ -354,7 +360,7 @@ export default function TimeKeeperPage() {
                     {countdown.minutes}
                   </div>
                   <div className="text-xs md:text-sm mt-1 md:mt-2 text-muted-foreground">
-                    min
+                    {t("countdown.minutes", lang)}
                   </div>
                 </div>
                 <div className="text-center">
@@ -364,7 +370,7 @@ export default function TimeKeeperPage() {
                     {countdown.seconds}
                   </div>
                   <div className="text-xs md:text-sm mt-1 md:mt-2 text-muted-foreground">
-                    sec
+                    {t("countdown.seconds", lang)}
                   </div>
                 </div>
               </div>
@@ -374,8 +380,7 @@ export default function TimeKeeperPage() {
           <div className="text-center mb-12 md:mb-16">
             <Card className="bg-card border-border p-8 md:p-12 backdrop-blur">
               <p className="text-lg md:text-2xl text-muted-foreground">
-                No exam data available. Click "Refresh" to get latest exam
-                information.
+                {t("app.noData.available", lang)}
               </p>
             </Card>
           </div>
@@ -482,25 +487,25 @@ export default function TimeKeeperPage() {
                     <div className="text-center">
                       <div>{examCountdown.days}</div>
                       <div className="text-xs font-normal mt-1 text-muted-foreground">
-                        days
+                        {t("countdown.days", lang)}
                       </div>
                     </div>
                     <div className="text-center">
                       <div>{examCountdown.hours}</div>
                       <div className="text-xs font-normal mt-1 text-muted-foreground">
-                        hrs
+                        {t("countdown.hours", lang)}
                       </div>
                     </div>
                     <div className="text-center">
                       <div>{examCountdown.minutes}</div>
                       <div className="text-xs font-normal mt-1 text-muted-foreground">
-                        min
+                        {t("countdown.minutes", lang)}
                       </div>
                     </div>
                     <div className="text-center">
                       <div>{examCountdown.seconds}</div>
                       <div className="text-xs font-normal mt-1 text-muted-foreground">
-                        sec
+                        {t("countdown.seconds", lang)}
                       </div>
                     </div>
                   </div>
@@ -512,7 +517,7 @@ export default function TimeKeeperPage() {
 
         {!isClockOnly && showFavorites && filteredExams.length === 0 && (
           <div className="text-center mb-6 md:mb-8 text-muted-foreground">
-            No favorite exams. Click the star icon to favorite exams.
+            {t("app.noFavorites", lang)}
           </div>
         )}
 
@@ -526,306 +531,20 @@ export default function TimeKeeperPage() {
               onClick={() => setIsDialogOpen(true)}
             >
               <Plus className="w-5 h-5 mr-2" />
-              ADD EXAM
+              {t("button.addExam", lang)}
             </Button>
           </div>
         )}
       </main>
 
-      {/* FAQ Section */}
-      {!isClockOnly && (
-        <section className="mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 border-t border-border">
-          <div className="flex flex-col md:flex-row items-center gap-8 mb-8 md:mb-12">
-            <div className="flex-1">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-muted-foreground">
-                Everything you need to know about exam preparation and time
-                tracking
-              </p>
-            </div>
-            <div className="w-full md:w-80 h-48 md:h-56 rounded-lg overflow-hidden">
-              <Image
-                src="/images/illustrations/faq-support.jpeg"
-                alt="FAQ and Support"
-                width={320}
-                height={224}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          <div className="grid gap-4 md:gap-6 max-w-3xl mx-auto">
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center flex-shrink-0">
-                  <BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    Where does the exam data come from?
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    All exam data is automatically fetched from official sources
-                    including College Board (satsuite.collegeboard.org) for SAT,
-                    ACT.org for ACT, ETS.org for GRE and TOEFL, and mba.com for
-                    GMAT. The system retrieves the most up-to-date exam
-                    schedules directly from these trusted sources and filters
-                    out expired dates to show only upcoming exams.
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center flex-shrink-0">
-                  <Plus className="w-5 h-5 text-green-600 dark:text-green-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    Can I add my own custom exams?
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Yes! Click the "ADD EXAM" button to add personal exams or
-                    important dates. Enter a custom name, select any future date
-                    using the calendar picker, choose a color theme, and your
-                    exam will appear alongside the official exam data. Custom
-                    exams will persist until you refresh the data.
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/20 flex items-center justify-center flex-shrink-0">
-                  <Maximize2 className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    How do I change the main countdown display?
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Simply click on any exam card in the grid to set it as the
-                    main countdown display. The selected exam will appear in
-                    large format at the top with real-time countdown. You can
-                    switch between exams at any time to track multiple important
-                    dates.
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/20 flex items-center justify-center flex-shrink-0">
-                  <Star className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    How do favorites work?
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Click the star icon on any exam card to mark it as a
-                    favorite. Favorited exams display a filled, colored star.
-                    Use the "Favorites" button in the header to filter and view
-                    only your favorited exams, making it easy to focus on your
-                    most important upcoming tests.
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-900/20 flex items-center justify-center flex-shrink-0">
-                  <Minimize2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    What is Clock Only View?
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Click the "Clock Only View" button to hide all distractions
-                    and display only the countdown timer in an enlarged, focused
-                    format. Perfect for distraction-free studying or displaying
-                    on a second monitor. Click "Show All" to return to the full
-                    interface with all exam cards and features.
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/20 flex items-center justify-center flex-shrink-0">
-                  <RefreshCw className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    How accurate is the data?
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    While we fetch data directly from official exam websites,
-                    exam dates and registration deadlines can change.{" "}
-                    <strong>
-                      Always verify exam information on the official testing
-                      organization's website
-                    </strong>{" "}
-                    before registering or making travel plans. This tool is
-                    designed as a convenient reference, not a substitute for
-                    official sources.
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/20 flex items-center justify-center flex-shrink-0">
-                  <Brain className="w-5 h-5 text-rose-600 dark:text-rose-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    How often does the data update?
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    Exam data automatically refreshes every 30 minutes and when
-                    you first load the page. You can manually trigger an update
-                    anytime by clicking the "Refresh" button in the header. The
-                    system also automatically removes exams that have already
-                    started to keep your countdown list current.
-                  </p>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </section>
-      )}
-
-      {/* Footer */}
-      {!isClockOnly && (
-        <footer className="border-t border-border mt-12 md:mt-20 py-6 md:py-8 px-4 md:px-6">
-          <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div>
-                <h4 className="font-semibold mb-2">Company</h4>
-                <ul className="space-y-1 text-sm">
-                  <li>
-                    <Link
-                      href="/about"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/contact"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Resources</h4>
-                <ul className="space-y-1 text-sm">
-                  <li>
-                    <Link
-                      href="/posts"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/help"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      Help & FAQ
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Legal</h4>
-                <ul className="space-y-1 text-sm">
-                  <li>
-                    <Link
-                      href="/privacy"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      Privacy Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/terms"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      Terms of Service
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/cookies"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      Cookie Policy
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Developer</h4>
-                <ul className="space-y-1 text-sm">
-                  <li>
-                    <a
-                      href="https://github.com/SymphonyIceAttack/exam-timekeeper"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      Source Code
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://github.com/SymphonyIceAttack"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      GitHub Profile
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="border-t border-border pt-6 text-center">
-              <p className="text-xs md:text-sm text-muted-foreground mb-2">
-                © 2025 TimeKeeper | Built by symphoneiceattack
-              </p>
-              <p className="text-xs text-muted-foreground">
-                It is strongly recommended to double-check the information
-                provided on this website with official sources to ensure its
-                accuracy.
-              </p>
-            </div>
-          </div>
-        </footer>
-      )}
-
+      {/* Add Exam Dialog */}
       <AddExamDialog
         open={isDialogOpen}
         onOpenChangeAction={setIsDialogOpen}
         onAddExamAction={addExam}
       />
 
+      {/* Focus Mode */}
       {isFocusMode && selectedExam && (
         <FocusMode
           examName={selectedExam.name}

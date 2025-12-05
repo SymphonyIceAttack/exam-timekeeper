@@ -10,6 +10,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import directus from "@/lib/directus";
+import type { LanguageType } from "@/lib/translation";
+
+const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
+
+// Generate static params for all non-default languages
+export async function generateStaticParams() {
+  return supportedLocales.map((lang) => ({
+    lang,
+  }));
+}
 
 export const metadata: Metadata = {
   title: "Blog | Exam TimeKeeper",
@@ -19,7 +29,12 @@ export const metadata: Metadata = {
 
 export const revalidate = 86400;
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
   try {
     const posts = await directus.request(
       readItems("posts", {
@@ -30,9 +45,11 @@ export default async function BlogPage() {
           "description",
           "published_at",
           "status",
+          "language",
         ],
         filter: {
           status: { _eq: "published" },
+          language: { _eq: lang },
         },
         sort: ["-published_at"],
         limit: -1,
@@ -42,7 +59,11 @@ export default async function BlogPage() {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
-          <Breadcrumb items={[{ label: "Blog" }]} className="mb-6" />
+          <Breadcrumb
+            items={[{ label: "Blog" }]}
+            className="mb-6"
+            showLanguageSwitch
+          />
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
               Blog Posts
@@ -65,7 +86,11 @@ export default async function BlogPage() {
                 <Link
                   scroll={false}
                   key={post.id}
-                  href={`/posts/${post.slug}`}
+                  href={
+                    lang === "en"
+                      ? `/posts/${post.slug}`
+                      : `/${lang}/posts/${post.slug}`
+                  }
                   className="group"
                 >
                   <Card className="h-full bg-card border-border hover:bg-accent transition-colors">
@@ -102,7 +127,7 @@ export default async function BlogPage() {
                 <ul className="space-y-1 text-sm">
                   <li>
                     <Link
-                      href="/about"
+                      href={lang === "en" ? "/about" : `/${lang}/about`}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       About Us
@@ -110,7 +135,7 @@ export default async function BlogPage() {
                   </li>
                   <li>
                     <Link
-                      href="/contact"
+                      href={lang === "en" ? "/contact" : `/${lang}/contact`}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       Contact
@@ -123,7 +148,7 @@ export default async function BlogPage() {
                 <ul className="space-y-1 text-sm">
                   <li>
                     <Link
-                      href="/help"
+                      href={lang === "en" ? "/help" : `/${lang}/help`}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       Help & FAQ
@@ -136,7 +161,7 @@ export default async function BlogPage() {
                 <ul className="space-y-1 text-sm">
                   <li>
                     <Link
-                      href="/privacy"
+                      href={lang === "en" ? "/privacy" : `/${lang}/privacy`}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       Privacy Policy
@@ -144,7 +169,7 @@ export default async function BlogPage() {
                   </li>
                   <li>
                     <Link
-                      href="/terms"
+                      href={lang === "en" ? "/terms" : `/${lang}/terms`}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       Terms of Service
@@ -152,7 +177,7 @@ export default async function BlogPage() {
                   </li>
                   <li>
                     <Link
-                      href="/cookies"
+                      href={lang === "en" ? "/cookies" : `/${lang}/cookies`}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       Cookie Policy
@@ -176,8 +201,12 @@ export default async function BlogPage() {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
-          <Breadcrumb items={[{ label: "Blog" }]} className="mb-6" />
-          <Card className="bg-card border-border border-destructive/50">
+          <Breadcrumb
+            items={[{ label: "Blog" }]}
+            className="mb-6"
+            showLanguageSwitch
+          />
+          <Card className="bg-card  border-destructive/50">
             <CardContent className="py-12 text-center space-y-4">
               <p className="text-destructive font-semibold">
                 Error loading posts

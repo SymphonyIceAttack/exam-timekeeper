@@ -27,6 +27,9 @@ export default async function PostPage({
           slug: {
             _eq: slug,
           },
+          language: {
+            _eq: "en",
+          },
         },
         fields: [
           "id",
@@ -37,6 +40,7 @@ export default async function PostPage({
           "content",
           "status",
           "imageurl",
+          "language",
         ],
         limit: 1,
       }),
@@ -55,8 +59,16 @@ export default async function PostPage({
         filter: {
           status: { _eq: "published" },
           slug: { _neq: slug },
+          language: { _eq: "en" },
         },
-        fields: ["id", "title", "slug", "description", "published_at"],
+        fields: [
+          "id",
+          "title",
+          "slug",
+          "description",
+          "published_at",
+          "language",
+        ],
         sort: ["-published_at"],
         limit: 6,
       }),
@@ -120,7 +132,7 @@ export default async function PostPage({
               </div>
 
               <div className="mt-8">
-                <RecentPosts posts={recentPosts} />
+                <RecentPosts posts={recentPosts} useLanguagePrefix={false} />
               </div>
             </article>
 
