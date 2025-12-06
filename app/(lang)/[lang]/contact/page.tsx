@@ -4,9 +4,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import type { LanguageType } from "@/lib/translation";
-
-const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
+import { supportedLocales } from "@/lib/constants";
 
 // Generate static params for all non-default languages
 export async function generateStaticParams() {

@@ -2,6 +2,7 @@
 
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -19,6 +20,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import type { LanguageType } from "@/lib/translation";
+import { t } from "@/lib/translation";
 
 interface AddExamDialogProps {
   open: boolean;
@@ -36,6 +39,8 @@ export function AddExamDialog({
   onOpenChangeAction,
   onAddExamAction,
 }: AddExamDialogProps) {
+  const params = useParams();
+  const lang = params.lang as LanguageType;
   const [name, setName] = useState("");
   const [date, setDate] = useState<Date>();
   const [selectedColor, setSelectedColor] = useState("rose");
@@ -68,22 +73,24 @@ export function AddExamDialog({
     <Dialog open={open} onOpenChange={onOpenChangeAction}>
       <DialogContent className="bg-zinc-900 border-zinc-800 text-white max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Add Custom Exam</DialogTitle>
+          <DialogTitle>{t("dialog.addCustomExam.title", lang)}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="exam-name">Exam Name</Label>
+            <Label htmlFor="exam-name">
+              {t("dialog.examName.label", lang)}
+            </Label>
             <Input
               id="exam-name"
-              placeholder="e.g., SAT December 2025"
+              placeholder={t("dialog.examName.placeholder", lang)}
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="bg-zinc-800 border-zinc-700 text-white"
             />
           </div>
           <div className="space-y-2">
-            <Label>Exam Date</Label>
+            <Label>{t("dialog.examDate.label", lang)}</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -94,7 +101,9 @@ export function AddExamDialog({
                   {date ? (
                     format(date, "PPP")
                   ) : (
-                    <span className="text-zinc-400">Select date</span>
+                    <span className="text-zinc-400">
+                      {t("dialog.selectDate", lang)}
+                    </span>
                   )}
                 </Button>
               </PopoverTrigger>
@@ -140,7 +149,7 @@ export function AddExamDialog({
             </Popover>
           </div>
           <div className="space-y-2">
-            <Label>Color Theme</Label>
+            <Label>{t("dialog.colorTheme.label", lang)}</Label>
             <div className="flex gap-3">
               {colors.map((color) => (
                 <button
@@ -165,14 +174,14 @@ export function AddExamDialog({
             onClick={() => onOpenChangeAction(false)}
             className="bg-zinc-800 hover:bg-zinc-700"
           >
-            Cancel
+            {t("dialog.cancel", lang)}
           </Button>
           <Button
             onClick={handleSubmit}
             disabled={!name || !date}
             className="bg-white text-black hover:bg-zinc-200"
           >
-            Add Exam
+            {t("dialog.addExam", lang)}
           </Button>
         </DialogFooter>
       </DialogContent>

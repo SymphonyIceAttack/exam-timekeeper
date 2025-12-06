@@ -9,10 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { supportedLocales } from "@/lib/constants";
 import directus from "@/lib/directus";
-import type { LanguageType } from "@/lib/translation";
-
-const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
 
 // Generate static params for all non-default languages
 export async function generateStaticParams() {

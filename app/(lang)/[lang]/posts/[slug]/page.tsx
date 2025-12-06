@@ -10,10 +10,9 @@ import { RecentPosts } from "@/components/blog/recent-posts";
 import { TableOfContents } from "@/components/blog/table-of-contents";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { supportedLocales } from "@/lib/constants";
 import directus from "@/lib/directus";
 import type { LanguageType } from "@/lib/translation";
-
-const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
 
 export default async function PostPage({
   params,

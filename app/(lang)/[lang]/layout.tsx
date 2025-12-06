@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { supportedLocales } from "@/lib/constants";
 import type { LanguageType } from "@/lib/translation";
 import { t } from "@/lib/translation";
 import "../../globals.css";
@@ -13,7 +14,6 @@ export async function generateMetadata({
   const language = lang as LanguageType;
 
   // Validate that the incoming `lang` parameter is valid
-  const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
   if (!supportedLocales.includes(language)) {
     redirect("/");
   }
@@ -54,7 +54,6 @@ export default async function RootLayout({
 }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   // Validate that the incoming `lang` parameter is valid
-  const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
   if (!supportedLocales.includes(lang as LanguageType)) {
     redirect("/");
   }
