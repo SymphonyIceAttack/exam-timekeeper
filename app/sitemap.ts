@@ -1,7 +1,7 @@
 import { readItems } from "@directus/sdk";
 import type { MetadataRoute } from "next";
 import directus from "@/lib/directus";
-import type { LanguageType } from "@/lib/translation";
+import type { LanguageType } from "@/lib/translations";
 
 export const revalidate = 86400; // 24 hours in seconds
 

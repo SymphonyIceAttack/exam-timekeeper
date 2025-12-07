@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { supportedLocales } from "@/lib/constants";
-import type { LanguageType } from "@/lib/translation";
-import { t } from "@/lib/translation";
+import type { LanguageType } from "@/lib/translations";
+import { t } from "@/lib/translations/index";
 import "../../globals.css";
 
 export async function generateMetadata({

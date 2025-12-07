@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { LanguageType } from "@/lib/translation";
+import type { LanguageType } from "@/lib/translations";
 
 interface BreadcrumbItem {
   label: string;
@@ -30,6 +30,7 @@ const languages: { code: LanguageType; name: string; flag: string }[] = [
   { code: "es", name: "Español", flag: "🇪🇸" },
   { code: "ru", name: "Русский", flag: "🇷🇺" },
   { code: "de", name: "Deutsch", flag: "🇩🇪" },
+  { code: "ja", name: "日本語", flag: "🇯🇵" },
 ];
 
 export function Breadcrumb({

@@ -1,9 +1,16 @@
-import type { LanguageType } from "./translation";
+import type { LanguageType } from "./translations";
 
 /**
  * Supported language locales for the application
  */
-export const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
+export const supportedLocales: LanguageType[] = [
+  "zh",
+  "fr",
+  "es",
+  "ru",
+  "de",
+  "ja",
+];
 
 /**
  * Default language for the application
@@ -28,16 +35,18 @@ export const languageNames: Record<LanguageType, string> = {
   es: "Español",
   ru: "Русский",
   de: "Deutsch",
+  ja: "日本語",
 };
 
 /**
  * Language flags for display
  */
 export const languageFlags: Record<LanguageType, string> = {
-  en: "🇺🇸",
-  zh: "🇨🇳",
-  fr: "🇫🇷",
-  es: "🇪🇸",
-  ru: "🇷🇺",
-  de: "🇩🇪",
+  en: "🇺",
+  zh: "🇨",
+  fr: "🇫",
+  es: "🇪",
+  ru: "🇷",
+  de: "🇩",
+  ja: "🇯🇵",
 };

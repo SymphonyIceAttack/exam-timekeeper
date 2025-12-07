@@ -20,8 +20,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import type { LanguageType } from "@/lib/translation";
-import { t } from "@/lib/translation";
+import type { LanguageType } from "@/lib/translations";
+import { t } from "@/lib/translations/index";
 
 interface AddExamDialogProps {
   open: boolean;

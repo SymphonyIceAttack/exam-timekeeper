@@ -5,8 +5,8 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { supportedLocales } from "@/lib/constants";
-import type { LanguageType } from "@/lib/translation";
-import { t } from "@/lib/translation";
+import type { LanguageType } from "@/lib/translations";
+import { t } from "@/lib/translations/index";
 import { HelpClient } from "./help-client";
 
 // Generate static params for all non-default languages

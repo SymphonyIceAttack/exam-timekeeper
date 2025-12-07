@@ -2,8 +2,8 @@ import { BookOpen, Clock, Target, Users } from "lucide-react";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Card } from "@/components/ui/card";
 import { supportedLocales } from "@/lib/constants";
-import type { LanguageType } from "@/lib/translation";
-import { t } from "@/lib/translation";
+import type { LanguageType } from "@/lib/translations";
+import { t } from "@/lib/translations/index";
 
 // Generate static params for all non-default languages
 export async function generateStaticParams() {

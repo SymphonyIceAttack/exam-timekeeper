@@ -12,7 +12,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supportedLocales } from "@/lib/constants";
 import directus from "@/lib/directus";
-import type { LanguageType } from "@/lib/translation";
+import type { LanguageType } from "@/lib/translations";
 
 export default async function PostPage({
   params,
