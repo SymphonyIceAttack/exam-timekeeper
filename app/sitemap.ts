@@ -5,7 +5,7 @@ import type { LanguageType } from "@/lib/translations";
 
 export const revalidate = 86400; // 24 hours in seconds
 
-const supportedLocales: LanguageType[] = ["zh", "fr", "es", "ru", "de"];
+const supportedLocales: LanguageType[] = ["en", "zh", "fr", "es", "ru", "de"];
 
 const staticRoutes = [
   "/",
@@ -27,8 +27,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Generate static pages for all languages
     supportedLocales.forEach((lang) => {
       staticRoutes.forEach((route) => {
-        // For default locale (en), use root paths
-        const localizedRoute = route === "/" ? `/${lang}` : `/${lang}${route}`;
+        // For English (en), use root paths; for other languages, use language prefix
+        const localizedRoute = lang === "en" 
+          ? route 
+          : (route === "/" ? `/${lang}` : `/${lang}${route}`);
 
         staticPages.push({
           url: `${baseUrl}${localizedRoute}`,
@@ -36,18 +38,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           changeFrequency:
             route === "/" ? ("monthly" as const) : ("weekly" as const),
           priority: route === "/" ? 1.0 : 0.8,
+          alternates: {
+            languages: supportedLocales.reduce((acc, locale) => {
+              const alternateRoute = locale === "en" 
+                ? route 
+                : (route === "/" ? `/${locale}` : `/${locale}${route}`);
+              acc[locale] = `${baseUrl}${alternateRoute}`;
+              return acc;
+            }, {} as Record<string, string>),
+          },
         });
-      });
-    });
-
-    // Add default locale routes without language prefix
-    staticRoutes.forEach((route) => {
-      staticPages.push({
-        url: `${baseUrl}${route}`,
-        lastModified: new Date(),
-        changeFrequency:
-          route === "/" ? ("monthly" as const) : ("weekly" as const),
-        priority: route === "/" ? 1.0 : 0.9, // Higher priority for default locale
       });
     });
 
@@ -78,24 +78,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Generate entries for each language
     Object.entries(postsByLanguage).forEach(([lang, langPosts]) => {
-      if (lang === "en") {
-        // English posts use root paths (no language prefix)
+      if (supportedLocales.includes(lang as LanguageType)) {
         langPosts.forEach((post) => {
+          // For English (en), use root paths; for other languages, use language prefix
+          const postRoute = lang === "en" 
+            ? `/posts/${post.slug}`
+            : `/${lang}/posts/${post.slug}`;
+
           postEntries.push({
-            url: `${baseUrl}/posts/${post.slug}`,
+            url: `${baseUrl}${postRoute}`,
             lastModified: new Date(post.date_updated || post.published_at),
             changeFrequency: "weekly" as const,
-            priority: 0.8, // Higher priority for default locale
-          });
-        });
-      } else if (supportedLocales.includes(lang as LanguageType)) {
-        // Non-English posts use language prefix
-        langPosts.forEach((post) => {
-          postEntries.push({
-            url: `${baseUrl}/${lang}/posts/${post.slug}`,
-            lastModified: new Date(post.date_updated || post.published_at),
-            changeFrequency: "weekly" as const,
-            priority: 0.7,
+            priority: lang === "en" ? 0.8 : 0.7,
+            alternates: {
+              languages: supportedLocales.reduce((acc, locale) => {
+                const alternateRoute = locale === "en" 
+                  ? `/posts/${post.slug}`
+                  : `/${locale}/posts/${post.slug}`;
+                acc[locale] = `${baseUrl}${alternateRoute}`;
+                return acc;
+              }, {} as Record<string, string>),
+            },
           });
         });
       }
