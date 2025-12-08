@@ -28,9 +28,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     supportedLocales.forEach((lang) => {
       staticRoutes.forEach((route) => {
         // For English (en), use root paths; for other languages, use language prefix
-        const localizedRoute = lang === "en" 
-          ? route 
-          : (route === "/" ? `/${lang}` : `/${lang}${route}`);
+        const localizedRoute =
+          lang === "en"
+            ? route
+            : route === "/"
+              ? `/${lang}`
+              : `/${lang}${route}`;
 
         staticPages.push({
           url: `${baseUrl}${localizedRoute}`,
@@ -39,13 +42,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             route === "/" ? ("monthly" as const) : ("weekly" as const),
           priority: route === "/" ? 1.0 : 0.8,
           alternates: {
-            languages: supportedLocales.reduce((acc, locale) => {
-              const alternateRoute = locale === "en" 
-                ? route 
-                : (route === "/" ? `/${locale}` : `/${locale}${route}`);
-              acc[locale] = `${baseUrl}${alternateRoute}`;
-              return acc;
-            }, {} as Record<string, string>),
+            languages: supportedLocales.reduce(
+              (acc, locale) => {
+                const alternateRoute =
+                  locale === "en"
+                    ? route
+                    : route === "/"
+                      ? `/${locale}`
+                      : `/${locale}${route}`;
+                acc[locale] = `${baseUrl}${alternateRoute}`;
+                return acc;
+              },
+              {} as Record<string, string>,
+            ),
           },
         });
       });
@@ -81,9 +90,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (supportedLocales.includes(lang as LanguageType)) {
         langPosts.forEach((post) => {
           // For English (en), use root paths; for other languages, use language prefix
-          const postRoute = lang === "en" 
-            ? `/posts/${post.slug}`
-            : `/${lang}/posts/${post.slug}`;
+          const postRoute =
+            lang === "en"
+              ? `/posts/${post.slug}`
+              : `/${lang}/posts/${post.slug}`;
 
           postEntries.push({
             url: `${baseUrl}${postRoute}`,
@@ -91,13 +101,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: "weekly" as const,
             priority: lang === "en" ? 0.8 : 0.7,
             alternates: {
-              languages: supportedLocales.reduce((acc, locale) => {
-                const alternateRoute = locale === "en" 
-                  ? `/posts/${post.slug}`
-                  : `/${locale}/posts/${post.slug}`;
-                acc[locale] = `${baseUrl}${alternateRoute}`;
-                return acc;
-              }, {} as Record<string, string>),
+              languages: supportedLocales.reduce(
+                (acc, locale) => {
+                  const alternateRoute =
+                    locale === "en"
+                      ? `/posts/${post.slug}`
+                      : `/${locale}/posts/${post.slug}`;
+                  acc[locale] = `${baseUrl}${alternateRoute}`;
+                  return acc;
+                },
+                {} as Record<string, string>,
+              ),
             },
           });
         });
