@@ -19,7 +19,11 @@ export async function generateMetadata({
   }
 
   return {
-    title: t("app.title", language),
+    metadataBase: new URL("https://exam-timekeeper.top"),
+    title: {
+      default: t("app.title", language),
+      template: `${t("app.title", language)} – %s`,
+    },
     description: t("app.hero.subtitle", language),
     keywords:
       "exam, countdown, timer, SAT, ACT, GRE, TOEFL, GMAT, standardized tests, test dates",
@@ -34,6 +38,7 @@ export async function generateMetadata({
       description: t("app.hero.subtitle", language),
     },
     alternates: {
+      canonical: `https://exam-timekeeper.top/${lang}`,
       languages: {
         en: "/",
         ...supportedLocales.reduce(

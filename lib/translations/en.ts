@@ -3,6 +3,11 @@ export const translations_en: { [key: string]: string } = {
   "nav.about": "About",
   "nav.contact": "Contact",
   "nav.posts": "Blog",
+  "nav.examTypes.sat": "SAT",
+  "nav.examTypes.act": "ACT",
+  "nav.examTypes.gre": "GRE",
+  "nav.examTypes.toefl": "TOEFL",
+  "nav.examTypes.gmat": "GMAT",
   "common.language": "Language",
   "common.theme": "Theme",
   "common.loading": "Loading...",
@@ -10,9 +15,10 @@ export const translations_en: { [key: string]: string } = {
   "common.success": "Success",
   "common.source": "Source:",
   "common.lastUpdated": "Last updated:",
-  "app.title": "TimeKeeper",
+  "app.title": "Exam TimeKeeper - Multi-Exam Countdown Platform",
   "app.hero.title": "Track Your Exam Countdown",
-  "app.hero.subtitle": "Stay organized and never miss an important test date",
+  "app.hero.subtitle":
+    "The ultimate multi-exam countdown platform. Track SAT, ACT, GRE, TOEFL, GMAT and more standardized tests with real-time timers and official date sources.",
   "app.loading.exams": "Loading latest exam data...",
   "app.noData.available":
     "No exam data available. Click 'Refresh' to get latest exam information.",
@@ -31,7 +37,7 @@ export const translations_en: { [key: string]: string } = {
   "button.showAll": "Show All",
   "button.focusMode": "Focus Mode",
   "button.focus": "Focus",
-  "footer.copyright": "© 2025 TimeKeeper | Built by symphoneiceattack",
+  "footer.copyright": "© 2025 Exam TimeKeeper | Built by symphoneiceattack",
   "footer.builtWith": "Built with Next.js and modern technologies",
   "footer.company": "Company",
   "footer.aboutUs": "About Us",
@@ -231,6 +237,97 @@ export const translations_en: { [key: string]: string } = {
     "A modern, SEO-optimized starter for Next.js applications with internationalization support",
   "metadata.keywords":
     "Next.js, React, SEO, TypeScript, Tailwind CSS, internationalization, multilingual",
+  // SAT Page SEO
+  "sat.page.title": "SAT Countdown Timer 2025 - When is the SAT Test?",
+  "sat.page.description":
+    "Find out when is the next SAT test date. Get real-time countdown to SAT exam dates, registration deadlines, and plan your test preparation schedule effectively.",
+  "sat.page.h1": "SAT Exam Countdown Tool",
+  "sat.page.schedules": "SAT Test Dates & Registration Deadlines",
+  "sat.page.howToUse": "How to Use This SAT Countdown Tool",
+  "sat.page.studyPlanning": "SAT Study Time Management Tips",
+  // ACT Page SEO
+  "act.page.title": "ACT Countdown Timer 2025 - When is the ACT Test?",
+  "act.page.description":
+    "Track ACT test dates with live countdown timer. Know when to register for ACT, when the test is scheduled, and plan your college application timeline.",
+  "act.page.h1": "ACT Exam Countdown Tool",
+  "act.page.schedules": "ACT Test Dates & Registration Deadlines",
+  "act.page.howToUse": "How to Use This ACT Countdown Tool",
+  "act.page.studyPlanning": "ACT Study Time Management Tips",
+  // GRE Page SEO
+  "gre.page.title": "GRE Countdown Timer 2025 - When is the GRE Test?",
+  "gre.page.description":
+    "GRE test date countdown with registration deadlines. Plan your graduate school applications with precise timing for GRE exam preparation and test registration.",
+  "gre.page.h1": "GRE Exam Countdown Tool",
+  "gre.page.schedules": "GRE Test Dates & Registration Deadlines",
+  "gre.page.howToUse": "How to Use This GRE Countdown Tool",
+  "gre.page.studyPlanning": "GRE Study Time Management Tips",
+  // TOEFL Page SEO
+  "toefl.page.title": "TOEFL Countdown Timer 2025 - When is the TOEFL Test?",
+  "toefl.page.description":
+    "Track TOEFL test dates and registration deadlines. Get countdown to TOEFL exams for international students planning to study abroad in English-speaking countries.",
+  "toefl.page.h1": "TOEFL Exam Countdown Tool",
+  "toefl.page.schedules": "TOEFL Test Dates & Registration Deadlines",
+  "toefl.page.howToUse": "How to Use This TOEFL Countdown Tool",
+  "toefl.page.studyPlanning": "TOEFL Study Time Management Tips",
+  // GMAT Page SEO
+  "gmat.page.title": "GMAT Countdown Timer 2025 - When is the GMAT Test?",
+  "gmat.page.description":
+    "GMAT test date countdown for MBA applications. Track GMAT test dates, registration deadlines, and plan your business school application timeline effectively.",
+  "gmat.page.h1": "GMAT Exam Countdown Tool",
+  "gmat.page.schedules": "GMAT Test Dates & Registration Deadlines",
+  "gmat.page.howToUse": "How to Use This GMAT Countdown Tool",
+  "gmat.page.studyPlanning": "GMAT Study Time Management Tips",
+  // New User Tutorial
+  "tutorial.welcome.title": "Welcome to Exam TimeKeeper",
+  "tutorial.welcome.subtitle": "Multi-Exam Countdown Platform",
+  "tutorial.welcome.description":
+    "Exam TimeKeeper is your one-stop exam countdown solution. We aggregate official data from all major standardized tests including SAT, ACT, GRE, TOEFL, GMAT, and more, providing you with accurate exam time tracking.",
+  "tutorial.welcome.before":
+    "❌ Need to manually check multiple official websites for exam dates\n❌ Easy to miss registration deadlines\n❌ No unified exam management interface\n❌ Can't intuitively see exam countdowns",
+  "tutorial.welcome.after":
+    "✅ One-stop view of all exam dates\n✅ Automatically track official data updates\n✅ Unified exam management interface\n✅ Real-time countdown display",
+  "tutorial.welcome.features":
+    "📊 Aggregate official data from multiple exam platforms\n🔄 Automatically update latest exam information\n📱 Support desktop and mobile devices\n🌍 Support multilingual interface",
+  "tutorial.quickstart.title": "Quick Start Guide",
+  "tutorial.quickstart.subtitle": "Three steps to start your exam countdown",
+  "tutorial.quickstart.description":
+    "Getting started with Exam TimeKeeper is very simple! Just three steps to set up your personal exam countdown, say goodbye to missing important exam dates.",
+  "tutorial.quickstart.before":
+    "❌ Need to switch between multiple websites\n❌ Manually record exam dates to calendar\n❌ Easy to forget exam preparation time\n❌ Can't quickly switch to view different exams",
+  "tutorial.quickstart.after":
+    "✅ All exam information centralized on one page\n✅ One-click set exam reminders\n✅ Clearly see study time planning\n✅ Easily switch between different exams",
+  "tutorial.quickstart.features":
+    "📅 Automatically display all upcoming exams\n⭐ Click star to favorite important exams\n➕ Add custom exam dates\n🔍 Use filter function to quickly find exams",
+  "tutorial.advanced.title": "Advanced Features & Efficiency Boost",
+  "tutorial.advanced.subtitle": "Secret weapons for more efficient exam prep",
+  "tutorial.advanced.description":
+    "Master these advanced features to make your exam preparation more efficient and focused. From focus mode to custom views, Exam TimeKeeper provides comprehensive exam management experience.",
+  "tutorial.advanced.before":
+    "❌ Switching between other apps affects focus\n❌ Easily distracted by social media\n❌ Can't set up dedicated exam prep environment\n❌ Lack of exam preparation progress management",
+  "tutorial.advanced.after":
+    "✅ Focus mode blocks all distractions\n✅ Focus mode maximizes countdown display\n✅ Full-screen mode suitable for large displays\n✅ Detailed exam timeline planning",
+  "tutorial.advanced.features":
+    "🧠 Focus Mode: Full-screen countdown + distraction blocking\n⏰ Clock View: Minimalist mode showing only time\n📊 Detailed Statistics: Study progress and plan management\n🎯 Personalization: Custom exam colors and priorities",
+  "tutorial.benefits.title": "Benefits You'll Gain",
+  "tutorial.benefits":
+    "• Never miss any important exam dates\n• Arrange study time reasonably to improve efficiency\n• Professional exam management tools\n• Focused learning environment",
+  "tutorial.beforeTitle": "Before Usage",
+  "tutorial.afterTitle": "After Usage",
+  "tutorial.coreFeatures": "Core Feature Highlights",
+  "tutorial.platformStats": "Platform Data Highlights",
+  "tutorial.stats.exams": "Major exams covered",
+  "tutorial.stats.updates": "Automatic data updates",
+  "tutorial.stats.sources": "Official data sources",
+  "tutorial.stats.free": "Completely free to use",
+  "tutorial.skip": "Skip Tutorial",
+  "tutorial.prev": "Previous",
+  "tutorial.next": "Next",
+  "tutorial.startUsing": "Start Using",
+  "tutorial.completed.title": "Congratulations! You've completed the tutorial",
+  "tutorial.completed.description":
+    "You can now start using Exam TimeKeeper to manage your exam countdowns! If you need to review the tutorial again, you can click the help button anytime.",
+  "tutorial.completed.button": "Start Using Exam TimeKeeper",
+  "tutorial.beforeAfter": "Before and After Comparison",
 };
 
 export default translations_en;

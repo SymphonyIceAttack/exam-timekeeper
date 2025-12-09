@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+# Consolidate all SEO authority to the main domain
+# All alternative domains are redirected via 301 redirects
+Host: exam-timekeeper.top
+
 # Sitemaps
 Sitemap: https://exam-timekeeper.top/sitemap.xml
 

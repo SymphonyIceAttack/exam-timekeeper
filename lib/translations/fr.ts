@@ -3,6 +3,15 @@ export const translations_fr: { [key: string]: string } = {
   "nav.about": "À propos",
   "nav.contact": "Contact",
   "nav.posts": "Blog",
+  "nav.examTypes.sat": "SAT",
+  "nav.examTypes.act": "ACT",
+  "nav.examTypes.gre": "GRE",
+  "nav.examTypes.toefl": "TOEFL",
+  "nav.examTypes.gmat": "GMAT",
+  "app.title": "Exam TimeKeeper - Plateforme de Compte à Rebours Multi-Examens",
+  "app.hero.title": "Suivez votre Compte à Rebours d'Examen",
+  "app.hero.subtitle":
+    "La plateforme ultime de compte à rebours multi-examens. Suivez SAT, ACT, GRE, TOEFL, GMAT et plus de tests standardisés avec des minuteurs en temps réel.",
   "common.language": "Langue",
   "common.theme": "Thème",
   "common.loading": "Chargement...",
@@ -10,10 +19,6 @@ export const translations_fr: { [key: string]: string } = {
   "common.success": "Succès",
   "common.source": "Source :",
   "common.lastUpdated": "Dernière mise à jour :",
-  "app.title": "Chronométreur",
-  "app.hero.title": "Suivez votre compte à rebours d'examen",
-  "app.hero.subtitle":
-    "Restez organisé et ne manquez jamais une date d'examen importante",
   "app.loading.exams": "Chargement des dernières données d'examen...",
   "app.noData.available":
     "Aucune donnée d'examen disponible. Cliquez sur 'Actualiser' pour obtenir les dernières informations sur l'examen.",
@@ -32,7 +37,8 @@ export const translations_fr: { [key: string]: string } = {
   "button.showAll": "Tout afficher",
   "button.focusMode": "Mode concentration",
   "button.focus": "Concentration",
-  "footer.copyright": "© 2025 TimeKeeper | Construit par symphoneiceattack",
+  "footer.copyright":
+    "© 2025 Exam TimeKeeper | Construit par symphoneiceattack",
   "footer.builtWith": "Construit avec Next.js et des technologies modernes",
   "footer.company": "Entreprise",
   "footer.aboutUs": "À propos",
@@ -176,7 +182,7 @@ export const translations_fr: { [key: string]: string } = {
     "Cliquez simplement sur n'importe quelle carte d'examen dans la grille pour la définir comme affichage principal du compte à rebours. L'examen sélectionné apparaîtra en grand format en haut avec un compte à rebours en temps réel. Vous pouvez basculer entre les examens à tout moment.",
   "faq.addCustomExams": "Comment ajouter mes propres examens personnalisés ?",
   "faq.addCustomExams.answer":
-    "Cliquez sur le bouton 'AJOUTER EXAMEN' au bas de der Seite. Entrez un nom personnalisé, sélectionnez n'importe quelle date future à l'aide du sélecteur de calendrier, choisissez un thème de couleur, et votre examen apparaîtra avec les données d'examen officielles. Les examens personnalisés persistent jusqu'à ce que vous actualisiez la page.",
+    "Cliquez sur le bouton 'AJOUTER EXAMEN' au bas de la page. Entrez un nom personnalisé, sélectionnez n'importe quelle date future à l'aide du sélecteur de calendrier, choisissez un thème de couleur, et votre examen apparaîtra avec les données d'examen officielles. Les examens personnalisés persistent jusqu'à ce que vous actualisiez la page.",
   "faq.favoritesWork": "Comment fonctionnent les favoris ?",
   "faq.favoritesWork.answer":
     "Cliquez sur l'icône étoile sur n'importe quelle carte d'examen pour la marquer comme favorite. Les examens favoris affichent une étoile colorée et remplie. Utilisez le bouton 'Favoris' dans l'en-tête pour filtrer et afficher uniquement vos examens favoris.",

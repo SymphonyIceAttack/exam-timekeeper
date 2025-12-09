@@ -16,10 +16,15 @@ const staticRoutes = [
   "/terms",
   "/cookies",
   "/help",
+  "/sat",
+  "/act",
+  "/gre",
+  "/toefl",
+  "/gmat",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://yourdomain.com";
+  const baseUrl = "https://exam-timekeeper.top";
 
   try {
     const staticPages: MetadataRoute.Sitemap = [];

@@ -14,19 +14,25 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Exam TimeKeeper - US Exam Countdown Calendar",
+  title: {
+    default: "Exam TimeKeeper - Multi-Exam Countdown Platform",
+    template: "Exam TimeKeeper – %s",
+  },
   description:
-    "Track important US exam dates with live countdown timers for SAT, ACT, GRE, TOEFL, GMAT and more. Real-time data from official sources.",
+    "The ultimate multi-exam countdown platform. Track SAT, ACT, GRE, TOEFL, GMAT and more standardized tests with real-time timers and official date sources.",
   metadataBase: new URL("https://exam-timekeeper.top"),
+  alternates: {
+    canonical: "https://exam-timekeeper.top",
+  },
   keywords: [
-    "exam countdown",
-    "SAT dates",
-    "ACT schedule",
-    "GRE calendar",
-    "TOEFL dates",
-    "GMAT schedule",
-    "exam timer",
-    "test countdown",
+    "multi-exam countdown",
+    "SAT ACT GRE TOEFL GMAT",
+    "standardized test tracker",
+    "exam countdown timer",
+    "multiple test dates",
+    "unified exam platform",
+    "test preparation countdown",
+    "exam schedule tracker",
   ],
   authors: [{ name: "Exam TimeKeeper" }],
   creator: "Exam TimeKeeper",
@@ -35,16 +41,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Exam TimeKeeper - US Exam Countdown Calendar",
+    title: "Exam TimeKeeper - Multi-Exam Countdown Platform",
     description:
-      "Track important US exam dates with live countdown timers for SAT, ACT, GRE, TOEFL, GMAT and more.",
+      "The ultimate multi-exam countdown platform. Track SAT, ACT, GRE, TOEFL, GMAT and more standardized tests with real-time timers.",
     siteName: "Exam TimeKeeper",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Exam TimeKeeper - US Exam Countdown Calendar",
+    title: "Exam TimeKeeper - Multi-Exam Countdown Platform",
     description:
-      "Track important US exam dates with live countdown timers for SAT, ACT, GRE, TOEFL, GMAT and more.",
+      "The ultimate multi-exam countdown platform. Track SAT, ACT, GRE, TOEFL, GMAT and more standardized tests with real-time timers.",
   },
   robots: {
     index: true,

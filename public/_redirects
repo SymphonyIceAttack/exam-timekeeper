@@ -1,0 +1,7 @@
+# Redirect all traffic from pages.dev to top domain for SEO consolidation
+https://exam-timekeeper.pages.dev/* https://exam-timekeeper.top/:splat 301
+http://exam-timekeeper.pages.dev/* https://exam-timekeeper.top/:splat 301
+
+# Redirect any www subdomain to non-www for consistency
+https://www.exam-timekeeper.top/* https://exam-timekeeper.top/:splat 301
+http://www.exam-timekeeper.top/* https://exam-timekeeper.top/:splat 301

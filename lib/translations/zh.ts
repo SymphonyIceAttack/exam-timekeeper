@@ -3,6 +3,11 @@ export const translations_zh: { [key: string]: string } = {
   "nav.about": "关于",
   "nav.contact": "联系",
   "nav.posts": "博客",
+  "nav.examTypes.sat": "SAT",
+  "nav.examTypes.act": "ACT",
+  "nav.examTypes.gre": "GRE",
+  "nav.examTypes.toefl": "TOEFL",
+  "nav.examTypes.gmat": "GMAT",
   "common.language": "语言",
   "common.theme": "主题",
   "common.loading": "加载中...",
@@ -10,9 +15,10 @@ export const translations_zh: { [key: string]: string } = {
   "common.success": "成功",
   "common.source": "来源：",
   "common.lastUpdated": "最后更新：",
-  "app.title": "时间管理器",
+  "app.title": "时间管理器 - 多考试倒计时平台",
   "app.hero.title": "追踪您的考试倒计时",
-  "app.hero.subtitle": "保持有序，绝不错过重要的考试日期",
+  "app.hero.subtitle":
+    "终极多考试倒计时平台。追踪SAT、ACT、GRE、TOEFL、GMAT等标准化考试的实时计时器和官方日期来源。",
   "app.loading.exams": "正在加载最新的考试数据...",
   "app.noData.available": "没有可用的考试数据。点击'刷新'获取最新的考试信息。",
   "app.noFavorites": "没有收藏的考试。点击星标图标收藏考试。",
@@ -219,6 +225,97 @@ export const translations_zh: { [key: string]: string } = {
   "metadata.description": "支持国际化的现代化 Next.js 应用程序 SEO 优化启动器",
   "metadata.keywords":
     "Next.js, React, SEO, TypeScript, Tailwind CSS, 国际化, 多语言",
+  // SAT Page SEO
+  "sat.page.title": "SAT 倒计时器 2025 - SAT 考试什么时候？",
+  "sat.page.description":
+    "查找下一个 SAT 考试日期。获取 SAT 考试日期、注册截止日期的实时倒计时，有效规划您的考试准备时间表。",
+  "sat.page.h1": "SAT 考试倒计时工具",
+  "sat.page.schedules": "SAT 考试日期和注册截止日期",
+  "sat.page.howToUse": "如何使用此 SAT 倒计时工具",
+  "sat.page.studyPlanning": "SAT 学习时间管理建议",
+  // ACT Page SEO
+  "act.page.title": "ACT 倒计时器 2025 - ACT 考试什么时候？",
+  "act.page.description":
+    "使用实时倒计时器追踪 ACT 考试日期。了解何时注册 ACT，何时安排考试，并规划您的大学申请时间表。",
+  "act.page.h1": "ACT 考试倒计时工具",
+  "act.page.schedules": "ACT 考试日期和注册截止日期",
+  "act.page.howToUse": "如何使用此 ACT 倒计时工具",
+  "act.page.studyPlanning": "ACT 学习时间管理建议",
+  // GRE Page SEO
+  "gre.page.title": "GRE 倒计时器 2025 - GRE 考试什么时候？",
+  "gre.page.description":
+    "带有注册截止日期的 GRE 考试日期倒计时。通过精确的 GRE 考试准备和测试注册时间规划您的研究生院申请。",
+  "gre.page.h1": "GRE 考试倒计时工具",
+  "gre.page.schedules": "GRE 考试日期和注册截止日期",
+  "gre.page.howToUse": "如何使用此 GRE 倒计时工具",
+  "gre.page.studyPlanning": "GRE 学习时间管理建议",
+  // TOEFL Page SEO
+  "toefl.page.title": "TOEFL 倒计时器 2025 - TOEFL 考试什么时候？",
+  "toefl.page.description":
+    "追踪 TOEFL 考试日期和注册截止日期。获取 TOEFL 考试的倒计时，为计划在英语国家学习的国际学生提供帮助。",
+  "toefl.page.h1": "TOEFL 考试倒计时工具",
+  "toefl.page.schedules": "TOEFL 考试日期和注册截止日期",
+  "toefl.page.howToUse": "如何使用此 TOEFL 倒计时工具",
+  "toefl.page.studyPlanning": "TOEFL 学习时间管理建议",
+  // GMAT Page SEO
+  "gmat.page.title": "GMAT 倒计时器 2025 - GMAT 考试什么时候？",
+  "gmat.page.description":
+    "MBA 申请的 GMAT 考试日期倒计时。追踪 GMAT 考试日期、注册截止日期，有效规划您的商学院申请时间表。",
+  "gmat.page.h1": "GMAT 考试倒计时工具",
+  "gmat.page.schedules": "GMAT 考试日期和注册截止日期",
+  "gmat.page.howToUse": "如何使用此 GMAT 倒计时工具",
+  "gmat.page.studyPlanning": "GMAT 学习时间管理建议",
+  // New User Tutorial
+  "tutorial.welcome.title": "欢迎来到 Exam TimeKeeper",
+  "tutorial.welcome.subtitle": "多考试倒计时平台",
+  "tutorial.welcome.description":
+    "Exam TimeKeeper 是您的一站式考试倒计时解决方案。我们聚合了 SAT、ACT、GRE、TOEFL、GMAT 等所有主要标准化考试的官方数据，为您提供精准的考试时间追踪。",
+  "tutorial.welcome.before":
+    "❌ 需要手动查看多个官方网站获取考试日期\n❌ 容易错过注册截止时间\n❌ 没有统一的考试管理界面\n❌ 无法直观看到考试倒计时",
+  "tutorial.welcome.after":
+    "✅ 一站式查看所有考试日期\n✅ 自动追踪官方数据更新\n✅ 统一的考试管理界面\n✅ 实时倒计时显示",
+  "tutorial.welcome.features":
+    "📊 聚合多个考试平台的官方数据\n🔄 自动更新最新的考试信息\n📱 支持桌面和移动设备\n🌍 支持多语言界面",
+  "tutorial.quickstart.title": "快速上手使用",
+  "tutorial.quickstart.subtitle": "三步开始您的考试倒计时",
+  "tutorial.quickstart.description":
+    "开始使用 Exam TimeKeeper 非常简单！只需三步就能设置好您的个人考试倒计时，告别错过重要考试日期的烦恼。",
+  "tutorial.quickstart.before":
+    "❌ 需要在多个网站之间切换\n❌ 手动记录考试日期到日历\n❌ 容易忘记考试准备时间\n❌ 无法快速切换查看不同考试",
+  "tutorial.quickstart.after":
+    "✅ 所有考试信息集中在一个页面\n✅ 一键设置考试提醒\n✅ 清晰看到备考时间规划\n✅ 轻松在不同考试间切换",
+  "tutorial.quickstart.features":
+    "📅 自动显示所有即将到来的考试\n⭐ 点击星标收藏重要考试\n➕ 添加自定义考试日期\n🔍 使用筛选功能快速找到考试",
+  "tutorial.advanced.title": "高级功能与效率提升",
+  "tutorial.advanced.subtitle": "让备考更高效的秘密武器",
+  "tutorial.advanced.description":
+    "掌握这些高级功能，让您的考试准备更加高效和专注。从专注模式到自定义视图，Exam TimeKeeper 提供全方位的考试管理体验。",
+  "tutorial.advanced.before":
+    "❌ 在其他应用间切换影响专注\n❌ 容易被社交媒体分散注意力\n❌ 无法设置专属的备考环境\n❌ 缺少考试准备进度管理",
+  "tutorial.advanced.after":
+    "✅ 专注模式屏蔽一切干扰\n✅ 专注模式最大化倒计时显示\n✅ 全屏模式适合大屏展示\n✅ 详细的考试时间线规划",
+  "tutorial.advanced.features":
+    "🧠 专注模式：全屏倒计时 + 屏蔽干扰\n⏰ 时钟视图：极简模式仅显示时间\n📊 详细统计：备考进度和计划管理\n🎯 个性化：自定义考试颜色和优先级",
+  "tutorial.benefits.title": "您将获得的优势",
+  "tutorial.benefits":
+    "• 不再错过任何重要的考试日期\n• 合理安排备考时间，提高效率\n• 专业的考试管理工具\n• 专注的学习环境",
+  "tutorial.coreFeatures": "核心功能亮点",
+  "tutorial.beforeAfter": "使用前后的对比",
+  "tutorial.beforeTitle": "使用前",
+  "tutorial.afterTitle": "使用后",
+  "tutorial.platformStats": "平台数据亮点",
+  "tutorial.stats.exams": "主要考试覆盖",
+  "tutorial.stats.updates": "自动数据更新",
+  "tutorial.stats.sources": "官方数据源",
+  "tutorial.stats.free": "完全免费使用",
+  "tutorial.skip": "跳过教程",
+  "tutorial.prev": "上一步",
+  "tutorial.next": "下一步",
+  "tutorial.startUsing": "开始使用",
+  "tutorial.completed.title": "恭喜！您已完成新手教程",
+  "tutorial.completed.description":
+    "您现在可以开始使用 Exam TimeKeeper 来管理您的考试倒计时了！如果您需要重新查看教程，可以随时点击帮助按钮。",
+  "tutorial.completed.button": "开始使用 Exam TimeKeeper",
 };
 
 export default translations_zh;

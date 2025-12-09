@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Real-time exam countdown timer for standardized tests (SAT, ACT, GRE, TOEFL, GMAT). Never miss an important exam date again.",
   "private": false,
+  "homepage": "https://exam-timekeeper.top",
   "repository": {
     "type": "git",
     "url": "https://github.com/symphoneiceattack/exam-timekeeper.git"
   },
-  "homepage": "https://exam-timekeeper.top",
   "keywords": [
     "exam",
     "countdown",
