@@ -316,6 +316,63 @@ export const translations_zh: { [key: string]: string } = {
   "tutorial.completed.description":
     "您现在可以开始使用 Exam TimeKeeper 来管理您的考试倒计时了！如果您需要重新查看教程，可以随时点击帮助按钮。",
   "tutorial.completed.button": "开始使用 Exam TimeKeeper",
+
+  // V2.0 SEO内容翻译
+  "v2.seo.title": "全面的标准化考试时间管理平台",
+  "v2.seo.subtitle":
+    "为SAT、ACT、GRE、TOEFL、GMAT等标准化考试提供准确的考试日期、实时倒计时和个性化备考规划",
+  "v2.seo.features.title": "核心功能展示",
+  "v2.seo.features.realtime": "实时倒计时",
+  "v2.seo.features.realtime.desc": "精确到秒的考试倒计时，帮助您把握备考进度",
+  "v2.seo.features.official": "官方数据",
+  "v2.seo.features.official.desc":
+    "直接来源于College Board、ACT.org、ETS等官方网站",
+  "v2.seo.features.personalized": "个性化规划",
+  "v2.seo.features.personalized.desc": "根据考试类型和目标分数制定专属学习计划",
+  "v2.seo.whyChoose.title": "为什么选择我们的考试倒计时工具？",
+  "v2.seo.whyChoose.accuracy": "准确性",
+  "v2.seo.whyChoose.accuracy.desc":
+    "所有考试日期均来自官方权威机构，确保信息准确无误",
+  "v2.seo.whyChoose.updates": "实时更新",
+  "v2.seo.whyChoose.updates.desc": "自动同步官方考试安排变化，无需手动更新",
+  "v2.seo.whyChoose.multilingual": "多语言支持",
+  "v2.seo.whyChoose.multilingual.desc":
+    "支持中英文界面，适合不同地区的学生使用",
+  "v2.seo.whyChoose.mobile": "移动端优化",
+  "v2.seo.whyChoose.mobile.desc": "完美适配手机和平板，随时随地查看考试倒计时",
+  "v2.seo.supportedExams.title": "支持的标准化考试",
+  "v2.seo.supportedExams.sat": "SAT考试",
+  "v2.seo.supportedExams.sat.desc": "美国大学入学考试，全年7次考试机会",
+  "v2.seo.supportedExams.act": "ACT考试",
+  "v2.seo.supportedExams.act.desc": "美国另一种主要标准化考试形式",
+  "v2.seo.supportedExams.gre": "GRE考试",
+  "v2.seo.supportedExams.gre.desc": "研究生入学考试，全年月度考试安排",
+  "v2.seo.supportedExams.toefl": "TOEFL考试",
+  "v2.seo.supportedExams.toefl.desc": "英语能力测试，每周多次考试机会",
+  "v2.seo.supportedExams.gmat": "GMAT考试",
+  "v2.seo.supportedExams.gmat.desc": "商学院入学考试，每月固定考试日期",
+  "v2.seo.faq.title": "考试倒计时工具常见问题",
+  "v2.seo.faq.accuracy.title": "考试日期准确性",
+  "v2.seo.faq.accuracy.content":
+    "我们的考试日期直接来源于College Board、ACT.org、ETS、GMAC等官方网站，确保100%准确。如果官方调整考试安排，我们会立即同步更新。",
+  "v2.seo.faq.free.title": "免费使用政策",
+  "v2.seo.faq.free.content":
+    "Exam TimeKeeper完全免费使用，无隐藏费用。我们致力于为全球学生提供最好的考试规划工具。",
+  "v2.seo.faq.updates.title": "数据更新频率",
+  "v2.seo.faq.updates.content":
+    "考试数据每30分钟自动刷新一次，确保您获取到最新的考试信息。您也可以手动刷新页面获取最新数据。",
+  "v2.seo.faq.mobile.title": "移动端支持",
+  "v2.seo.faq.mobile.content":
+    "我们的工具完全适配移动设备，支持iOS和Android系统。无论您在何处，都能便捷地查看考试倒计时。",
+  "v2.seo.features.title.short": "工具特色",
+  "v2.seo.features.realtime.title": "实时更新",
+  "v2.seo.features.realtime.desc.short": "30分钟自动刷新",
+  "v2.seo.features.free.title": "免费使用",
+  "v2.seo.features.free.desc.short": "无隐藏费用",
+  "v2.seo.features.official.title": "官方数据",
+  "v2.seo.features.official.desc.short": "权威来源保证",
+  "v2.seo.features.mobile.title": "多端适配",
+  "v2.seo.features.mobile.desc.short": "响应式设计",
 };
 
 export default translations_zh;

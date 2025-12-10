@@ -328,6 +328,70 @@ export const translations_en: { [key: string]: string } = {
     "You can now start using Exam TimeKeeper to manage your exam countdowns! If you need to review the tutorial again, you can click the help button anytime.",
   "tutorial.completed.button": "Start Using Exam TimeKeeper",
   "tutorial.beforeAfter": "Before and After Comparison",
+
+  // V2.0 SEO content translations
+  "v2.seo.title": "Comprehensive Standardized Exam Time Management Platform",
+  "v2.seo.subtitle":
+    "Provides accurate exam dates, real-time countdowns, and personalized study planning for SAT, ACT, GRE, TOEFL, GMAT and other standardized exams",
+  "v2.seo.features.title": "Core Features Overview",
+  "v2.seo.features.realtime": "Real-time Countdown",
+  "v2.seo.features.realtime.desc":
+    "Exam countdowns precise to the second, helping you track your study progress",
+  "v2.seo.features.official": "Official Data",
+  "v2.seo.features.official.desc":
+    "Directly sourced from College Board, ACT.org, ETS and other official websites",
+  "v2.seo.features.personalized": "Personalized Planning",
+  "v2.seo.features.personalized.desc":
+    "Customized study plans based on exam type and target scores",
+  "v2.seo.whyChoose.title": "Why Choose Our Exam Countdown Tool?",
+  "v2.seo.whyChoose.accuracy": "Accuracy",
+  "v2.seo.whyChoose.accuracy.desc":
+    "All exam dates come from official authoritative institutions, ensuring 100% accuracy",
+  "v2.seo.whyChoose.updates": "Real-time Updates",
+  "v2.seo.whyChoose.updates.desc":
+    "Automatically sync official exam schedule changes without manual updates",
+  "v2.seo.whyChoose.multilingual": "Multi-language Support",
+  "v2.seo.whyChoose.multilingual.desc":
+    "Supports Chinese and English interfaces, suitable for students from different regions",
+  "v2.seo.whyChoose.mobile": "Mobile Optimization",
+  "v2.seo.whyChoose.mobile.desc":
+    "Perfect adaptation for phones and tablets, view exam countdowns anytime, anywhere",
+  "v2.seo.supportedExams.title": "Supported Standardized Exams",
+  "v2.seo.supportedExams.sat": "SAT Exam",
+  "v2.seo.supportedExams.sat.desc":
+    "American college entrance exam, 7 test opportunities throughout the year",
+  "v2.seo.supportedExams.act": "ACT Exam",
+  "v2.seo.supportedExams.act.desc":
+    "Another major standardized test format in the United States",
+  "v2.seo.supportedExams.gre": "GRE Exam",
+  "v2.seo.supportedExams.gre.desc":
+    "Graduate Record Examination, monthly exam schedule throughout the year",
+  "v2.seo.supportedExams.toefl": "TOEFL Exam",
+  "v2.seo.supportedExams.toefl.desc":
+    "English proficiency test, multiple test opportunities per week",
+  "v2.seo.supportedExams.gmat": "GMAT Exam",
+  "v2.seo.supportedExams.gmat.desc":
+    "Graduate Management Admission Test, fixed monthly exam dates",
+  "v2.seo.faq.title": "Exam Countdown Tool FAQ",
+  "v2.seo.faq.accuracy.title": "Exam Date Accuracy",
+  "v2.seo.faq.accuracy.content":
+    "Our exam dates are directly sourced from College Board, ACT.org, ETS, GMAC and other official websites, ensuring 100% accuracy. If official exam arrangements are adjusted, we will immediately sync the updates.",
+  "v2.seo.faq.free.title": "Free Usage Policy",
+  "v2.seo.faq.free.content":
+    "Exam TimeKeeper is completely free to use with no hidden fees. We are committed to providing the best exam planning tools for students worldwide.",
+  "v2.seo.faq.updates.title": "Data Update Frequency",
+  "v2.seo.faq.updates.content":
+    "Exam data is automatically refreshed every 30 minutes to ensure you get the latest exam information. You can also manually refresh the page to get the latest data.",
+  "v2.seo.faq.mobile.title": "Mobile Support",
+  "v2.seo.faq.mobile.content":
+    "Our tool is fully adapted for mobile devices, supporting iOS and Android systems. No matter where you are, you can conveniently view exam countdowns.",
+  "v2.seo.features.title.short": "Tool Features",
+  "v2.seo.features.realtime.title": "Real-time Updates",
+  "v2.seo.features.realtime.short": "Live countdown timers",
+  "v2.seo.features.official.title": "Official Data Sources",
+  "v2.seo.features.official.short": "Verified exam dates",
+  "v2.seo.features.personalized.title": "Personalized Planning",
+  "v2.seo.features.personalized.short": "Custom study plans",
 };
 
 export default translations_en;

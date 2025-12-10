@@ -239,6 +239,66 @@ export const translations_ja: { [key: string]: string } = {
     "国際化サポート付きのNext.jsアプリケーション向けモダンSEO最適化スターター",
   "metadata.keywords":
     "Next.js, React, SEO, TypeScript, Tailwind CSS, 国際化, 多言語",
+
+  // V2.0 SEO content translations
+  "v2.seo.title": "総合標準化試験時間管理プラットフォーム",
+  "v2.seo.subtitle":
+    "SAT、ACT、GRE、TOEFL、GMATなどの標準化試験に対して、正確な試験日程、リアルタイムカウントダウン、個別化学習計画を提供します",
+  "v2.seo.features.title": "主要機能概要",
+  "v2.seo.features.realtime": "リアルタイムカウントダウン",
+  "v2.seo.features.realtime.desc":
+    "秒単位の正確な試験カウントダウンで、学習の進行状況を把握できます",
+  "v2.seo.features.official": "公式データ",
+  "v2.seo.features.official.desc":
+    "College Board、ACT.org、ETSなどの公式サイトから直接取得",
+  "v2.seo.features.personalized": "個別化計画",
+  "v2.seo.features.personalized.desc":
+    "試験種類と目標スコアに基づく個別化された学習計画",
+  "v2.seo.whyChoose.title": "なぜ私たちの試験カウントダウン工具を選ぶのか？",
+  "v2.seo.whyChoose.accuracy": "正確性",
+  "v2.seo.whyChoose.accuracy.desc":
+    "すべての試験日程は公式の権威ある機関から提供され、100%の正確性を保証します",
+  "v2.seo.whyChoose.updates": "リアルタイム更新",
+  "v2.seo.whyChoose.updates.desc":
+    "公式試験スケジュールの変更を自動的に同期し、手動更新は不要です",
+  "v2.seo.whyChoose.multilingual": "多言語サポート",
+  "v2.seo.whyChoose.multilingual.desc":
+    "中国語と英語のインターフェースをサポートし、不同地域の学生に適しています",
+  "v2.seo.whyChoose.mobile": "モバイル最適化",
+  "v2.seo.whyChoose.mobile.desc":
+    "電話とタブレットに完璧に適合し、いつでもどこでも試験カウントダウンを表示できます",
+  "v2.seo.supportedExams.title": "サポートされる標準化試験",
+  "v2.seo.supportedExams.sat": "SAT試験",
+  "v2.seo.supportedExams.sat.desc": "アメリカ大学入学試験、年間で7回の試験機会",
+  "v2.seo.supportedExams.act": "ACT試験",
+  "v2.seo.supportedExams.act.desc": "アメリカのもう一つの主要標準化試験形式",
+  "v2.seo.supportedExams.gre": "GRE試験",
+  "v2.seo.supportedExams.gre.desc":
+    "大学院入学試験、年間の月度試験スケジュール",
+  "v2.seo.supportedExams.toefl": "TOEFL試験",
+  "v2.seo.supportedExams.toefl.desc": "英語能力テスト、週複数回の試験機会",
+  "v2.seo.supportedExams.gmat": "GMAT試験",
+  "v2.seo.supportedExams.gmat.desc": "ビジネススクール入学試験、月固定試験日程",
+  "v2.seo.faq.title": "試験カウントダウン工具よくある質問",
+  "v2.seo.faq.accuracy.title": "試験日程の正確性",
+  "v2.seo.faq.accuracy.content":
+    "私たちの試験日程はCollege Board、ACT.org、ETS、GMACなどの公式サイトから直接取得され、100%の正確性を保証します。公式試験安排が調整された場合は、直ちに同期更新されます。",
+  "v2.seo.faq.free.title": "無料使用ポリシー",
+  "v2.seo.faq.free.content":
+    "Exam TimeKeeperは完全に無料で使用でき、隠れた料金はありません。世界中の学生に最良の試験計画工具を提供することに取り組んでいます。",
+  "v2.seo.faq.updates.title": "データ更新頻度",
+  "v2.seo.faq.updates.content":
+    "試験データは30分ごとに自動的に更新され、最新の試験情報を取得できます。手動でページを更新して最新データを取得することもできます。",
+  "v2.seo.faq.mobile.title": "モバイルサポート",
+  "v2.seo.faq.mobile.content":
+    "私たちの工具は完全にモバイルデバイスに対応し、iOSとAndroidシステムをサポートしています。どこにいながらも、便利に試験カウントダウンを表示できます。",
+  "v2.seo.features.title.short": "工具の特徴",
+  "v2.seo.features.realtime.title": "リアルタイム更新",
+  "v2.seo.features.realtime.short": "ライブカウントダウンタイマー",
+  "v2.seo.features.official.title": "公式データソース",
+  "v2.seo.features.official.short": "検証済み試験日程",
+  "v2.seo.features.personalized.title": "個別化計画",
+  "v2.seo.features.personalized.short": "個別化学習計画",
 };
 
 export default translations_ja;

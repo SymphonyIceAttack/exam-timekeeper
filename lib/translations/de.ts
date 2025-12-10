@@ -245,6 +245,71 @@ export const translations_de: { [key: string]: string } = {
     "Ein moderner, SEO-optimierter Starter für Next.js-Anwendungen mit Internationalisierungsunterstützung",
   "metadata.keywords":
     "Next.js, React, SEO, TypeScript, Tailwind CSS, Internationalisierung, mehrsprachig",
+
+  // V2.0 SEO content translations
+  "v2.seo.title":
+    "Umfassende Plattform für Zeitmanagement bei Standardisierten Prüfungen",
+  "v2.seo.subtitle":
+    "Bietet präzise Prüfungstermine, Echtzeit-Countdowns und personalisierte Studienplanung für SAT, ACT, GRE, TOEFL, GMAT und andere standardisierte Prüfungen",
+  "v2.seo.features.title": "Überblick der Hauptfunktionen",
+  "v2.seo.features.realtime": "Echtzeit-Countdown",
+  "v2.seo.features.realtime.desc":
+    "Sekundengenaue Prüfungs-Countdowns, die Ihnen helfen, Ihren Studienfortschritt zu verfolgen",
+  "v2.seo.features.official": "Offizielle Daten",
+  "v2.seo.features.official.desc":
+    "Direkt bezogen von offiziellen Websites wie College Board, ACT.org, ETS und anderen",
+  "v2.seo.features.personalized": "Personalisierte Planung",
+  "v2.seo.features.personalized.desc":
+    "Personalisierte Studienpläne basierend auf Prüfungstyp und Zielwerten",
+  "v2.seo.whyChoose.title": "Warum Unser Prüfungs-Countdown-Tool Wählen?",
+  "v2.seo.whyChoose.accuracy": "Präzision",
+  "v2.seo.whyChoose.accuracy.desc":
+    "Alle Prüfungstermine stammen von offiziellen autoritären Institutionen und gewährleisten 100%ige Genauigkeit",
+  "v2.seo.whyChoose.updates": "Echtzeit-Updates",
+  "v2.seo.whyChoose.updates.desc":
+    "Synchronisiert automatisch Änderungen der offiziellen Prüfungspläne ohne manuelle Updates",
+  "v2.seo.whyChoose.multilingual": "Mehrsprachige Unterstützung",
+  "v2.seo.whyChoose.multilingual.desc":
+    "Unterstützt chinesische und englische Benutzeroberflächen, geeignet für Studenten aus verschiedenen Regionen",
+  "v2.seo.whyChoose.mobile": "Mobile Optimierung",
+  "v2.seo.whyChoose.mobile.desc":
+    "Perfekte Anpassung für Telefone und Tablets, Prüfungs-Countdowns jederzeit und überall anzeigen",
+  "v2.seo.supportedExams.title": "Unterstützte Standardisierte Prüfungen",
+  "v2.seo.supportedExams.sat": "SAT-Prüfung",
+  "v2.seo.supportedExams.sat.desc":
+    "Amerikanische Universitätsaufnahmeprüfung, 7 Prüfungsmöglichkeiten das ganze Jahr über",
+  "v2.seo.supportedExams.act": "ACT-Prüfung",
+  "v2.seo.supportedExams.act.desc":
+    "Anderes wichtiges standardisiertes Prüfungsformat in den Vereinigten Staaten",
+  "v2.seo.supportedExams.gre": "GRE-Prüfung",
+  "v2.seo.supportedExams.gre.desc":
+    "Graduate Record Examination, monatliche Prüfungsplanung das ganze Jahr über",
+  "v2.seo.supportedExams.toefl": "TOEFL-Prüfung",
+  "v2.seo.supportedExams.toefl.desc":
+    "Englisch-Sprachtest, mehrere Prüfungsmöglichkeiten pro Woche",
+  "v2.seo.supportedExams.gmat": "GMAT-Prüfung",
+  "v2.seo.supportedExams.gmat.desc":
+    "Graduate Management Admission Test, feste monatliche Prüfungstermine",
+  "v2.seo.faq.title": "Häufig Gestellte Fragen zum Prüfungs-Countdown-Tool",
+  "v2.seo.faq.accuracy.title": "Präzision der Prüfungstermine",
+  "v2.seo.faq.accuracy.content":
+    "Unsere Prüfungstermine werden direkt von offiziellen Websites wie College Board, ACT.org, ETS, GMAC und anderen bezogen und gewährleisten 100%ige Genauigkeit. Wenn offizielle Prüfungsvereinbarungen angepasst werden, synchronisieren wir sofort die Updates.",
+  "v2.seo.faq.free.title": "Kostenlose Nutzungspolitik",
+  "v2.seo.faq.free.content":
+    "Exam TimeKeeper ist vollständig kostenlos zu nutzen ohne versteckte Gebühren. Wir sind bestrebt, die besten Prüfungsplanungstools für Studenten weltweit bereitzustellen.",
+  "v2.seo.faq.updates.title": "Häufigkeit der Datenaktualisierung",
+  "v2.seo.faq.updates.content":
+    "Prüfungsdaten werden automatisch alle 30 Minuten aktualisiert, um sicherzustellen, dass Sie die neuesten Prüfungsinformationen erhalten. Sie können auch manuell die Seite aktualisieren, um die neuesten Daten zu erhalten.",
+  "v2.seo.faq.mobile.title": "Mobile Unterstützung",
+  "v2.seo.faq.mobile.content":
+    "Unser Tool ist vollständig für mobile Geräte angepasst und unterstützt iOS- und Android-Systeme. Wo auch immer Sie sich befinden, können Sie bequem Prüfungs-Countdowns anzeigen.",
+  "v2.seo.features.title.short": "Tool-Funktionen",
+  "v2.seo.features.realtime.title": "Echtzeit-Updates",
+  "v2.seo.features.realtime.short": "Live-Countdown-Timer",
+  "v2.seo.features.official.title": "Offizielle Datenquellen",
+  "v2.seo.features.official.short": "Verifizierte Prüfungstermine",
+  "v2.seo.features.personalized.title": "Personalisierte Planung",
+  "v2.seo.features.personalized.short": "Personalisierte Studienpläne",
 };
 
 export default translations_de;

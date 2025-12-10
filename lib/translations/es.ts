@@ -243,6 +243,74 @@ export const translations_es: { [key: string]: string } = {
     "Un iniciador moderno y optimizado SEO para aplicaciones Next.js con soporte de internacionalización",
   "metadata.keywords":
     "Next.js, React, SEO, TypeScript, Tailwind CSS, internacionalización, multilingüe",
+
+  // V2.0 SEO content translations
+  "v2.seo.title":
+    "Plataforma Integral de Gestión de Tiempo de Exámenes Estandarizados",
+  "v2.seo.subtitle":
+    "Proporciona fechas de exámenes precisas, conteos regresivos en tiempo real y planificación de estudio personalizada para SAT, ACT, GRE, TOEFL, GMAT y otros exámenes estandarizados",
+  "v2.seo.features.title": "Resumen de Características Principales",
+  "v2.seo.features.realtime": "Conteo Regresivo en Tiempo Real",
+  "v2.seo.features.realtime.desc":
+    "Conteos regresivos de exámenes precisos al segundo, ayudándote a seguir tu progreso de estudio",
+  "v2.seo.features.official": "Datos Oficiales",
+  "v2.seo.features.official.desc":
+    "Obtenidos directamente de sitios web oficiales College Board, ACT.org, ETS y otros",
+  "v2.seo.features.personalized": "Planificación Personalizada",
+  "v2.seo.features.personalized.desc":
+    "Planes de estudio personalizados basados en el tipo de examen y puntajes objetivo",
+  "v2.seo.whyChoose.title":
+    "¿Por Qué Elegir Nuestra Herramienta de Conteo Regresivo de Exámenes?",
+  "v2.seo.whyChoose.accuracy": "Precisión",
+  "v2.seo.whyChoose.accuracy.desc":
+    "Todas las fechas de exámenes provienen de instituciones oficiales autoritarias, garantizando 100% de precisión",
+  "v2.seo.whyChoose.updates": "Actualizaciones en Tiempo Real",
+  "v2.seo.whyChoose.updates.desc":
+    "Sincroniza automáticamente los cambios de horarios de exámenes oficiales sin actualizaciones manuales",
+  "v2.seo.whyChoose.multilingual": "Soporte Multiidioma",
+  "v2.seo.whyChoose.multilingual.desc":
+    "Soporta interfaces en chino e inglés, adecuado para estudiantes de diferentes regiones",
+  "v2.seo.whyChoose.mobile": "Optimización Móvil",
+  "v2.seo.whyChoose.mobile.desc":
+    "Adaptación perfecta para teléfonos y tablets, consulta conteos regresivos de exámenes en cualquier lugar, en cualquier momento",
+  "v2.seo.supportedExams.title": "Exámenes Estandarizados Soportados",
+  "v2.seo.supportedExams.sat": "Examen SAT",
+  "v2.seo.supportedExams.sat.desc":
+    "Examen de admisión universitaria estadounidense, 7 oportunidades de examen durante todo el año",
+  "v2.seo.supportedExams.act": "Examen ACT",
+  "v2.seo.supportedExams.act.desc":
+    "Otro formato de examen estandarizado importante en Estados Unidos",
+  "v2.seo.supportedExams.gre": "Examen GRE",
+  "v2.seo.supportedExams.gre.desc":
+    "Examen de admisión a estudios de posgrado, calendario de exámenes mensual durante todo el año",
+  "v2.seo.supportedExams.toefl": "Examen TOEFL",
+  "v2.seo.supportedExams.toefl.desc":
+    "Prueba de competencia en inglés, múltiples oportunidades de examen por semana",
+  "v2.seo.supportedExams.gmat": "Examen GMAT",
+  "v2.seo.supportedExams.gmat.desc":
+    "Examen de admisión a escuelas de negocios, fechas de examen fijas mensuales",
+  "v2.seo.faq.title":
+    "Preguntas Frecuentes de la Herramienta de Conteo Regresivo de Exámenes",
+  "v2.seo.faq.accuracy.title": "Precisión de Fechas de Exámenes",
+  "v2.seo.faq.accuracy.content":
+    "Nuestras fechas de exámenes se obtienen directamente de sitios web oficiales College Board, ACT.org, ETS, GMAC y otros, garantizando 100% de precisión. Si se ajustan los arreglos oficiales de exámenes, sincronizaremos inmediatamente las actualizaciones.",
+  "v2.seo.faq.free.title": "Política de Uso Gratuito",
+  "v2.seo.faq.free.content":
+    "Exam TimeKeeper es completamente gratuito para usar sin tarifas ocultas. Estamos comprometidos a proporcionar las mejores herramientas de planificación de exámenes para estudiantes en todo el mundo.",
+  "v2.seo.faq.updates.title": "Frecuencia de Actualización de Datos",
+  "v2.seo.faq.updates.content":
+    "Los datos de exámenes se actualizan automáticamente cada 30 minutos para asegurar que obtengas la información más reciente de exámenes. También puedes actualizar manualmente la página para obtener los datos más recientes.",
+  "v2.seo.faq.mobile.title": "Soporte Móvil",
+  "v2.seo.faq.mobile.content":
+    "Nuestra herramienta está completamente adaptada para dispositivos móviles, soportando sistemas iOS y Android. Dondequiera que estés, puedes consultar convenientemente los conteos regresivos de exámenes.",
+  "v2.seo.features.title.short": "Características de la Herramienta",
+  "v2.seo.features.realtime.title": "Actualizaciones en Tiempo Real",
+  "v2.seo.features.realtime.short":
+    "Temporizadores de cuenta regresiva en vivo",
+  "v2.seo.features.official.title": "Fuentes de Datos Oficiales",
+  "v2.seo.features.official.short": "Fechas de exámenes verificadas",
+  "v2.seo.features.personalized.title": "Planificación Personalizada",
+  "v2.seo.features.personalized.short": "Planes de estudio personalizados",
 };
 
 export default translations_es;

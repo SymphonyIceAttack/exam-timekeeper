@@ -391,9 +391,10 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
       )}
 
       <main className="mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-12">
-        {/* Page Title Structure */}
+        {/* V2.0 SEO优化落地页结构 */}
         {filterType && !isClockOnly && !isFocusMode && (
           <div className="mb-8 md:mb-12">
+            {/* SEO优化主标题 */}
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight">
               {filterType === "SAT" && t("sat.page.h1", lang)}
               {filterType === "ACT" && t("act.page.h1", lang)}
@@ -402,36 +403,598 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
               {filterType === "GMAT" && t("gmat.page.h1", lang)}
             </h1>
 
-            <div className="grid gap-6 md:gap-8 mb-8 md:mb-12">
-              <section>
-                <h2 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-primary">
-                  {filterType === "SAT" && t("sat.page.schedules", lang)}
-                  {filterType === "ACT" && t("act.page.schedules", lang)}
-                  {filterType === "GRE" && t("gre.page.schedules", lang)}
-                  {filterType === "TOEFL" && t("toefl.page.schedules", lang)}
-                  {filterType === "GMAT" && t("gmat.page.schedules", lang)}
+            {/* V2.0 高度整合内容区域 */}
+            <div className="grid gap-8 md:gap-12 mb-12 md:mb-16">
+              {/* 考试时间表 - SEO优化内容 */}
+              <section className="bg-card border border-border rounded-lg p-6 md:p-8">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-primary flex items-center gap-3">
+                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <svg
+                      className="w-4 h-4 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  {filterType === "SAT" && "SAT考试时间表与重要日期"}
+                  {filterType === "ACT" && "ACT考试时间表与重要日期"}
+                  {filterType === "GRE" && "GRE考试时间表与重要日期"}
+                  {filterType === "TOEFL" && "TOEFL考试时间表与重要日期"}
+                  {filterType === "GMAT" && "GMAT考试时间表与重要日期"}
                 </h2>
+                <div className="prose prose-sm md:prose-base text-muted-foreground">
+                  {filterType === "SAT" && (
+                    <div>
+                      <p className="mb-4">
+                        SAT考试是申请美国大学的重要标准化考试。我们提供最新的SAT考试时间表，帮助您合理规划备考进度。
+                      </p>
+                      <ul className="space-y-2">
+                        <li>
+                          • <strong>2025年3月考试：</strong>3月8日 -
+                          建议提前2-3个月开始备考
+                        </li>
+                        <li>
+                          • <strong>2025年5月考试：</strong>5月3日 -
+                          春季考试季，热门报名时段
+                        </li>
+                        <li>
+                          • <strong>2025年6月考试：</strong>6月7日 -
+                          夏季前最后机会
+                        </li>
+                        <li>
+                          • <strong>2025年8月考试：</strong>8月23日 -
+                          暑期集中备考
+                        </li>
+                        <li>
+                          • <strong>2025年10月考试：</strong>10月4日 -
+                          秋季考试高峰
+                        </li>
+                        <li>
+                          • <strong>2025年11月考试：</strong>11月8日 -
+                          ED申请前最后机会
+                        </li>
+                        <li>
+                          • <strong>2025年12月考试：</strong>12月6日 -
+                          RD申请季重要考试
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                  {filterType === "ACT" && (
+                    <div>
+                      <p className="mb-4">
+                        ACT考试是美国大学认可的另一种标准化考试形式，涵盖英语、数学、阅读、科学和写作五个部分。
+                      </p>
+                      <ul className="space-y-2">
+                        <li>
+                          • <strong>2025年2月考试：</strong>2月8日 -
+                          年初考试，为春季申请做准备
+                        </li>
+                        <li>
+                          • <strong>2025年4月考试：</strong>4月5日 -
+                          春季考试，避开SAT高峰期
+                        </li>
+                        <li>
+                          • <strong>2025年6月考试：</strong>6月14日 -
+                          夏季考试，学生时间充裕
+                        </li>
+                        <li>
+                          • <strong>2025年7月考试：</strong>7月12日 -
+                          夏季考试，适合暑期备考
+                        </li>
+                        <li>
+                          • <strong>2025年9月考试：</strong>9月6日 -
+                          秋季考试开始
+                        </li>
+                        <li>
+                          • <strong>2025年10月考试：</strong>10月18日 -
+                          申请季重要考试
+                        </li>
+                        <li>
+                          • <strong>2025年12月考试：</strong>12月13日 -
+                          年末最后考试机会
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                  {filterType === "GRE" && (
+                    <div>
+                      <p className="mb-4">
+                        GRE考试是申请研究生院的重要考试，包括语文、数学和写作三个部分，全年多次考试机会。
+                      </p>
+                      <ul className="space-y-2">
+                        <li>
+                          • <strong>全年考试：</strong>GRE每月提供多次考试机会
+                        </li>
+                        <li>
+                          • <strong>灵活安排：</strong>
+                          可根据个人准备情况选择最佳考试时间
+                        </li>
+                        <li>
+                          • <strong>成绩有效期：</strong>5年内有效，适合提前规划
+                        </li>
+                        <li>
+                          • <strong>重考政策：</strong>21天内可重考一次
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                  {filterType === "TOEFL" && (
+                    <div>
+                      <p className="mb-4">
+                        TOEFL考试是评估非英语母语者英语能力的标准化考试，是申请英语授课项目的重要要求。
+                      </p>
+                      <ul className="space-y-2">
+                        <li>
+                          • <strong>全年考试：</strong>TOEFL iBT每周多次考试机会
+                        </li>
+                        <li>
+                          • <strong>快速出分：</strong>考试后6-10天即可获得成绩
+                        </li>
+                        <li>
+                          • <strong>成绩有效期：</strong>2年内有效
+                        </li>
+                        <li>
+                          • <strong>灵活安排：</strong>可随时报名参加考试
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                  {filterType === "GMAT" && (
+                    <div>
+                      <p className="mb-4">
+                        GMAT考试是申请商学院的重要考试，评估学生的逻辑推理、数学和语言能力。
+                      </p>
+                      <ul className="space-y-2">
+                        <li>
+                          • <strong>全年考试：</strong>GMAT每月提供多次考试机会
+                        </li>
+                        <li>
+                          • <strong>成绩有效期：</strong>5年内有效
+                        </li>
+                        <li>
+                          • <strong>重考政策：</strong>16天内可重考一次
+                        </li>
+                        <li>
+                          • <strong>最佳时间：</strong>建议在申请前6个月参加考试
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </section>
 
-              <section>
-                <h2 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-primary">
-                  {filterType === "SAT" && t("sat.page.howToUse", lang)}
-                  {filterType === "ACT" && t("act.page.howToUse", lang)}
-                  {filterType === "GRE" && t("gre.page.howToUse", lang)}
-                  {filterType === "TOEFL" && t("toefl.page.howToUse", lang)}
-                  {filterType === "GMAT" && t("gmat.page.howToUse", lang)}
+              {/* 使用指南 - 工具功能整合 */}
+              <section className="bg-card border border-border rounded-lg p-6 md:p-8">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-primary flex items-center gap-3">
+                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <BookOpen className="w-4 h-4 text-primary" />
+                  </div>
+                  {filterType === "SAT" && "如何使用SAT考试倒计时工具"}
+                  {filterType === "ACT" && "如何使用ACT考试倒计时工具"}
+                  {filterType === "GRE" && "如何使用GRE考试倒计时工具"}
+                  {filterType === "TOEFL" && "如何使用TOEFL考试倒计时工具"}
+                  {filterType === "GMAT" && "如何使用GMAT考试倒计时工具"}
                 </h2>
+                <div className="prose prose-sm md:prose-base text-muted-foreground">
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">基础功能</h3>
+                      <ul className="space-y-2">
+                        <li>• 实时倒计时显示</li>
+                        <li>• 多个考试日期对比</li>
+                        <li>• 自定义考试添加</li>
+                        <li>• 收藏重要考试</li>
+                        <li>• 专注模式学习</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">高级功能</h3>
+                      <ul className="space-y-2">
+                        <li>• 多语言支持</li>
+                        <li>• 移动端适配</li>
+                        <li>• 离线使用支持</li>
+                        <li>• 进度提醒设置</li>
+                        <li>• 学习计划生成</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20">
+                    <h4 className="font-semibold mb-2">💡 专家提示</h4>
+                    <p className="text-sm">
+                      将考试日期添加到日历中，搭配我们的倒计时工具，可以更好地管理备考时间。建议制定详细的学习计划，并定期检查进度。
+                    </p>
+                  </div>
+                </div>
               </section>
 
-              <section>
-                <h2 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-primary">
-                  {filterType === "SAT" && t("sat.page.studyPlanning", lang)}
-                  {filterType === "ACT" && t("act.page.studyPlanning", lang)}
-                  {filterType === "GRE" && t("gre.page.studyPlanning", lang)}
-                  {filterType === "TOEFL" &&
-                    t("toefl.page.studyPlanning", lang)}
-                  {filterType === "GMAT" && t("gmat.page.studyPlanning", lang)}
+              {/* 备考规划 - UGC内容展示 */}
+              <section className="bg-card border border-border rounded-lg p-6 md:p-8">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-primary flex items-center gap-3">
+                  <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Brain className="w-4 h-4 text-primary" />
+                  </div>
+                  {filterType === "SAT" && "SAT备考规划与学习建议"}
+                  {filterType === "ACT" && "ACT备考规划与学习建议"}
+                  {filterType === "GRE" && "GRE备考规划与学习建议"}
+                  {filterType === "TOEFL" && "TOEFL备考规划与学习建议"}
+                  {filterType === "GMAT" && "GMAT备考规划与学习建议"}
                 </h2>
+
+                {/* 学习建议内容 */}
+                <div className="prose prose-sm md:prose-base text-muted-foreground">
+                  {filterType === "SAT" && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">
+                        SAT备考时间规划
+                      </h3>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div>
+                          <h4 className="font-semibold mb-2">
+                            基础阶段 (2-3个月)
+                          </h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 熟悉考试结构和题型</li>
+                            <li>• 制定学习计划</li>
+                            <li>• 开始基础词汇积累</li>
+                            <li>• 数学基础概念复习</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2">
+                            强化阶段 (1-2个月)
+                          </h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 专项练习和刷题</li>
+                            <li>• 模拟考试训练</li>
+                            <li>• 错题分析和总结</li>
+                            <li>• 时间管理训练</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {filterType === "ACT" && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">
+                        ACT备考策略
+                      </h3>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div>
+                          <h4 className="font-semibold mb-2">各科重点</h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 英语：语法规则和写作技巧</li>
+                            <li>• 数学：代数和几何基础</li>
+                            <li>• 阅读：快速阅读和理解</li>
+                            <li>• 科学：科学推理和分析</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2">时间分配</h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 建议备考时间：3-6个月</li>
+                            <li>• 每日学习：2-3小时</li>
+                            <li>• 周末集中复习</li>
+                            <li>• 定期模拟考试</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {filterType === "GRE" && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">
+                        GRE备考要点
+                      </h3>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div>
+                          <h4 className="font-semibold mb-2">语文部分</h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 词汇量要求：10,000+</li>
+                            <li>• 阅读理解技巧</li>
+                            <li>• 逻辑推理训练</li>
+                            <li>• 同义词替换练习</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2">数学部分</h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 基础数学概念</li>
+                            <li>• 定量推理能力</li>
+                            <li>• 数据分析技能</li>
+                            <li>• 几何和代数</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {filterType === "TOEFL" && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">
+                        TOEFL备考建议
+                      </h3>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div>
+                          <h4 className="font-semibold mb-2">技能提升</h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 听力理解训练</li>
+                            <li>• 口语表达练习</li>
+                            <li>• 阅读速度提升</li>
+                            <li>• 写作逻辑训练</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2">备考资源</h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 官方OG练习题</li>
+                            <li>• TPO模考系统</li>
+                            <li>• 学术词汇积累</li>
+                            <li>• 英语环境浸泡</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {filterType === "GMAT" && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">
+                        GMAT备考规划
+                      </h3>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div>
+                          <h4 className="font-semibold mb-2">考试结构</h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 语文：36题，65分钟</li>
+                            <li>• 数学：31题，62分钟</li>
+                            <li>• 综合推理：12题，30分钟</li>
+                            <li>• 分析写作：1篇，30分钟</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2">备考重点</h4>
+                          <ul className="space-y-1 text-sm">
+                            <li>• 逻辑推理能力</li>
+                            <li>• 数据分析技能</li>
+                            <li>• 写作论证能力</li>
+                            <li>• 时间管理策略</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </section>
+            </div>
+          </div>
+        )}
+
+        {/* V2.0 主页面SEO优化内容 */}
+        {!filterType && !isClockOnly && !isFocusMode && (
+          <div className="mb-12 md:mb-16">
+            <div className="grid gap-8 md:gap-12">
+              {/* 主页面SEO优化内容区域 */}
+              <section className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl p-8 md:p-12">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+                    {t("v2.seo.title", lang)}
+                  </h2>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                    {t("v2.seo.subtitle", lang)}
+                  </p>
+                </div>
+
+                {/* 核心功能展示 */}
+                <div className="grid gap-6 md:grid-cols-3 mb-8">
+                  <div className="text-center p-6 bg-card border border-border rounded-lg">
+                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                      <svg
+                        className="w-6 h-6 text-blue-600 dark:text-blue-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {t("v2.seo.features.realtime", lang)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("v2.seo.features.realtime.desc", lang)}
+                    </p>
+                  </div>
+                  <div className="text-center p-6 bg-card border border-border rounded-lg">
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                      <svg
+                        className="w-6 h-6 text-green-600 dark:text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {t("v2.seo.features.official", lang)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("v2.seo.features.official.desc", lang)}
+                    </p>
+                  </div>
+                  <div className="text-center p-6 bg-card border border-border rounded-lg">
+                    <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                      <svg
+                        className="w-6 h-6 text-purple-600 dark:text-purple-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {t("v2.seo.features.personalized", lang)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("v2.seo.features.personalized.desc", lang)}
+                    </p>
+                  </div>
+                </div>
+
+                {/* SEO关键词优化内容 */}
+                <div className="prose prose-sm md:prose-base max-w-none">
+                  <div className="grid gap-8 md:grid-cols-2">
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4 text-primary">
+                        {t("v2.seo.whyChoose.title", lang)}
+                      </h3>
+                      <ul className="space-y-3 text-muted-foreground">
+                        <li className="flex items-start gap-3">
+                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                          <span>
+                            <strong>
+                              {t("v2.seo.whyChoose.accuracy", lang)}：
+                            </strong>
+                            {t("v2.seo.whyChoose.accuracy.desc", lang)}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                          <span>
+                            <strong>
+                              {t("v2.seo.whyChoose.updates", lang)}：
+                            </strong>
+                            {t("v2.seo.whyChoose.updates.desc", lang)}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                          <span>
+                            <strong>
+                              {t("v2.seo.whyChoose.multilingual", lang)}：
+                            </strong>
+                            {t("v2.seo.whyChoose.multilingual.desc", lang)}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                          <span>
+                            <strong>
+                              {t("v2.seo.whyChoose.mobile", lang)}：
+                            </strong>
+                            {t("v2.seo.whyChoose.mobile.desc", lang)}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4 text-primary">
+                        {t("v2.seo.supportedExams.title", lang)}
+                      </h3>
+                      <div className="grid gap-4">
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                            {t("v2.seo.supportedExams.sat", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.sat.desc", lang)}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">
+                            {t("v2.seo.supportedExams.act", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.act.desc", lang)}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-purple-600 dark:text-purple-400 mb-2">
+                            {t("v2.seo.supportedExams.gre", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.gre.desc", lang)}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">
+                            {t("v2.seo.supportedExams.toefl", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.toefl.desc", lang)}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-orange-600 dark:text-orange-400 mb-2">
+                            {t("v2.seo.supportedExams.gmat", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.gmat.desc", lang)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SEO优化的FAQ内容 */}
+              <section className="bg-card border border-border rounded-lg p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-primary text-center">
+                  {t("v2.seo.faq.title", lang)}
+                </h2>
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t("v2.seo.faq.accuracy.title", lang)}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      {t("v2.seo.faq.accuracy.content", lang)}
+                    </p>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t("v2.seo.faq.free.title", lang)}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      {t("v2.seo.faq.free.content", lang)}
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t("v2.seo.faq.updates.title", lang)}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      {t("v2.seo.faq.updates.content", lang)}
+                    </p>
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t("v2.seo.faq.mobile.title", lang)}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      {t("v2.seo.faq.mobile.content", lang)}
+                    </p>
+                  </div>
+                </div>
               </section>
             </div>
           </div>

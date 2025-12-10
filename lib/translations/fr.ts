@@ -249,6 +249,72 @@ export const translations_fr: { [key: string]: string } = {
     "Un starter moderne et optimisé SEO pour les applications Next.js avec support d'internationalisation",
   "metadata.keywords":
     "Next.js, React, SEO, TypeScript, Tailwind CSS, internationalisation, multilingue",
+
+  // V2.0 SEO content translations
+  "v2.seo.title":
+    "Plateforme Complète de Gestion du Temps d'Examens Standardisés",
+  "v2.seo.subtitle":
+    "Fournit des dates d'examens précises, des comptes à rebours en temps réel et une planification d'étude personnalisée pour SAT, ACT, GRE, TOEFL, GMAT et autres examens standardisés",
+  "v2.seo.features.title": "Aperçu des Fonctionnalités Principales",
+  "v2.seo.features.realtime": "Compte à Rebours en Temps Réel",
+  "v2.seo.features.realtime.desc":
+    "Comptes à rebours d'examens précis à la seconde, vous aidant à suivre votre progression d'étude",
+  "v2.seo.features.official": "Données Officielles",
+  "v2.seo.features.official.desc":
+    "Directement issues des sites Web officiels College Board, ACT.org, ETS et autres",
+  "v2.seo.features.personalized": "Planification Personnalisée",
+  "v2.seo.features.personalized.desc":
+    "Plans d'étude personnalisés basés sur le type d'examen et les scores cibles",
+  "v2.seo.whyChoose.title":
+    "Pourquoi Choisir Notre Outil de Compte à Rebours d'Examens ?",
+  "v2.seo.whyChoose.accuracy": "Précision",
+  "v2.seo.whyChoose.accuracy.desc":
+    "Toutes les dates d'examens proviennent d'institutions officielles autoritaires, garantissant 100% de précision",
+  "v2.seo.whyChoose.updates": "Mises à Jour en Temps Réel",
+  "v2.seo.whyChoose.updates.desc":
+    "Synchronise automatiquement les changements d'horaires d'examens officiels sans mises à jour manuelles",
+  "v2.seo.whyChoose.multilingual": "Support Multilingue",
+  "v2.seo.whyChoose.multilingual.desc":
+    "Supporte les interfaces chinoises et anglaises, adapté aux étudiants de différentes régions",
+  "v2.seo.whyChoose.mobile": "Optimisation Mobile",
+  "v2.seo.whyChoose.mobile.desc":
+    "Adaptation parfaite pour téléphones et tablettes, consultez les comptes à rebours d'examens n'importe où, n'importe quand",
+  "v2.seo.supportedExams.title": "Examens Standardisés Supportés",
+  "v2.seo.supportedExams.sat": "Examen SAT",
+  "v2.seo.supportedExams.sat.desc":
+    "Examen d'admission universitario américain, 7 opportunités d'examen tout au long de l'année",
+  "v2.seo.supportedExams.act": "Examen ACT",
+  "v2.seo.supportedExams.act.desc":
+    "Autre format d'examen standardisé majeur aux États-Unis",
+  "v2.seo.supportedExams.gre": "Examen GRE",
+  "v2.seo.supportedExams.gre.desc":
+    "Examen d'admission aux études supérieures, planning d'examens mensuel tout au long de l'année",
+  "v2.seo.supportedExams.toefl": "Examen TOEFL",
+  "v2.seo.supportedExams.toefl.desc":
+    "Test de compétence en anglais, plusieurs opportunités d'examen par semaine",
+  "v2.seo.supportedExams.gmat": "Examen GMAT",
+  "v2.seo.supportedExams.gmat.desc":
+    "Test d'admission en gestion, dates d'examen fixes mensuelles",
+  "v2.seo.faq.title": "FAQ sur l'Outil de Compte à Rebours d'Examens",
+  "v2.seo.faq.accuracy.title": "Précision des Dates d'Examens",
+  "v2.seo.faq.accuracy.content":
+    "Nos dates d'examens sont directement issues des sites Web officiels College Board, ACT.org, ETS, GMAC et autres, garantissant 100% de précision. Si les arrangements d'examens officiels sont ajustés, nous synchroniserons immédiatement les mises à jour.",
+  "v2.seo.faq.free.title": "Politique d'Utilisation Gratuite",
+  "v2.seo.faq.free.content":
+    "Exam TimeKeeper est complètement gratuit à utiliser sans frais cachés. Nous nous engageons à fournir les meilleurs outils de planification d'examens pour les étudiants du monde entier.",
+  "v2.seo.faq.updates.title": "Fréquence de Mise à Jour des Données",
+  "v2.seo.faq.updates.content":
+    "Les données d'examens sont automatiquement actualisées toutes les 30 minutes pour assurer que vous obtenez les dernières informations d'examens. Vous pouvez également actualiser manuellement la page pour obtenir les dernières données.",
+  "v2.seo.faq.mobile.title": "Support Mobile",
+  "v2.seo.faq.mobile.content":
+    "Notre outil est entièrement adapté aux appareils mobiles, supportant les systèmes iOS et Android. Où que vous soyez, vous pouvez consulter commodément les comptes à rebours d'examens.",
+  "v2.seo.features.title.short": "Fonctionnalités de l'Outil",
+  "v2.seo.features.realtime.title": "Mises à Jour en Temps Réel",
+  "v2.seo.features.realtime.short": "Minuteries de compte à rebours en direct",
+  "v2.seo.features.official.title": "Sources de Données Officielles",
+  "v2.seo.features.official.short": "Dates d'examens vérifiées",
+  "v2.seo.features.personalized.title": "Planification Personnalisée",
+  "v2.seo.features.personalized.short": "Plans d'étude personnalisés",
 };
 
 export default translations_fr;
