@@ -18,7 +18,10 @@ Disallow: /private/
 Allow: /
 Allow: /about
 Allow: /contact
-Allow: /posts
 Allow: /privacy
 Allow: /terms
 Allow: /cookies
+
+# Block access to blog posts (multi-language paths)
+Disallow: /posts/
+Disallow: /*/posts/

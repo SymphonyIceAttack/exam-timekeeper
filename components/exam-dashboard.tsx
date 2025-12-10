@@ -72,6 +72,10 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
   const [isClockOnly, setIsClockOnly] = useState(false);
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [showTutorial, setShowTutorial] = useState(false);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [examFilter, setExamFilter] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [viewMode, setViewMode] = useState<"grid" | "compact">("compact");
   const clockRef = useRef<HTMLDivElement>(null);
 
   const fetchLiveExams = async () => {
@@ -223,9 +227,45 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
     return colors[color as keyof typeof colors] || "text-rose-400";
   };
 
-  const filteredExams = showFavorites
-    ? exams.filter((exam) => exam.favorite)
-    : exams;
+  const filteredExams = exams.filter((exam) => {
+    // Filter by favorites if enabled
+    if (showFavorites && !exam.favorite) return false;
+
+    // Filter by exam type
+    if (examFilter !== "all") {
+      const examType = exam.name.toLowerCase();
+      switch (examFilter) {
+        case "sat":
+          if (!examType.includes("sat")) return false;
+          break;
+        case "act":
+          if (!examType.includes("act")) return false;
+          break;
+        case "gre":
+          if (!examType.includes("gre")) return false;
+          break;
+        case "toefl":
+          if (!examType.includes("toefl")) return false;
+          break;
+        case "gmat":
+          if (!examType.includes("gmat")) return false;
+          break;
+      }
+    }
+
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      if (
+        !exam.name.toLowerCase().includes(query) &&
+        !exam.source?.toLowerCase().includes(query)
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  });
 
   const examTypes = ["SAT", "ACT", "GRE", "TOEFL", "GMAT"];
 
@@ -237,7 +277,7 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       {!isClockOnly && (
-        <header className="border-b border-border px-4 md:px-6 py-4">
+        <header className="border-b border-border px-2 md:px-6 py-2 md:py-4">
           <div className="mx-auto max-w-7xl flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="flex-1 min-w-0">
@@ -246,12 +286,17 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
                     <BookOpen className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h1 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold cursor-pointer text-ellipsis overflow-hidden whitespace-nowrap leading-tight">
-                      <span className="block truncate">
-                        {t("app.title", lang)}
+                    <h1 className="text-xs sm:text-sm md:text-base lg:text-xl font-bold cursor-pointer leading-tight">
+                      <span className="block">
+                        <span className="block sm:inline">Exam TimeKeeper</span>
+                        {!filterType && (
+                          <span className="block sm:inline sm:ml-2 text-primary">
+                            – Multi-Exam Countdown
+                          </span>
+                        )}
                       </span>
                       {filterType && (
-                        <span className="text-primary block sm:inline sm:ml-2 mt-1 sm:mt-0 text-ellipsis overflow-hidden whitespace-nowrap">
+                        <span className="text-primary block sm:inline sm:ml-2 mt-1 sm:mt-0">
                           – {filterType.toUpperCase()}
                         </span>
                       )}
@@ -265,7 +310,7 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
                 )}
               </div>
             </div>
-            <div className="flex items-center gap-3 md:gap-6">
+            <div className="flex items-center gap-1 md:gap-6">
               {/* Exam Navigation */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -540,18 +585,189 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
           </div>
         )}
 
+        {/* Mobile-optimized filter and search controls */}
+        {!isClockOnly && (
+          <div className="mb-6 md:mb-8 space-y-4">
+            {/* Search bar - Mobile optimized */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search exams..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-3 pl-10 text-sm border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+                <svg
+                  className="w-4 h-4 text-muted-foreground"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            {/* Filter buttons - Mobile optimized */}
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => setExamFilter("all")}
+                className={`px-3 py-2 text-xs rounded-full transition-colors ${
+                  examFilter === "all"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                }`}
+              >
+                All
+              </button>
+              <button
+                type="button"
+                onClick={() => setExamFilter("sat")}
+                className={`px-3 py-2 text-xs rounded-full transition-colors ${
+                  examFilter === "sat"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                }`}
+              >
+                SAT
+              </button>
+              <button
+                type="button"
+                onClick={() => setExamFilter("act")}
+                className={`px-3 py-2 text-xs rounded-full transition-colors ${
+                  examFilter === "act"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                }`}
+              >
+                ACT
+              </button>
+              <button
+                type="button"
+                onClick={() => setExamFilter("gre")}
+                className={`px-3 py-2 text-xs rounded-full transition-colors ${
+                  examFilter === "gre"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                }`}
+              >
+                GRE
+              </button>
+              <button
+                type="button"
+                onClick={() => setExamFilter("toefl")}
+                className={`px-3 py-2 text-xs rounded-full transition-colors ${
+                  examFilter === "toefl"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                }`}
+              >
+                TOEFL
+              </button>
+              <button
+                type="button"
+                onClick={() => setExamFilter("gmat")}
+                className={`px-3 py-2 text-xs rounded-full transition-colors ${
+                  examFilter === "gmat"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent"
+                }`}
+              >
+                GMAT
+              </button>
+            </div>
+
+            {/* View mode toggle and count */}
+            <div className="flex items-center justify-between">
+              <div className="text-sm text-muted-foreground">
+                {filteredExams.length} exam
+                {filteredExams.length !== 1 ? "s" : ""} found
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setViewMode("compact")}
+                  className={`p-2 rounded ${
+                    viewMode === "compact"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-accent"
+                  }`}
+                  title="Compact view"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2 rounded ${
+                    viewMode === "grid"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-accent"
+                  }`}
+                  title="Grid view"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Exam Cards Grid */}
         {!isClockOnly && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+          <div
+            className={`grid gap-4 md:gap-6 mb-6 md:mb-8 ${
+              viewMode === "compact"
+                ? "grid-cols-1"
+                : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+            }`}
+          >
             {filteredExams.map((exam) => {
               const examCountdown = calculateCountdown(exam.date);
               return (
                 <Card
                   key={exam.id}
-                  className="bg-card border-border hover:bg-accent p-4 md:p-6 cursor-pointer transition-colors"
+                  className={`bg-card border-border hover:bg-accent cursor-pointer transition-colors ${
+                    viewMode === "compact" ? "p-3 md:p-4" : "p-4 md:p-6"
+                  }`}
                   onClick={() => setSelectedExam(exam)}
                 >
-                  <div className="flex items-start gap-3 mb-4 md:mb-6">
+                  <div
+                    className={`flex items-start gap-3 ${
+                      viewMode === "compact" ? "mb-2 md:mb-3" : "mb-4 md:mb-6"
+                    }`}
+                  >
                     {exam.name.toLowerCase().includes("sat") && (
                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-blue-200 dark:border-blue-800">
                         <Image
@@ -711,118 +927,111 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
               />
             </div>
           </div>
-          <div className="grid gap-4 md:gap-6 max-w-3xl mx-auto">
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center flex-shrink-0">
-                  <BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    {t("faq.dataSource.title", lang)}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {t("faq.dataSource.content", lang)}
-                  </p>
-                </div>
-              </div>
-            </Card>
+          <div className="max-w-3xl mx-auto">
+            {/* Mobile-optimized FAQ items with collapsible content */}
+            <div className="space-y-3 md:space-y-4">
+              {[
+                {
+                  icon: BookOpen,
+                  iconColor: "text-blue-600 dark:text-blue-400",
+                  bgColor: "bg-blue-100 dark:bg-blue-900/20",
+                  title: t("faq.dataSource.title", lang),
+                  content: t("faq.dataSource.content", lang),
+                  index: 0,
+                },
+                {
+                  icon: Plus,
+                  iconColor: "text-green-600 dark:text-green-400",
+                  bgColor: "bg-green-100 dark:bg-green-900/20",
+                  title: t("faq.customExam.title", lang),
+                  content: t("faq.customExam.content", lang),
+                  index: 1,
+                },
+                {
+                  icon: Maximize2,
+                  iconColor: "text-purple-600 dark:text-purple-400",
+                  bgColor: "bg-purple-100 dark:bg-purple-900/20",
+                  title: t("faq.changeDisplay.title", lang),
+                  content: t("faq.changeDisplay.content", lang),
+                  index: 2,
+                },
+                {
+                  icon: Star,
+                  iconColor: "text-yellow-600 dark:text-yellow-400",
+                  bgColor: "bg-yellow-100 dark:bg-yellow-900/20",
+                  title: t("faq.favorites.title", lang),
+                  content: t("faq.favorites.content", lang),
+                  index: 3,
+                },
+                {
+                  icon: Minimize2,
+                  iconColor: "text-cyan-600 dark:text-cyan-400",
+                  bgColor: "bg-cyan-100 dark:bg-cyan-900/20",
+                  title: t("faq.clockView.title", lang),
+                  content: t("faq.clockView.content", lang),
+                  index: 4,
+                },
+                {
+                  icon: Info,
+                  iconColor: "text-orange-600 dark:text-orange-400",
+                  bgColor: "bg-orange-100 dark:bg-orange-900/20",
+                  title: t("faq.accuracy.title", lang),
+                  content: t("faq.accuracy.content", lang),
+                  index: 5,
+                },
+                {
+                  icon: Brain,
+                  iconColor: "text-rose-600 dark:text-rose-400",
+                  bgColor: "bg-rose-100 dark:bg-rose-900/20",
+                  title: t("faq.updateFrequency.title", lang),
+                  content: t("faq.updateFrequency.content", lang),
+                  index: 6,
+                },
+              ].map((faq) => {
+                const Icon = faq.icon;
+                const isExpanded = expandedFaq === faq.index;
 
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center flex-shrink-0">
-                  <Plus className="w-5 h-5 text-green-600 dark:text-green-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    {t("faq.customExam.title", lang)}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {t("faq.customExam.content", lang)}
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/20 flex items-center justify-center flex-shrink-0">
-                  <Maximize2 className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    {t("faq.changeDisplay.title", lang)}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {t("faq.changeDisplay.content", lang)}
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/20 flex items-center justify-center flex-shrink-0">
-                  <Star className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    {t("faq.favorites.title", lang)}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {t("faq.favorites.content", lang)}
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-900/20 flex items-center justify-center flex-shrink-0">
-                  <Minimize2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    {t("faq.clockView.title", lang)}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {t("faq.clockView.content", lang)}
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/20 flex items-center justify-center flex-shrink-0">
-                  <Info className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    {t("faq.accuracy.title", lang)}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {t("faq.accuracy.content", lang)}
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="bg-card border-border p-4 md:p-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/20 flex items-center justify-center flex-shrink-0">
-                  <Brain className="w-5 h-5 text-rose-600 dark:text-rose-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3">
-                    {t("faq.updateFrequency.title", lang)}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {t("faq.updateFrequency.content", lang)}
-                  </p>
-                </div>
-              </div>
-            </Card>
+                return (
+                  <Card
+                    key={faq.index}
+                    className="bg-card border-border overflow-hidden"
+                  >
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpandedFaq(isExpanded ? null : faq.index)
+                      }
+                      className="w-full p-4 md:p-6 text-left hover:bg-accent/50 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`w-10 h-10 rounded-full ${faq.bgColor} flex items-center justify-center flex-shrink-0`}
+                        >
+                          <Icon className={`w-5 h-5 ${faq.iconColor}`} />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-base md:text-lg font-semibold">
+                            {faq.title}
+                          </h3>
+                        </div>
+                        <ChevronDown
+                          className={`w-5 h-5 text-muted-foreground transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                        />
+                      </div>
+                    </button>
+                    {isExpanded && (
+                      <div className="px-4 md:px-6 pb-4 md:pb-6">
+                        <div className="pl-13 md:pl-13">
+                          <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                            {faq.content}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </Card>
+                );
+              })}
+            </div>
           </div>
         </section>
       )}
