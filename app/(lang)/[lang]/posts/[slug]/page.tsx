@@ -126,7 +126,7 @@ export default async function PostPage({
                     <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
                       <Image
                         fill={true}
-                        src={`https://exam-timekeeper.top/${imageurl}`}
+                        src={`https://symcloud.top/${imageurl}`}
                         alt={title}
                         className="w-full h-full object-cover"
                       />

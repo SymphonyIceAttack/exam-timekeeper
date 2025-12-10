@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "exam-timekeeper.top",
+        hostname: "symcloud.top",
       },
       {
         protocol: "https",
