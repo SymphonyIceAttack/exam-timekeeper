@@ -32,10 +32,11 @@ export default function PrivacyPolicyPage() {
                 such as when you add custom exam dates or contact us.
               </p>
               <p>
-                <strong>Automatically collected information:</strong> We
-                automatically collect certain information about your device and
-                usage of our service, including IP address, browser type, device
-                information, and pages visited.
+                <strong>Automatically collected information:</strong> Currently,
+                we do not automatically collect personal information. Our
+                service operates without tracking technologies, and we do not
+                use cookies or similar technologies to collect data about your
+                usage.
               </p>
             </div>
           </section>
@@ -48,8 +49,6 @@ export default function PrivacyPolicyPage() {
               <p>We use the information we collect to:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Provide and maintain our service</li>
-                <li>Improve user experience</li>
-                <li>Analyze usage patterns</li>
                 <li>Respond to your inquiries and support requests</li>
                 <li>Comply with legal obligations</li>
               </ul>
@@ -57,34 +56,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              3. Cookies and Tracking
-            </h2>
-            <div className="space-y-3 text-foreground">
-              <p>
-                We use cookies and similar tracking technologies to track
-                activity on our service and store certain information. You can
-                instruct your browser to refuse cookies, but some features may
-                not work properly.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-3">
-              4. Third-Party Services
-            </h2>
-            <div className="space-y-3 text-foreground">
-              <p>
-                Our service may contain links to other sites or use third-party
-                services (such as Google AdSense). This privacy policy does not
-                apply to third-party sites or services.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-3">5. Data Security</h2>
+            <h2 className="text-2xl font-semibold mb-3">3. Data Security</h2>
             <div className="space-y-3 text-foreground">
               <p>
                 We implement appropriate security measures to protect your
@@ -96,7 +68,7 @@ export default function PrivacyPolicyPage() {
 
           <section>
             <h2 className="text-2xl font-semibold mb-3">
-              6. Children's Privacy
+              4. Children's Privacy
             </h2>
             <div className="space-y-3 text-foreground">
               <p>
@@ -109,7 +81,7 @@ export default function PrivacyPolicyPage() {
 
           <section>
             <h2 className="text-2xl font-semibold mb-3">
-              7. Changes to Privacy Policy
+              5. Changes to Privacy Policy
             </h2>
             <div className="space-y-3 text-foreground">
               <p>
@@ -121,7 +93,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-3">8. Contact Us</h2>
+            <h2 className="text-2xl font-semibold mb-3">6. Contact Us</h2>
             <div className="space-y-3 text-foreground">
               <p>
                 If you have any questions about this Privacy Policy, please
