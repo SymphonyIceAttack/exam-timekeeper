@@ -31,7 +31,9 @@ interface CountdownClientProps {
   language?: string;
 }
 
-export default function CountdownClient({ language = "en" }: CountdownClientProps) {
+export default function CountdownClient({
+  language = "en",
+}: CountdownClientProps) {
   // Define types for translations
   type TranslationSection = {
     title: string;
@@ -121,7 +123,8 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
   const translations: Record<string, Translation> = {
     en: {
       title: "Personalized Countdown",
-      description: "Create custom countdowns for birthdays, exams, or any special date",
+      description:
+        "Create custom countdowns for birthdays, exams, or any special date",
       tutorialToggle: { show: "Show Tutorial", hide: "Hide Tutorial" },
       tutorialTitle: "How to Use Personalized Countdown",
       eventsTitle: "Your Events",
@@ -140,7 +143,7 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
       },
       types: {
         birthday: "Birthday",
-        exam: "Exam", 
+        exam: "Exam",
         custom: "Custom",
       },
       actions: {
@@ -151,7 +154,7 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
       },
       timeUnits: {
         days: "Days",
-        hours: "Hours", 
+        hours: "Hours",
         minutes: "Minutes",
         seconds: "Seconds",
       },
@@ -160,10 +163,10 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
           {
             title: "1. Creating Your First Event",
             steps: [
-              "Click the \"Add Event\" button above",
-              "Enter a descriptive title (e.g., \"My Birthday\", \"SAT Exam\")",
+              'Click the "Add Event" button above',
+              'Enter a descriptive title (e.g., "My Birthday", "SAT Exam")',
               "Select the exact date and time using the datetime picker",
-              "Click \"Add Event\" to start your countdown",
+              'Click "Add Event" to start your countdown',
             ],
           },
           {
@@ -188,8 +191,18 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
             sharingTitle: "Sharing Options",
             calendarDescription: "Export events as iCal files for:",
             sharingDescription: "Share your countdowns via:",
-            calendarApps: ["Google Calendar", "Apple Calendar", "Outlook", "Other calendar apps"],
-            sharingMethods: ["Direct link copy", "Social media", "Email or messaging", "Embedded widgets"],
+            calendarApps: [
+              "Google Calendar",
+              "Apple Calendar",
+              "Outlook",
+              "Other calendar apps",
+            ],
+            sharingMethods: [
+              "Direct link copy",
+              "Social media",
+              "Email or messaging",
+              "Embedded widgets",
+            ],
           },
           {
             title: "4. Browser Notifications",
@@ -246,15 +259,18 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
             issues: [
               {
                 title: "Events not saving?",
-                description: "Check if localStorage is enabled in your browser settings.",
+                description:
+                  "Check if localStorage is enabled in your browser settings.",
               },
               {
                 title: "Notifications not working?",
-                description: "Ensure you've granted notification permissions and the event is at least 24 hours away.",
+                description:
+                  "Ensure you've granted notification permissions and the event is at least 24 hours away.",
               },
               {
                 title: "Calendar export failing?",
-                description: "Try a different browser or check if download permissions are enabled.",
+                description:
+                  "Try a different browser or check if download permissions are enabled.",
               },
             ],
           },
@@ -294,7 +310,7 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
       timeUnits: {
         days: "天",
         hours: "小时",
-        minutes: "分钟", 
+        minutes: "分钟",
         seconds: "秒",
       },
       tutorial: {
@@ -302,10 +318,10 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
           {
             title: "1. 创建你的第一个事件",
             steps: [
-              "点击上方的\"添加事件\"按钮",
-              "输入描述性标题（例如：\"我的生日\"、\"SAT考试\"）",
+              '点击上方的"添加事件"按钮',
+              '输入描述性标题（例如："我的生日"、"SAT考试"）',
               "使用日期时间选择器选择准确的日期和时间",
-              "点击\"添加事件\"开始倒计时",
+              '点击"添加事件"开始倒计时',
             ],
           },
           {
@@ -331,7 +347,12 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
             calendarDescription: "导出事件为iCal文件，适用于：",
             sharingDescription: "通过以下方式分享你的倒计时：",
             calendarApps: ["谷歌日历", "苹果日历", "Outlook", "其他日历应用"],
-            sharingMethods: ["直接复制链接", "社交媒体", "电子邮件或消息", "嵌入小工具"],
+            sharingMethods: [
+              "直接复制链接",
+              "社交媒体",
+              "电子邮件或消息",
+              "嵌入小工具",
+            ],
           },
           {
             title: "4. 浏览器通知",
@@ -405,8 +426,12 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
     },
     fr: {
       title: "Compte à Rebours Personnalisé",
-      description: "Créez des compteurs à rebours personnalisés pour les anniversaires, les examens ou toute date spéciale",
-      tutorialToggle: { show: "Afficher le Tutoriel", hide: "Masquer le Tutoriel" },
+      description:
+        "Créez des compteurs à rebours personnalisés pour les anniversaires, les examens ou toute date spéciale",
+      tutorialToggle: {
+        show: "Afficher le Tutoriel",
+        hide: "Masquer le Tutoriel",
+      },
       tutorialTitle: "Comment Utiliser le Compte à Rebours Personnalisé",
       eventsTitle: "Vos Événements",
       addEvent: "Ajouter un Événement",
@@ -414,7 +439,8 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
       cancel: "Annuler",
       noEvents: {
         title: "Aucun événement pour le moment",
-        description: "Créez votre premier compte à rebours personnalisé pour commencer",
+        description:
+          "Créez votre premier compte à rebours personnalisé pour commencer",
         button: "Ajouter Votre Premier Événement",
       },
       form: {
@@ -444,10 +470,10 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
           {
             title: "1. Créer Votre Premier Événement",
             steps: [
-              "Cliquez sur le bouton \"Ajouter un Événement\" ci-dessus",
-              "Entrez un titre descriptif (par exemple, \"Mon Anniversaire\", \"Examen SAT\")",
+              'Cliquez sur le bouton "Ajouter un Événement" ci-dessus',
+              'Entrez un titre descriptif (par exemple, "Mon Anniversaire", "Examen SAT")',
               "Sélectionnez la date et l'heure exactes en utilisant le sélecteur de date/heure",
-              "Cliquez sur \"Ajouter un Événement\" pour démarrer votre compte à rebours",
+              'Cliquez sur "Ajouter un Événement" pour démarrer votre compte à rebours',
             ],
           },
           {
@@ -470,10 +496,21 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
             title: "3. Fonctionnalités d'Export et de Partage",
             calendarTitle: "Export de Calendrier",
             sharingTitle: "Options de Partage",
-            calendarDescription: "Exportez les événements en tant que fichiers iCal pour :",
+            calendarDescription:
+              "Exportez les événements en tant que fichiers iCal pour :",
             sharingDescription: "Partagez vos comptes à rebours via :",
-            calendarApps: ["Google Calendar", "Apple Calendar", "Outlook", "Autres applications de calendrier"],
-            sharingMethods: ["Copie de lien direct", "Médias sociaux", "E-mail ou messagerie", "Widgets intégrés"],
+            calendarApps: [
+              "Google Calendar",
+              "Apple Calendar",
+              "Outlook",
+              "Autres applications de calendrier",
+            ],
+            sharingMethods: [
+              "Copie de lien direct",
+              "Médias sociaux",
+              "E-mail ou messagerie",
+              "Widgets intégrés",
+            ],
           },
           {
             title: "4. Notifications du Navigateur",
@@ -530,15 +567,18 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
             issues: [
               {
                 title: "Les événements ne se sauvegardent pas ?",
-                description: "Vérifiez si localStorage est activé dans les paramètres de votre navigateur.",
+                description:
+                  "Vérifiez si localStorage est activé dans les paramètres de votre navigateur.",
               },
               {
                 title: "Les notifications ne fonctionnent pas ?",
-                description: "Assurez-vous d'avoir accordé les autorisations de notification et que l'événement est au moins 24 heures plus tard.",
+                description:
+                  "Assurez-vous d'avoir accordé les autorisations de notification et que l'événement est au moins 24 heures plus tard.",
               },
               {
                 title: "L'export de calendrier échoue ?",
-                description: "Essayez un navigateur différent ou vérifiez si les autorisations de téléchargement sont activées.",
+                description:
+                  "Essayez un navigateur différent ou vérifiez si les autorisations de téléchargement sont activées.",
               },
             ],
           },
@@ -547,7 +587,8 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
     },
     es: {
       title: "Cuenta Regresiva Personalizada",
-      description: "Crea cuentas regresivas personalizadas para cumpleaños, exámenes o cualquier fecha especial",
+      description:
+        "Crea cuentas regresivas personalizadas para cumpleaños, exámenes o cualquier fecha especial",
       tutorialToggle: { show: "Mostrar Tutorial", hide: "Ocultar Tutorial" },
       tutorialTitle: "Cómo Usar la Cuenta Regresiva Personalizada",
       eventsTitle: "Tus Eventos",
@@ -556,7 +597,8 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
       cancel: "Cancelar",
       noEvents: {
         title: "Aún no hay eventos",
-        description: "Crea tu primera cuenta regresiva personalizada para comenzar",
+        description:
+          "Crea tu primera cuenta regresiva personalizada para comenzar",
         button: "Agregar Tu Primer Evento",
       },
       form: {
@@ -586,10 +628,10 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
           {
             title: "1. Crear Tu Primer Evento",
             steps: [
-              "Haz clic en el botón \"Agregar Evento\" de arriba",
-              "Ingresa un título descriptivo (ej., \"Mi Cumpleaños\", \"Examen SAT\")",
+              'Haz clic en el botón "Agregar Evento" de arriba',
+              'Ingresa un título descriptivo (ej., "Mi Cumpleaños", "Examen SAT")',
               "Selecciona la fecha y hora exactas usando el selector de fecha y hora",
-              "Haz clic en \"Agregar Evento\" para iniciar tu cuenta regresiva",
+              'Haz clic en "Agregar Evento" para iniciar tu cuenta regresiva',
             ],
           },
           {
@@ -614,8 +656,18 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
             sharingTitle: "Opciones de Compartición",
             calendarDescription: "Exporta eventos como archivos iCal para:",
             sharingDescription: "Comparte tus cuentas regresivas mediante:",
-            calendarApps: ["Google Calendar", "Apple Calendar", "Outlook", "Otras aplicaciones de calendario"],
-            sharingMethods: ["Copia de enlace directo", "Redes sociales", "Correo electrónico o mensajería", "Widgets integrados"],
+            calendarApps: [
+              "Google Calendar",
+              "Apple Calendar",
+              "Outlook",
+              "Otras aplicaciones de calendario",
+            ],
+            sharingMethods: [
+              "Copia de enlace directo",
+              "Redes sociales",
+              "Correo electrónico o mensajería",
+              "Widgets integrados",
+            ],
           },
           {
             title: "4. Notificaciones del Navegador",
@@ -672,15 +724,18 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
             issues: [
               {
                 title: "¿Los eventos no se guardan?",
-                description: "Verifica si localStorage está habilitado en la configuración de tu navegador.",
+                description:
+                  "Verifica si localStorage está habilitado en la configuración de tu navegador.",
               },
               {
                 title: "¿Las notificaciones no funcionan?",
-                description: "Asegúrate de haber otorgado permisos de notificación y que el evento sea al menos 24 horas después.",
+                description:
+                  "Asegúrate de haber otorgado permisos de notificación y que el evento sea al menos 24 horas después.",
               },
               {
                 title: "¿La exportación de calendario falla?",
-                description: "Prueba un navegador diferente o verifica si los permisos de descarga están habilitados.",
+                description:
+                  "Prueba un navegador diferente o verifica si los permisos de descarga están habilitados.",
               },
             ],
           },
@@ -874,7 +929,7 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                     {index === 6 && <HelpCircle className="w-5 h-5" />}
                     {section.title}
                   </h3>
-                  
+
                   {section.steps && (
                     <div className="bg-muted p-4 rounded-lg space-y-2">
                       {section.steps.map((step, stepIndex) => (
@@ -884,29 +939,54 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                       ))}
                     </div>
                   )}
-                  
+
                   {section.typesTitle && (
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="bg-muted p-4 rounded-lg">
-                        <h4 className="font-medium mb-2">{section.typesTitle}</h4>
+                        <h4 className="font-medium mb-2">
+                          {section.typesTitle}
+                        </h4>
                         <ul className="space-y-1 text-sm">
-                          <li>• <strong>{t.types.birthday}:</strong> {section.typeDescriptions?.birthday}</li>
-                          <li>• <strong>{t.types.exam}:</strong> {section.typeDescriptions?.exam}</li>
-                          <li>• <strong>{t.types.custom}:</strong> {section.typeDescriptions?.custom}</li>
+                          <li>
+                            • <strong>{t.types.birthday}:</strong>{" "}
+                            {section.typeDescriptions?.birthday}
+                          </li>
+                          <li>
+                            • <strong>{t.types.exam}:</strong>{" "}
+                            {section.typeDescriptions?.exam}
+                          </li>
+                          <li>
+                            • <strong>{t.types.custom}:</strong>{" "}
+                            {section.typeDescriptions?.custom}
+                          </li>
                         </ul>
                       </div>
                       <div className="bg-muted p-4 rounded-lg">
-                        <h4 className="font-medium mb-2">{section.actionsTitle}</h4>
+                        <h4 className="font-medium mb-2">
+                          {section.actionsTitle}
+                        </h4>
                         <ul className="space-y-1 text-sm">
-                          <li>• <strong>{t.actions.download}:</strong> {section.actionDescriptions?.download}</li>
-                          <li>• <strong>{t.actions.share}:</strong> {section.actionDescriptions?.share}</li>
-                          <li>• <strong>{t.actions.reminder}:</strong> {section.actionDescriptions?.bell}</li>
-                          <li>• <strong>{t.actions.delete}:</strong> {section.actionDescriptions?.delete}</li>
+                          <li>
+                            • <strong>{t.actions.download}:</strong>{" "}
+                            {section.actionDescriptions?.download}
+                          </li>
+                          <li>
+                            • <strong>{t.actions.share}:</strong>{" "}
+                            {section.actionDescriptions?.share}
+                          </li>
+                          <li>
+                            • <strong>{t.actions.reminder}:</strong>{" "}
+                            {section.actionDescriptions?.bell}
+                          </li>
+                          <li>
+                            • <strong>{t.actions.delete}:</strong>{" "}
+                            {section.actionDescriptions?.delete}
+                          </li>
                         </ul>
                       </div>
                     </div>
                   )}
-                  
+
                   {section.calendarTitle && (
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="bg-muted p-4 rounded-lg">
@@ -914,7 +994,9 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                           <Calendar className="w-4 h-4" />
                           {section.calendarTitle}
                         </h4>
-                        <p className="text-sm mb-2">{section.calendarDescription}</p>
+                        <p className="text-sm mb-2">
+                          {section.calendarDescription}
+                        </p>
                         <ul className="text-sm space-y-1">
                           {section.calendarApps?.map((app, appIndex) => (
                             <li key={appIndex}>• {app}</li>
@@ -926,16 +1008,20 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                           <Share2 className="w-4 h-4" />
                           {section.sharingTitle}
                         </h4>
-                        <p className="text-sm mb-2">{section.sharingDescription}</p>
+                        <p className="text-sm mb-2">
+                          {section.sharingDescription}
+                        </p>
                         <ul className="text-sm space-y-1">
-                          {section.sharingMethods?.map((method, methodIndex) => (
-                            <li key={methodIndex}>• {method}</li>
-                          ))}
+                          {section.sharingMethods?.map(
+                            (method, methodIndex) => (
+                              <li key={methodIndex}>• {method}</li>
+                            ),
+                          )}
                         </ul>
                       </div>
                     </div>
                   )}
-                  
+
                   {section.setupTitle && (
                     <div className="bg-muted p-4 rounded-lg">
                       <div className="grid md:grid-cols-2 gap-4">
@@ -946,27 +1032,35 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                           </h4>
                           <ol className="text-sm space-y-1">
                             {section.setupSteps?.map((step, stepIndex) => (
-                              <li key={stepIndex}>{stepIndex + 1}. {step}</li>
+                              <li key={stepIndex}>
+                                {stepIndex + 1}. {step}
+                              </li>
                             ))}
                           </ol>
                         </div>
                         <div>
-                          <h4 className="font-medium mb-2">{section.settingsTitle}</h4>
+                          <h4 className="font-medium mb-2">
+                            {section.settingsTitle}
+                          </h4>
                           <ul className="text-sm space-y-1">
-                            {section.settingsList?.map((setting, settingIndex) => (
-                              <li key={settingIndex}>• {setting}</li>
-                            ))}
+                            {section.settingsList?.map(
+                              (setting, settingIndex) => (
+                                <li key={settingIndex}>• {setting}</li>
+                              ),
+                            )}
                           </ul>
                         </div>
                       </div>
                     </div>
                   )}
-                  
+
                   {section.storageTitle && (
                     <div className="bg-muted p-4 rounded-lg">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <h4 className="font-medium mb-2">{section.storageTitle}</h4>
+                          <h4 className="font-medium mb-2">
+                            {section.storageTitle}
+                          </h4>
                           <ul className="text-sm space-y-1">
                             {section.storageList?.map((item, itemIndex) => (
                               <li key={itemIndex}>• {item}</li>
@@ -974,7 +1068,9 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                           </ul>
                         </div>
                         <div>
-                          <h4 className="font-medium mb-2">{section.privacyTitle}</h4>
+                          <h4 className="font-medium mb-2">
+                            {section.privacyTitle}
+                          </h4>
                           <ul className="text-sm space-y-1">
                             {section.privacyList?.map((item, itemIndex) => (
                               <li key={itemIndex}>• {item}</li>
@@ -984,11 +1080,13 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                       </div>
                     </div>
                   )}
-                  
+
                   {section.organizationTitle && (
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="bg-muted p-4 rounded-lg">
-                        <h4 className="font-medium mb-2">{section.organizationTitle}</h4>
+                        <h4 className="font-medium mb-2">
+                          {section.organizationTitle}
+                        </h4>
                         <ul className="text-sm space-y-1">
                           {section.organizationList?.map((tip, tipIndex) => (
                             <li key={tipIndex}>• {tip}</li>
@@ -996,7 +1094,9 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                         </ul>
                       </div>
                       <div className="bg-muted p-4 rounded-lg">
-                        <h4 className="font-medium mb-2">{section.advancedTitle}</h4>
+                        <h4 className="font-medium mb-2">
+                          {section.advancedTitle}
+                        </h4>
                         <ul className="text-sm space-y-1">
                           {section.advancedList?.map((usage, usageIndex) => (
                             <li key={usageIndex}>• {usage}</li>
@@ -1005,11 +1105,14 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                       </div>
                     </div>
                   )}
-                  
+
                   {section.issues && (
                     <div className="space-y-3">
                       {section.issues.map((issue, issueIndex) => (
-                        <div key={issueIndex} className="bg-muted p-3 rounded-lg">
+                        <div
+                          key={issueIndex}
+                          className="bg-muted p-3 rounded-lg"
+                        >
                           <p className="font-medium">{issue.title}</p>
                           <p className="text-sm">{issue.description}</p>
                         </div>
@@ -1085,9 +1188,7 @@ export default function CountdownClient({ language = "en" }: CountdownClientProp
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-semibold">
-                          {event.title}
-                        </h3>
+                        <h3 className="text-xl font-semibold">{event.title}</h3>
                         <span className="px-2 py-1 text-xs rounded-full bg-muted">
                           {t.types[event.type]}
                         </span>

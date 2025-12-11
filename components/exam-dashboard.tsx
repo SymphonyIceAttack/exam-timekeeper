@@ -3,6 +3,7 @@
 import {
   BookOpen,
   Brain,
+  ChevronDown,
   Clock,
   HelpCircle,
   Info,
@@ -133,10 +134,10 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
       "exam-timekeeper-tutorial-seen",
     );
     if (!hasSeenTutorialBefore) {
-      // Show tutorial after a short delay for better UX
+      // Show tutorial after component is fully mounted
       const timer = setTimeout(() => {
         setShowTutorial(true);
-      }, 2000); // Increased delay for better visibility
+      }, 1000); // Reduced delay for better responsiveness
       return () => clearTimeout(timer);
     }
   }, []);

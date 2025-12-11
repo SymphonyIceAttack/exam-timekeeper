@@ -98,13 +98,17 @@ export function NewUserTutorial({
     }
   }, [isOpen]);
 
+  // Reset state when dialog is closed and reopened
+  useEffect(() => {
+    if (!isOpen) {
+      setCurrentStep(0);
+      setIsCompleted(false);
+    }
+  }, [isOpen]);
+
   const handleNext = () => {
     if (isLastStep) {
       setIsCompleted(true);
-      setTimeout(() => {
-        onComplete();
-        onClose();
-      }, 2000);
     } else {
       setCurrentStep(currentStep + 1);
     }
@@ -122,6 +126,9 @@ export function NewUserTutorial({
   };
 
   const handleClose = () => {
+    if (isCompleted) {
+      onComplete();
+    }
     onClose();
   };
 
@@ -353,7 +360,7 @@ export function NewUserTutorial({
                 <Button
                   onClick={handleClose}
                   type="button"
-                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
                 >
                   {t("tutorial.completed.button", lang)}
                 </Button>
