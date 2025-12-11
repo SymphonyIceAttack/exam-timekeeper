@@ -291,7 +291,7 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
                         <span className="block sm:inline">Exam TimeKeeper</span>
                         {!filterType && (
                           <span className="block sm:inline sm:ml-2 text-primary">
-                            – Multi-Exam Countdown
+                            – US Exam Calendar
                           </span>
                         )}
                       </span>
@@ -775,12 +775,11 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
           </div>
         )}
 
-
         {!isClockOnly && !isFocusMode && selectedExam && (
           <div className="relative mb-8 md:mb-12 rounded-lg overflow-hidden">
             <Image
               src="/images/illustrations/hero-banner.jpeg"
-              alt={t("app.hero.title", lang)}
+              alt="US Exam Countdown Calendar - SAT ACT GRE TOEFL GMAT real-time countdown tracker"
               width={1200}
               height={400}
               className="w-full h-[200px] md:h-[300px] object-cover opacity-80"
@@ -931,7 +930,7 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
             <div className="relative">
               <input
                 type="text"
-                placeholder="Search exams..."
+                placeholder="Search SAT ACT GRE TOEFL GMAT exams..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full px-4 py-3 pl-10 text-sm border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"

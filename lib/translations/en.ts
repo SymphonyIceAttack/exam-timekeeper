@@ -15,10 +15,10 @@ export const translations_en: { [key: string]: string } = {
   "common.success": "Success",
   "common.source": "Source:",
   "common.lastUpdated": "Last updated:",
-  "app.title": "Exam TimeKeeper - Multi-Exam Countdown Platform",
-  "app.hero.title": "Track Your Exam Countdown",
+  "app.title": "US Exam Countdown Calendar - SAT ACT GRE TOEFL GMAT Tracker",
+  "app.hero.title": "US Exam Countdown Calendar",
   "app.hero.subtitle":
-    "The ultimate multi-exam countdown platform. Track SAT, ACT, GRE, TOEFL, GMAT and more standardized tests with real-time timers and official date sources.",
+    "SAT ACT GRE exam countdown tracker. Get real-time countdowns for official SAT, ACT, GRE, TOEFL, GMAT test dates. Your comprehensive US exam calendar and standardized test planning platform.",
   "app.loading.exams": "Loading latest exam data...",
   "app.noData.available":
     "No exam data available. Click 'Refresh' to get latest exam information.",
@@ -31,7 +31,7 @@ export const translations_en: { [key: string]: string } = {
   "button.refresh": "Refresh",
   "button.favorites": "Favorites",
   "button.custom": "Custom",
-  "button.addExam": "ADD EXAM",
+  "button.addExam": "ADD EXAM DATE",
   "button.clockOnlyView": "Clock Only View",
   "button.clockView": "Clock View",
   "button.showAll": "Show All",
