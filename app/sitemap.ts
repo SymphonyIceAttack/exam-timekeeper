@@ -16,11 +16,7 @@ const staticRoutes = [
   "/terms",
   "/cookies",
   "/help",
-  "/sat",
-  "/act",
-  "/gre",
-  "/toefl",
-  "/gmat",
+  "/countdown",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
