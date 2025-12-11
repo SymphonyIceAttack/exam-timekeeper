@@ -3,7 +3,7 @@
 import {
   BookOpen,
   Brain,
-  ChevronDown,
+  Clock,
   HelpCircle,
   Info,
   Maximize2,
@@ -21,12 +21,6 @@ import { NewUserTutorial } from "@/components/new-user-tutorial";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import type { LanguageType } from "@/lib/translations";
 import { t } from "@/lib/translations/index";
 
@@ -267,8 +261,6 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
     return true;
   });
 
-  const examTypes = ["SAT", "ACT", "GRE", "TOEFL", "GMAT"];
-
   const getLink = (path: string) => {
     return lang === "en" ? path : `/${lang}${path}`;
   };
@@ -311,37 +303,6 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
               </div>
             </div>
             <div className="flex items-center gap-1 md:gap-6">
-              {/* Exam Navigation */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-xs md:text-sm transition-colors flex items-center gap-1 md:gap-2 text-muted-foreground hover:text-foreground hover:bg-accent px-2 md:px-3 h-8 md:h-9"
-                  >
-                    <span className="hidden sm:inline">Exams</span>
-                    <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem asChild>
-                    <Link href={getLink("/")} className="w-full cursor-pointer">
-                      All Exams
-                    </Link>
-                  </DropdownMenuItem>
-                  {examTypes.map((type) => (
-                    <DropdownMenuItem key={type} asChild>
-                      <Link
-                        href={getLink(`/${type.toLowerCase()}`)}
-                        className="w-full cursor-pointer"
-                      >
-                        {type}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-
               <Link href={getLink("/posts")} scroll={false}>
                 <Button
                   variant="ghost"
@@ -352,6 +313,16 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
                   <span className="hidden sm:inline">
                     {t("nav.posts", lang)}
                   </span>
+                </Button>
+              </Link>
+              <Link href={getLink("/countdown")} scroll={false}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-xs md:text-sm transition-colors flex items-center gap-1 md:gap-2 text-muted-foreground hover:text-foreground hover:bg-accent px-2 md:px-3 h-8 md:h-9"
+                >
+                  <Clock className="w-3 h-3 md:w-4 md:h-4" />
+                  <span className="hidden sm:inline">Countdown</span>
                 </Button>
               </Link>
               <button
