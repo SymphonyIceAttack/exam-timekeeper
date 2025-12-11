@@ -775,230 +775,6 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
           </div>
         )}
 
-        {/* V2.0 主页面SEO优化内容 */}
-        {!filterType && !isClockOnly && !isFocusMode && (
-          <div className="mb-12 md:mb-16">
-            <div className="grid gap-8 md:gap-12">
-              {/* 主页面SEO优化内容区域 */}
-              <section className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl p-8 md:p-12">
-                <div className="text-center mb-8">
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
-                    {t("v2.seo.title", lang)}
-                  </h2>
-                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                    {t("v2.seo.subtitle", lang)}
-                  </p>
-                </div>
-
-                {/* 核心功能展示 */}
-                <div className="grid gap-6 md:grid-cols-3 mb-8">
-                  <div className="text-center p-6 bg-card border border-border rounded-lg">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <svg
-                        className="w-6 h-6 text-blue-600 dark:text-blue-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">
-                      {t("v2.seo.features.realtime", lang)}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {t("v2.seo.features.realtime.desc", lang)}
-                    </p>
-                  </div>
-                  <div className="text-center p-6 bg-card border border-border rounded-lg">
-                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <svg
-                        className="w-6 h-6 text-green-600 dark:text-green-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">
-                      {t("v2.seo.features.official", lang)}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {t("v2.seo.features.official.desc", lang)}
-                    </p>
-                  </div>
-                  <div className="text-center p-6 bg-card border border-border rounded-lg">
-                    <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <svg
-                        className="w-6 h-6 text-purple-600 dark:text-purple-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">
-                      {t("v2.seo.features.personalized", lang)}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {t("v2.seo.features.personalized.desc", lang)}
-                    </p>
-                  </div>
-                </div>
-
-                {/* SEO关键词优化内容 */}
-                <div className="prose prose-sm md:prose-base max-w-none">
-                  <div className="grid gap-8 md:grid-cols-2">
-                    <div>
-                      <h3 className="text-xl font-semibold mb-4 text-primary">
-                        {t("v2.seo.whyChoose.title", lang)}
-                      </h3>
-                      <ul className="space-y-3 text-muted-foreground">
-                        <li className="flex items-start gap-3">
-                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                          <span>
-                            <strong>
-                              {t("v2.seo.whyChoose.accuracy", lang)}：
-                            </strong>
-                            {t("v2.seo.whyChoose.accuracy.desc", lang)}
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                          <span>
-                            <strong>
-                              {t("v2.seo.whyChoose.updates", lang)}：
-                            </strong>
-                            {t("v2.seo.whyChoose.updates.desc", lang)}
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                          <span>
-                            <strong>
-                              {t("v2.seo.whyChoose.multilingual", lang)}：
-                            </strong>
-                            {t("v2.seo.whyChoose.multilingual.desc", lang)}
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                          <span>
-                            <strong>
-                              {t("v2.seo.whyChoose.mobile", lang)}：
-                            </strong>
-                            {t("v2.seo.whyChoose.mobile.desc", lang)}
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-4 text-primary">
-                        {t("v2.seo.supportedExams.title", lang)}
-                      </h3>
-                      <div className="grid gap-4">
-                        <div className="p-4 bg-card border border-border rounded-lg">
-                          <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                            {t("v2.seo.supportedExams.sat", lang)}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {t("v2.seo.supportedExams.sat.desc", lang)}
-                          </p>
-                        </div>
-                        <div className="p-4 bg-card border border-border rounded-lg">
-                          <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">
-                            {t("v2.seo.supportedExams.act", lang)}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {t("v2.seo.supportedExams.act.desc", lang)}
-                          </p>
-                        </div>
-                        <div className="p-4 bg-card border border-border rounded-lg">
-                          <h4 className="font-semibold text-purple-600 dark:text-purple-400 mb-2">
-                            {t("v2.seo.supportedExams.gre", lang)}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {t("v2.seo.supportedExams.gre.desc", lang)}
-                          </p>
-                        </div>
-                        <div className="p-4 bg-card border border-border rounded-lg">
-                          <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">
-                            {t("v2.seo.supportedExams.toefl", lang)}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {t("v2.seo.supportedExams.toefl.desc", lang)}
-                          </p>
-                        </div>
-                        <div className="p-4 bg-card border border-border rounded-lg">
-                          <h4 className="font-semibold text-orange-600 dark:text-orange-400 mb-2">
-                            {t("v2.seo.supportedExams.gmat", lang)}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {t("v2.seo.supportedExams.gmat.desc", lang)}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* SEO优化的FAQ内容 */}
-              <section className="bg-card border border-border rounded-lg p-6 md:p-8">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-primary text-center">
-                  {t("v2.seo.faq.title", lang)}
-                </h2>
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">
-                      {t("v2.seo.faq.accuracy.title", lang)}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      {t("v2.seo.faq.accuracy.content", lang)}
-                    </p>
-                    <h3 className="text-lg font-semibold mb-3">
-                      {t("v2.seo.faq.free.title", lang)}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {t("v2.seo.faq.free.content", lang)}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3">
-                      {t("v2.seo.faq.updates.title", lang)}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      {t("v2.seo.faq.updates.content", lang)}
-                    </p>
-                    <h3 className="text-lg font-semibold mb-3">
-                      {t("v2.seo.faq.mobile.title", lang)}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {t("v2.seo.faq.mobile.content", lang)}
-                    </p>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
-        )}
 
         {!isClockOnly && !isFocusMode && selectedExam && (
           <div className="relative mb-8 md:mb-12 rounded-lg overflow-hidden">
@@ -1445,6 +1221,194 @@ export function ExamDashboard({ lang, filterType }: ExamDashboardProps) {
                 </Card>
               );
             })}
+          </div>
+        )}
+
+        {/* V2.0 主页面SEO优化内容 */}
+        {!filterType && !isClockOnly && !isFocusMode && (
+          <div className="mb-12 md:mb-16">
+            <div className="grid gap-8 md:gap-12">
+              {/* 主页面SEO优化内容区域 */}
+              <section className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl p-8 md:p-12">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+                    {t("v2.seo.title", lang)}
+                  </h2>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                    {t("v2.seo.subtitle", lang)}
+                  </p>
+                </div>
+
+                {/* 核心功能展示 */}
+                <div className="grid gap-6 md:grid-cols-3 mb-8">
+                  <div className="text-center p-6 bg-card border border-border rounded-lg">
+                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                      <svg
+                        className="w-6 h-6 text-blue-600 dark:text-blue-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {t("v2.seo.features.realtime", lang)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("v2.seo.features.realtime.desc", lang)}
+                    </p>
+                  </div>
+                  <div className="text-center p-6 bg-card border border-border rounded-lg">
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                      <svg
+                        className="w-6 h-6 text-green-600 dark:text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {t("v2.seo.features.official", lang)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("v2.seo.features.official.desc", lang)}
+                    </p>
+                  </div>
+                  <div className="text-center p-6 bg-card border border-border rounded-lg">
+                    <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                      <svg
+                        className="w-6 h-6 text-purple-600 dark:text-purple-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {t("v2.seo.features.personalized", lang)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {t("v2.seo.features.personalized.desc", lang)}
+                    </p>
+                  </div>
+                </div>
+
+                {/* SEO关键词优化内容 */}
+                <div className="prose prose-sm md:prose-base max-w-none">
+                  <div className="grid gap-8 md:grid-cols-2">
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4 text-primary">
+                        {t("v2.seo.whyChoose.title", lang)}
+                      </h3>
+                      <ul className="space-y-3 text-muted-foreground">
+                        <li className="flex items-start gap-3">
+                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                          <span>
+                            <strong>
+                              {t("v2.seo.whyChoose.accuracy", lang)}：
+                            </strong>
+                            {t("v2.seo.whyChoose.accuracy.desc", lang)}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                          <span>
+                            <strong>
+                              {t("v2.seo.whyChoose.updates", lang)}：
+                            </strong>
+                            {t("v2.seo.whyChoose.updates.desc", lang)}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                          <span>
+                            <strong>
+                              {t("v2.seo.whyChoose.multilingual", lang)}：
+                            </strong>
+                            {t("v2.seo.whyChoose.multilingual.desc", lang)}
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                          <span>
+                            <strong>
+                              {t("v2.seo.whyChoose.mobile", lang)}：
+                            </strong>
+                            {t("v2.seo.whyChoose.mobile.desc", lang)}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4 text-primary">
+                        {t("v2.seo.supportedExams.title", lang)}
+                      </h3>
+                      <div className="grid gap-4">
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                            {t("v2.seo.supportedExams.sat", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.sat.desc", lang)}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">
+                            {t("v2.seo.supportedExams.act", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.act.desc", lang)}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-purple-600 dark:text-purple-400 mb-2">
+                            {t("v2.seo.supportedExams.gre", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.gre.desc", lang)}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">
+                            {t("v2.seo.supportedExams.toefl", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.toefl.desc", lang)}
+                          </p>
+                        </div>
+                        <div className="p-4 bg-card border border-border rounded-lg">
+                          <h4 className="font-semibold text-orange-600 dark:text-orange-400 mb-2">
+                            {t("v2.seo.supportedExams.gmat", lang)}
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {t("v2.seo.supportedExams.gmat.desc", lang)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
         )}
 
