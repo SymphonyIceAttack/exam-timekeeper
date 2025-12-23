@@ -11,8 +11,6 @@ Sitemap: https://exam-timekeeper.top/sitemap.xml
 # Block access to admin or API routes
 Disallow: /api/
 Disallow: /admin/
-Disallow: /_next/
-Disallow: /private/
 
 # Allow important pages
 Allow: /
@@ -22,6 +20,3 @@ Allow: /privacy
 Allow: /terms
 Allow: /cookies
 
-# Block access to blog posts (multi-language paths)
-Disallow: /posts/
-Disallow: /*/posts/
